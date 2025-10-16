@@ -9,8 +9,18 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GatewaysController;
 use Illuminate\Support\Facades\Route;
 
+
+
+Route::get('/admin/onboard', function () {
+    return 'Success';
+});
+
 Route::get('/admin', function () {
     return redirect()->route('admin.dashboard');
+})->middleware(['auth', 'verified']);
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
