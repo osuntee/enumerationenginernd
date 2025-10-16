@@ -20,7 +20,8 @@ Route::get('/admin/onboard', function () {
         'role' => 'super_admin',
         'password' => Hash::make('password'),
     ]);
-    return 'Success';
+
+    return 'Successes';
 });
 
 Route::get('/admin', function () {
