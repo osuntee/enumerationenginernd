@@ -50,7 +50,7 @@
                     <h3 class="text-lg font-medium text-gray-900">Project Overview</h3>
                     @if ($project->is_published)
                         <p class="text-xs">
-                            {{ config('app.url') }}/project/{{ $project->code }}
+                            {{ config('app.url') }}/enumerate/{{ $project->code }}
                         </p>
                     @endif
                     <p class="mb-4"></p>
@@ -237,7 +237,15 @@
                                     @foreach($enumerations as $enumeration)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->enumerated_at->format('M d, Y') }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->staff->name ?? '-' }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                @if($enumeration->staff)
+                                                    {{ $enumeration->staff->name }}
+                                                @elseif($enumeration->self_enumerated)
+                                                    Self Enumerated
+                                                @else
+                                                    Not assigned
+                                                @endif
+                                            </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <form method="POST" action="{{ route('projects.enumeration.toggleVerification', $enumeration) }}" style="display: inline;">
                                                     @csrf

@@ -52,6 +52,8 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'is_published' => 'nullable|boolean',
+            'requires_verification' => 'nullable|boolean',
             'fields' => 'required|array|min:1',
             'fields.*.name' => [
                 'required',
@@ -93,6 +95,8 @@ class ProjectController extends Controller
                 'customer_id' => Auth::guard('staff')->user()->customer_id,
                 'name' => $request->name,
                 'description' => $request->description,
+                'is_published' => $request->has('is_published') ? (bool)$request->requires_verification : false,
+                'requires_verification' => $request->has('requires_verification') ? (bool)$request->requires_verification : false,
             ]);
 
             // Create project fields
@@ -155,12 +159,28 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'requires_verification' => 'nullable|boolean',
+            'is_published' => 'nullable|boolean',
         ]);
 
         $project->update([
             'name' => $request->name,
             'description' => $request->description,
+            'requires_verification' => $request->boolean('requires_verification'),
+            'is_published' => $request->boolean('is_published'),
         ]);
+
+        if ($project->is_published && !$project->code) {
+            do {
+                $letters = 'abcdefghijklmnopqrstuvwxyz';
+                $code = collect(range(1, 15))
+                    ->map(fn() => $letters[random_int(0, strlen($letters) - 1)])
+                    ->implode('');
+            } while (Project::where('code', $code)->exists());
+
+            $project->code = $code;
+            $project->save();
+        }
 
         return redirect()->route('staff.projects.show', $project)
             ->with('success', 'Project updated successfully!');

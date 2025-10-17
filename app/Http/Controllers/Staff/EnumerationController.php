@@ -8,7 +8,6 @@ use App\Models\Enumeration;
 use Illuminate\Support\Str;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -60,6 +59,7 @@ class EnumerationController extends Controller
 
         $request->validate($rules);
 
+
         DB::transaction(function () use ($request, $project) {
             $ref = $this->generateReferenceNumber();
             $appUrl = config('app.url');
@@ -77,14 +77,21 @@ class EnumerationController extends Controller
 
             $qrCodeBase64 = base64_encode($qrCodeImage->getString());
 
+            $staff = Auth::guard('staff')->user();
+
             // Create the enumeration record
             $enumeration = Enumeration::create([
                 'project_id' => $project->id,
-                'staff_id'   => $request->staff_id,
-                'notes'      => $request->notes,
+                'staff_id'   => $staff->id,
                 'reference'  => $ref,
                 'qrcode'     => $qrCodeBase64,
             ]);
+
+            if ($project->requires_verification) {
+                $enumeration->update(['is_verified' => false]);
+            } else {
+                $enumeration->update(['is_verified' => true]);
+            }
 
             // Set field values
             if ($request->has('data') && is_array($request->data)) {

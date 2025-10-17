@@ -39,6 +39,7 @@ class ProjectController extends Controller
             'customer_id' => 'required|exists:customers,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'is_published' => 'nullable|boolean',
             'requires_verification' => 'nullable|boolean',
             'fields' => 'required|array|min:1',
             'fields.*.name' => [
@@ -81,6 +82,7 @@ class ProjectController extends Controller
                 'customer_id' => $request->customer_id,
                 'name' => $request->name,
                 'description' => $request->description,
+                'is_published' => $request->has('is_published') ? (bool)$request->requires_verification : false,
                 'requires_verification' => $request->has('requires_verification') ? (bool)$request->requires_verification : false,
             ]);
 
