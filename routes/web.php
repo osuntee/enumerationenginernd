@@ -7,22 +7,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GatewaysController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Hash;
-
-
-
-Route::get('/admin/onboard', function () {
-    User::create([
-        'name' => 'Godsent Agundu',
-        'email' => 'godsentagundu1@gmail.com',
-        'role' => 'super_admin',
-        'password' => Hash::make('Password'),
-    ]);
-
-    return 'Successes';
-});
 
 Route::get('/admin', function () {
     return redirect()->route('admin.dashboard');
