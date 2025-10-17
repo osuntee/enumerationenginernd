@@ -2,6 +2,22 @@
     <form method="POST" action="{{ route('staff.register') }}">
         @csrf
 
+        <!-- Business Name -->
+        <div>
+            <x-input-label for="business_name" :value="__('Business Name')" />
+            <x-text-input id="business_name" class="block mt-1 w-full" type="text" name="business_name" :value="old('business_name')" required autofocus autocomplete="business_name" />
+            <x-input-error :messages="$errors->get('business_name')" class="mt-2" />
+        </div>
+
+        <!-- Business Address -->
+        <div class="mt-4">
+            <x-input-label for="business_address" :value="__('Business Address')" />
+            <x-text-input id="business_address" class="block mt-1 w-full" type="text" name="business_address" :value="old('business_address')" required autofocus autocomplete="business_address" />
+            <x-input-error :messages="$errors->get('business_address')" class="mt-2" />
+        </div>
+
+        <hr class="my-5">
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
