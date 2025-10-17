@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -38,6 +39,7 @@ class ProjectController extends Controller
             'customer_id' => 'required|exists:customers,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'is_published' => 'nullable|boolean',
             'requires_verification' => 'nullable|boolean',
             'fields' => 'required|array|min:1',
             'fields.*.name' => [
@@ -80,6 +82,7 @@ class ProjectController extends Controller
                 'customer_id' => $request->customer_id,
                 'name' => $request->name,
                 'description' => $request->description,
+                'is_published' => $request->has('is_published') ? (bool)$request->requires_verification : false,
                 'requires_verification' => $request->has('requires_verification') ? (bool)$request->requires_verification : false,
             ]);
 
@@ -135,13 +138,27 @@ class ProjectController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'requires_verification' => 'nullable|boolean',
+            'is_published' => 'nullable|boolean',
         ]);
 
         $project->update([
             'name' => $request->name,
             'description' => $request->description,
-            'requires_verification' => $request->requires_verification ? (bool)$request->requires_verification : false,
+            'requires_verification' => $request->boolean('requires_verification'),
+            'is_published' => $request->boolean('is_published'),
         ]);
+
+        if ($project->is_published && !$project->code) {
+            do {
+                $letters = 'abcdefghijklmnopqrstuvwxyz';
+                $code = collect(range(1, 15))
+                    ->map(fn() => $letters[random_int(0, strlen($letters) - 1)])
+                    ->implode('');
+            } while (Project::where('code', $code)->exists());
+
+            $project->code = $code;
+            $project->save();
+        }
 
         return redirect()->back()->with('success', 'Project updated successfully!');
     }

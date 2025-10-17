@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gateway;
+use App\Models\Project;
 use App\Models\Enumeration;
 use App\Models\EnumerationPayment;
 use App\Models\PaymentTransaction;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -248,5 +252,82 @@ class FrontController extends Controller
                 ->route('front.payments.show', $enumerationPayment)
                 ->with('error', 'Payment failed or was cancelled.');
         }
+    }
+
+    public function enumerate($code)
+    {
+        $project = Project::where('code', $code)->firstOrFail();
+
+        if (!$project || !$project->is_published) {
+            abort(404, 'Project not available.');
+        }
+
+        return view('front.enumerate', compact('project'));
+    }
+
+    /**
+     * Store a newly created enumeration entry in storage.
+     */
+    public function storeEnumeration(Request $request, $code)
+    {
+        $project = Project::where('code', $code)->firstOrFail();
+
+        if (!$project || !$project->is_published) {
+            abort(404, 'Project not available.');
+        }
+
+        // Get validation rules from the project
+        $rules = $project->getValidationRules();
+
+        // Add additional enumeration-specific rules
+        $rules = array_merge($rules, [
+            'enumerated_by' => 'nullable|string|max:255',
+            'notes' => 'nullable|string',
+        ]);
+
+        $request->validate($rules);
+
+        DB::transaction(function () use ($request, $project) {
+            $ref = $this->generateReferenceNumber();
+            $appUrl = config('app.url');
+
+            $url = "{$appUrl}/verify/{$ref}";
+
+            $qrCode = new QrCode(
+                data: $url,
+                size: 200,
+                margin: 10,
+            );
+
+            $writer = new PngWriter();
+            $qrCodeImage = $writer->write($qrCode);
+
+            $qrCodeBase64 = base64_encode($qrCodeImage->getString());
+
+            // Create the enumeration record
+            $enumeration = Enumeration::create([
+                'project_id' => $project->id,
+                'reference'  => $ref,
+                'qrcode' => $qrCodeBase64,
+                'self_enumerated' => 1,
+            ]);
+
+            // Set field values
+            if ($request->has('data') && is_array($request->data)) {
+                $enumeration->setFieldValues($request->data);
+            }
+        });
+
+        return redirect()->back()->with('success', 'Enumeration data added successfully!');
+    }
+
+    /**
+     * Generate a unique reference number for the enumeration.
+     */
+    private function generateReferenceNumber()
+    {
+        $timestamp = now()->format('YmdHisv');
+        $uniqueId = strtoupper(Str::random(3));
+        return $timestamp . $uniqueId;
     }
 }

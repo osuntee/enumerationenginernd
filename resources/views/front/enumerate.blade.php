@@ -19,98 +19,226 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('staff.login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
-
-                        @if (Route::has('staff.register'))
-                            <a
-                                href="{{ route('staff.register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
+    <body class="flex flex-col min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+        <!-- Header with Logo -->
+        <header class="bg-white shadow-sm border-b border-slate-200">
+            <div class="max-w-full mx-auto px-6 lg:px-8 py-4">
+                <div class="flex items-center gap-3">
+                    <x-application-logo class="w-10 h-10" />
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-900">{{ config('app.name', 'Laravel') }}</h1>
+                        <p class="text-xs text-gray-500">{{ $project->name }}</p>
+                    </div>
+                </div>
+            </div>
         </header>
-        
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-2 font-medium text-2xl">Enumerate by Cyber1</h1>
-                    <p class="mb-4 text-[#706f6c] dark:text-[#A1A09A]">A powerful data collection platform designed to streamline field surveys and community enumerations.</p>
-                    
-                    <h2 class="mb-2 font-medium">Key Features</h2>
-                    <ul class="flex flex-col mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>Efficient data collection through mobile and web interfaces</span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>Streamlined management and analysis tools</span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>Enhanced accuracy and speed in every stage</span>
-                        </li>
-                    </ul>
-                    
-                    <ul class="flex gap-3 text-sm leading-normal flex-wrap">
-                        <li>
-                            <a href="{{ route('staff.login') }}" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Get Started
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/dashboard') }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                View Dashboard
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="bg-[#e8f4f8] dark:bg-[#0a1520] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden flex items-center justify-center">
-                    <!-- Data Collection Icon -->
-                    <svg class="w-48 h-48 text-[#3b82f6] dark:text-[#60a5fa] opacity-80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <div class="absolute inset-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
-                </div>
-            </main>
-        </div>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
+        <!-- Main Content -->
+        <div class="flex-1 p-6 lg:p-8">
+            <div class="max-w-6xl mx-auto">
+                @if(session('success'))
+                    <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                @if($errors->any())
+                    <div class="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                        <h3 class="font-semibold mb-2">Please fix the following errors:</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li class="text-sm">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('front.enumerate.store', $project->code) }}" class="bg-white rounded-lg shadow-md overflow-hidden">
+                    @csrf
+
+                    <!-- Project Fields Data -->
+                    <div class="p-6 lg:p-8 text-gray-900">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-4">Field Data</h3>
+                        
+                        <div class="space-y-1">
+                            @foreach($project->projectFields as $field)
+                                <div class="pb-6 last:pb-0">
+                                    <label for="data_{{ $field->name }}" class="block text-sm font-semibold text-gray-800 mb-2">
+                                        {{ $field->label }}
+                                        @if($field->required)
+                                            <span class="text-red-500 font-bold">*</span>
+                                        @endif
+                                    </label>
+                                    
+                                    @if($field->help_text)
+                                        <p class="text-sm text-gray-600 mb-3 italic">{{ $field->help_text }}</p>
+                                    @endif
+                                    
+                                    @switch($field->type)
+                                        @case('text')
+                                        @case('email')
+                                        @case('url')
+                                        @case('tel')
+                                            <input type="{{ $field->type }}" 
+                                                name="data[{{ $field->name }}]" 
+                                                id="data_{{ $field->name }}" 
+                                                value="{{ old('data.' . $field->name) }}" 
+                                                placeholder="{{ $field->placeholder }}"
+                                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                                {{ $field->required ? 'required' : '' }}
+                                                @if($field->attributes)
+                                                    @foreach($field->attributes as $attr => $value)
+                                                        {{ $attr }}="{{ $value }}"
+                                                    @endforeach
+                                                @endif>
+                                            @break
+                                            
+                                        @case('textarea')
+                                            <textarea name="data[{{ $field->name }}]" 
+                                                    id="data_{{ $field->name }}" 
+                                                    rows="4" 
+                                                    placeholder="{{ $field->placeholder }}"
+                                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                                    {{ $field->required ? 'required' : '' }}
+                                                    @if($field->attributes)
+                                                        @foreach($field->attributes as $attr => $value)
+                                                            {{ $attr }}="{{ $value }}"
+                                                        @endforeach
+                                                    @endif>{{ old('data.' . $field->name) }}</textarea>
+                                            @break
+                                            
+                                        @case('number')
+                                        @case('range')
+                                            <input type="{{ $field->type }}" 
+                                                name="data[{{ $field->name }}]" 
+                                                id="data_{{ $field->name }}" 
+                                                value="{{ old('data.' . $field->name) }}" 
+                                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                                {{ $field->required ? 'required' : '' }}
+                                                @if($field->attributes)
+                                                    @foreach($field->attributes as $attr => $value)
+                                                        {{ $attr }}="{{ $value }}"
+                                                    @endforeach
+                                                @endif>
+                                            @break
+                                            
+                                        @case('date')
+                                        @case('time')
+                                        @case('datetime-local')
+                                        @case('color')
+                                            <input type="{{ $field->type }}" 
+                                                name="data[{{ $field->name }}]" 
+                                                id="data_{{ $field->name }}" 
+                                                value="{{ old('data.' . $field->name, $field->default_value) }}" 
+                                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                                {{ $field->required ? 'required' : '' }}>
+                                            @break
+                                            
+                                        @case('select')
+                                            <select name="data[{{ $field->name }}]" 
+                                                    id="data_{{ $field->name }}" 
+                                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                                    {{ $field->required ? 'required' : '' }}>
+                                                @if(!$field->required)
+                                                    <option value="">-- Select Option --</option>
+                                                @endif
+                                                @if($field->options)
+                                                    @foreach($field->options as $option)
+                                                        <option value="{{ $option }}" {{ old('data.' . $field->name) == $option ? 'selected' : '' }}>
+                                                            {{ $option }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                            @break
+                                            
+                                        @case('radio')
+                                            @if($field->options)
+                                                <div class="mt-3 space-y-3">
+                                                    @foreach($field->options as $option)
+                                                        <div class="flex items-center">
+                                                            <input type="radio" 
+                                                                name="data[{{ $field->name }}]" 
+                                                                id="data_{{ $field->name }}_{{ $loop->index }}" 
+                                                                value="{{ $option }}"
+                                                                {{ old('data.' . $field->name) == $option ? 'checked' : '' }}
+                                                                class="focus:ring-2 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
+                                                                {{ $field->required ? 'required' : '' }}>
+                                                            <label for="data_{{ $field->name }}_{{ $loop->index }}" class="ml-3 block text-sm font-medium text-gray-700 cursor-pointer">
+                                                                {{ $option }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            @break
+                                            
+                                        @case('checkbox')
+                                            <div class="mt-3">
+                                                <div class="flex items-center">
+                                                    <input type="checkbox" 
+                                                        name="data[{{ $field->name }}]" 
+                                                        id="data_{{ $field->name }}" 
+                                                        value="1"
+                                                        {{ old('data.' . $field->name) ? 'checked' : '' }}
+                                                        class="focus:ring-2 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                                    <label for="data_{{ $field->name }}" class="ml-3 block text-sm font-medium text-gray-700 cursor-pointer">
+                                                        {{ $field->label }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            @break
+                                            
+                                        @case('checkboxes')
+                                            @if($field->options)
+                                                <div class="mt-3 space-y-3">
+                                                    @foreach($field->options as $option)
+                                                        <div class="flex items-center">
+                                                            <input type="checkbox" 
+                                                                name="data[{{ $field->name }}][]" 
+                                                                id="data_{{ $field->name }}_{{ $loop->index }}" 
+                                                                value="{{ $option }}"
+                                                                {{ in_array($option, old('data.' . $field->name, [])) ? 'checked' : '' }}
+                                                                class="focus:ring-2 focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                                            <label for="data_{{ $field->name }}_{{ $loop->index }}" class="ml-3 block text-sm font-medium text-gray-700 cursor-pointer">
+                                                                {{ $option }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            @break
+                                            
+                                        @case('file')
+                                            <input type="file" 
+                                                name="data[{{ $field->name }}]" 
+                                                id="data_{{ $field->name }}" 
+                                                class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                                                {{ $field->required ? 'required' : '' }}
+                                                @if($field->attributes)
+                                                    @foreach($field->attributes as $attr => $value)
+                                                        {{ $attr }}="{{ $value }}"
+                                                    @endforeach
+                                                @endif>
+                                            @break
+                                    @endswitch
+                                </div>
+                            @endforeach
+                        </div>
+                        
+                        <div class="mt-10 pt-6 border-t flex gap-3">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition transform hover:scale-105">
+                                Save Enumeration Data
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

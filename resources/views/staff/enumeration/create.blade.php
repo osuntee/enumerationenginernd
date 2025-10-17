@@ -35,29 +35,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                     <div class="p-6 text-gray-900">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Enumeration Details</h3>
-                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="md:col-span-2">
-                                <label for="staff_id" class="block text-sm font-medium text-gray-700 mb-2">Enumerated By</label>
-                                <select name="staff_id" id="staff_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                                    <option value="">-- Select Staff Member --</option>
-                                    @foreach($project->staff()->active()->where('staff_type', 'user')->orderBy('name')->get() as $staff)
-                                        <option value="{{ $staff->id }}" {{ old('staff_id') == $staff->id ? 'selected' : '' }}>
-                                            {{ $staff->name }}
-                                            @if($staff->position)
-                                                ({{ $staff->position }})
-                                            @endif
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @if($project->staff()->active()->count() === 0)
-                                    <p class="text-sm text-red-600 mt-1">
-                                        No active staff members assigned to this project. 
-                                        <a href="{{ route('staff.projects.staff.index', $project) }}" class="underline">Assign staff members</a>
-                                    </p>
-                                @endif
-                            </div>
-                            
                             <div class="md:col-span-2">
                                 <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">Notes</label>
                                 <textarea name="notes" id="notes" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('notes') }}</textarea>

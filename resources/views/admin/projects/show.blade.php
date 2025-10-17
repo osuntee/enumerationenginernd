@@ -47,7 +47,13 @@
             <!-- Project Statistics -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900">
-                    <h3 class="text-lg font-medium text-gray-900 mb-4">Project Overview</h3>
+                    <h3 class="text-lg font-medium text-gray-900">Project Overview</h3>
+                    @if ($project->is_published)
+                        <p class="text-xs">
+                            {{ config('app.url') }}/enumerate/{{ $project->code }}
+                        </p>
+                    @endif
+                    <p class="mb-4"></p>
                     <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                         <div class="bg-blue-50 p-4 rounded-lg">
                             <div class="flex items-center">
@@ -231,7 +237,15 @@
                                     @foreach($enumerations as $enumeration)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->enumerated_at->format('M d, Y') }}</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->staff->name ?? '-' }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                @if($enumeration->staff)
+                                                    {{ $enumeration->staff->name }}
+                                                @elseif($enumeration->self_enumerated)
+                                                    Self Enumerated
+                                                @else
+                                                    Not assigned
+                                                @endif
+                                            </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <form method="POST" action="{{ route('projects.enumeration.toggleVerification', $enumeration) }}" style="display: inline;">
                                                     @csrf

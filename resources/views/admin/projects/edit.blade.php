@@ -59,6 +59,12 @@
                         </div>
 
                         <div class="mb-4">
+                            <label for="is_published" class="block text-sm font-medium text-gray-700 mb-2">Self Enumeration</label>
+                            <input type="checkbox" name="is_published" id="is_published" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('is_published', $project->is_published) ? 'checked' : '' }}>
+                            <span class="ml-2 text-sm text-gray-700">Check this box if you want enumeration to be open to all.</span>
+                        </div>
+                        
+                        <div class="mb-4">
                             <label for="requires_verification" class="block text-sm font-medium text-gray-700 mb-2">Enumeration Verification Required</label>
                             <input type="checkbox" name="requires_verification" id="requires_verification" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('requires_verification', $project->requires_verification) ? 'checked' : '' }}>
                             <span class="ml-2 text-sm text-gray-700">Check this box if enumerations for this project require manual verification.</span>
@@ -230,6 +236,25 @@
     </div>
 
     <script>
+        const isPublished = document.getElementById('is_published');
+        const requiresVerification = document.getElementById('requires_verification');
+        
+        // When is_published is checked, turn on requires_verification
+        isPublished.addEventListener('change', function() {
+            console.log('Checked');
+            
+            if (this.checked) {
+                requiresVerification.checked = true;
+            }
+        });
+        
+        // When requires_verification is unchecked, turn off is_published
+        requiresVerification.addEventListener('change', function() {
+            if (!this.checked) {
+                isPublished.checked = false;
+            }
+        });
+        
         function toggleAddFieldForm() {
             const form = document.getElementById('add-field-form');
             form.classList.toggle('hidden');

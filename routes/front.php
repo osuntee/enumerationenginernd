@@ -18,3 +18,8 @@ Route::prefix('verify')->name('front.')->group(function () {
     // Flutterwave callback route
     Route::get('/flutterwave/callback', [FrontController::class, 'handleFlutterwaveCallback'])->name('flutterwave.callback');
 });
+
+Route::prefix('enumerate')->name('front.')->group(function () {
+    Route::get('/{code}', [FrontController::class, 'enumerate'])->name('enumerate');
+    Route::post('/{code}', [FrontController::class, 'storeEnumeration'])->name('enumerate.store');
+});
