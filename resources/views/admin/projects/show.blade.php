@@ -47,7 +47,13 @@
             <!-- Project Statistics -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900">
-                    <h3 class="text-lg font-medium text-gray-900 mb-4">Project Overview</h3>
+                    <h3 class="text-lg font-medium text-gray-900">Project Overview</h3>
+                    @if ($project->is_published)
+                        <p class="text-xs">
+                            {{ config('app.url') }}/project/{{ $project->code }}
+                        </p>
+                    @endif
+                    <p class="mb-4"></p>
                     <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                         <div class="bg-blue-50 p-4 rounded-lg">
                             <div class="flex items-center">

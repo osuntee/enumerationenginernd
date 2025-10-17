@@ -18,11 +18,14 @@ class Project extends Model
         'name',
         'description',
         'requires_verification',
-        'is_active'
+        'is_active',
+        'code',
+        'is_published'
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'is_published' => 'boolean',
         'requires_verification' => 'boolean',
     ];
 
