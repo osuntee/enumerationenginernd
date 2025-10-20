@@ -148,7 +148,6 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => 'Verification code has been sent to your email successfully',
-                'data' => $data,
             ], 200);
         }
     }
