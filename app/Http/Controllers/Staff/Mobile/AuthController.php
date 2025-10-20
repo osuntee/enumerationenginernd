@@ -95,6 +95,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => 'success',
+            'data' => $data,
         ], 200);
     }
 
@@ -147,7 +148,8 @@ class AuthController extends Controller
             // Mail::to($user->email)->send(new SampleMail($data));
 
             return response()->json([
-                'message' => 'Verification code has been sent to your email successfully'
+                'message' => 'Verification code has been sent to your email successfully',
+                'data' => $data
             ], 200);
         }
     }
