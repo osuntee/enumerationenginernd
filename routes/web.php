@@ -13,6 +13,12 @@ Route::get('/admin', function () {
     return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'verified']);
 
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified'])->name('admin.dashboard');
+
+
+
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/updateAllQRCodes', [EnumerationController::class, 'updateAllQRCodes'])->name('enumeration.updateAllQRCodes');
 
