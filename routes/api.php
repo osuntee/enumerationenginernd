@@ -19,5 +19,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/home', [HomeController::class, 'index']);
 
+
+
     Route::get('/project/{id}', [ProjectController::class, 'index']);
+    Route::post('/project/{id}/enumerate', [ProjectController::class, 'enumerate']);
 });
