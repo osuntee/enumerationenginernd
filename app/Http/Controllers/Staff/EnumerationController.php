@@ -136,7 +136,7 @@ class EnumerationController extends Controller
             $query->active()->ordered();
         }]);
 
-        return view('admin.enumeration.show', compact('project', 'enumeration'));
+        return view('staff.enumeration.show', compact('project', 'enumeration'));
     }
 
     /**
@@ -153,7 +153,7 @@ class EnumerationController extends Controller
             $query->active()->ordered();
         }]);
 
-        return view('admin.enumeration.edit', compact('project', 'enumeration'));
+        return view('staff.enumeration.edit', compact('project', 'enumeration'));
     }
 
     /**
