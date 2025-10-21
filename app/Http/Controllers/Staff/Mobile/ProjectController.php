@@ -122,4 +122,24 @@ class ProjectController extends Controller
         $uniqueId = strtoupper(Str::random(3));
         return $timestamp . $uniqueId;
     }
+
+    public function records($id)
+    {
+        $project = Project::find($id);
+
+        if (!$project) {
+            return response()->json([
+                'status' => 'Request failed',
+                'message' => 'Project not found'
+            ], 403);
+        }
+
+        $user = Auth::user();
+        $records = Enumeration::where('project_id', $project->id)->where('staff_id', $user->id)->get();
+
+        return response()->json([
+            'status' => 'Request successful',
+            'records' => $records,
+        ], 200);
+    }
 }
