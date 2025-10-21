@@ -1,7 +1,7 @@
 <x-staff>
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-            <div>
+            <div class="max-w-full lg:max-w-5xl">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ $project->name }}
                 </h2>
