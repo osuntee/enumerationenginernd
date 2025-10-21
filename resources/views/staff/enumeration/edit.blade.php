@@ -52,6 +52,12 @@
                         
                         <div class="space-y-6">
                             @foreach($project->projectFields as $field)
+                                @php
+                                    // Get existing enumeration data for this field
+                                    $existingData = $enumeration->enumerationData->firstWhere('project_field_id', $field->id);
+                                    $fieldValue = old('data.' . $field->name, $existingData?->value ?? '');
+                                @endphp
+                                
                                 <div class="border-b border-gray-200 pb-4 last:border-b-0">
                                     <label for="data_{{ $field->name }}" class="block text-sm font-medium text-gray-700 mb-2">
                                         {{ $field->label }}
@@ -63,10 +69,6 @@
                                     @if($field->help_text)
                                         <p class="text-sm text-gray-500 mb-2">{{ $field->help_text }}</p>
                                     @endif
-                                    
-                                    @php
-                                        $fieldValue = old('data.' . $field->name, $enumeration->data[$field->name] ?? '');
-                                    @endphp
                                     
                                     @switch($field->type)
                                         @case('text')
@@ -186,7 +188,10 @@
                                         @case('checkboxes')
                                             @if($field->options)
                                                 @php
-                                                    $checkboxValues = old('data.' . $field->name, $enumeration->data[$field->name] ?? []);
+                                                    $checkboxValues = old('data.' . $field->name, $existingData?->value ?? []);
+                                                    if (!is_array($checkboxValues)) {
+                                                        $checkboxValues = is_string($checkboxValues) ? json_decode($checkboxValues, true) : [];
+                                                    }
                                                     if (!is_array($checkboxValues)) {
                                                         $checkboxValues = [];
                                                     }
@@ -210,9 +215,9 @@
                                             @break
                                             
                                         @case('file')
-                                            @if(isset($enumeration->data[$field->name]))
+                                            @if($fieldValue)
                                                 <div class="mb-2 text-sm text-gray-600">
-                                                    Current file: <span class="font-medium">{{ $enumeration->data[$field->name] }}</span>
+                                                    Current file: <span class="font-medium">{{ $fieldValue }}</span>
                                                 </div>
                                             @endif
                                             <input type="file" 
