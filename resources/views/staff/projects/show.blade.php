@@ -1,7 +1,7 @@
 <x-staff>
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-            <div class="max-w-full lg:max-w-5xl">
+            <div>
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     {{ $project->name }}
                 </h2>
@@ -48,6 +48,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Project Overview</h3>
+                    @if ($project->is_published)
+                        <p class="text-xs">
+                            {{ config('app.url') }}/enumerate/{{ $project->code }}
+                        </p>
+                    @endif
                     <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                         <div class="bg-blue-50 p-4 rounded-lg">
                             <div class="flex items-center">
