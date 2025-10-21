@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Staff\Mobile;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Enumeration;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -99,6 +100,12 @@ class ProjectController extends Controller
             if ($request->has('data') && is_array($request->data)) {
                 $enumeration->setFieldValues($request->data);
             }
+
+            Activity::create([
+                'staff_id' => $user->id,
+                'activity_type' => 'Enumeration',
+                'description' => 'New data captured for project ' . $project->name . $enumeration->reference,
+            ]);
 
             return response()->json([
                 'status' => 'Request successful',
