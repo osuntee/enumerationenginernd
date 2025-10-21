@@ -104,19 +104,13 @@ class ProjectController extends Controller
             Activity::create([
                 'staff_id' => $user->id,
                 'activity_type' => 'Enumeration',
-                'description' => 'New data captured for project ' . $project->name . $enumeration->reference,
+                'description' => 'New data captured for project ' . $project->name . ' - ' . $enumeration->reference,
             ]);
-
-            return response()->json([
-                'status' => 'Request successful',
-                'project' => $project,
-                'enumeration' => $enumeration,
-            ], 200);
         });
 
         return response()->json([
-            'message' => 'Something went wrong, contact admin to confirm enumeration',
-        ], 403);
+            'status' => 'Request successful',
+        ], 200);
     }
 
     /**

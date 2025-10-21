@@ -76,10 +76,8 @@
                             <dd class="mt-1 text-sm text-gray-900">
                                 @if($enumeration->staff)
                                     {{ $enumeration->staff->name }}
-                                @elseif ($enumeration->self_enumerated)
-                                    Self Enumerated
                                 @else
-                                    <span class="text-gray-500 italic">Not assigned</span>
+                                    Self Enumerated
                                 @endif
                             </dd>
                         </div>

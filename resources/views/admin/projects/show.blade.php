@@ -240,10 +240,8 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 @if($enumeration->staff)
                                                     {{ $enumeration->staff->name }}
-                                                @elseif($enumeration->self_enumerated)
-                                                    Self Enumerated
                                                 @else
-                                                    Not assigned
+                                                    Self Enumerated
                                                 @endif
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

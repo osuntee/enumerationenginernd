@@ -104,12 +104,10 @@ class EnumerationController extends Controller
                 'activity_type' => 'Enumeration',
                 'description' => 'New data captured for project ' . $project->name . $enumeration->reference,
             ]);
-
-            return redirect()->route('staff.projects.show', $project)
-                ->with('success', 'Enumeration data added successfully!');
         });
 
-        return redirect()->back()->with('error', 'Something went wrong, contact admin to confirm enumeration');
+        return redirect()->route('staff.projects.show', $project)
+            ->with('success', 'Enumeration data added successfully!');
     }
 
     /**
