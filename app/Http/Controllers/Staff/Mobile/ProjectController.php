@@ -135,7 +135,10 @@ class ProjectController extends Controller
         }
 
         $user = Auth::user();
-        $records = Enumeration::where('project_id', $project->id)->where('staff_id', $user->id)->get();
+        $records = Enumeration::where('project_id', $project->id)
+            ->where('staff_id', $user->id)
+            ->with('fieldValues.projectField')
+            ->get();
 
         return response()->json([
             'status' => 'Request successful',
