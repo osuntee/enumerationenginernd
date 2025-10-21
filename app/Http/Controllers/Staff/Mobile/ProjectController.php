@@ -115,7 +115,7 @@ class ProjectController extends Controller
         });
 
         return response()->json([
-            'message' => 'Something went wrong, contact admin',
+            'message' => 'Something went wrong, contact admin to confirm enumeration',
         ], 403);
     }
 

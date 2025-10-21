@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Staff;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Enumeration;
+use App\Models\Activity;
 use Illuminate\Support\Str;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
@@ -97,10 +98,18 @@ class EnumerationController extends Controller
             if ($request->has('data') && is_array($request->data)) {
                 $enumeration->setFieldValues($request->data);
             }
+
+            Activity::create([
+                'staff_id' => $staff->id,
+                'activity_type' => 'Enumeration',
+                'description' => 'New data captured for project ' . $project->name . $enumeration->reference,
+            ]);
+
+            return redirect()->route('staff.projects.show', $project)
+                ->with('success', 'Enumeration data added successfully!');
         });
 
-        return redirect()->route('staff.projects.show', $project)
-            ->with('success', 'Enumeration data added successfully!');
+        return redirect()->back()->with('error', 'Something went wrong, contact admin to confirm enumeration');
     }
 
     /**
