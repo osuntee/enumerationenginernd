@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Staff\Mobile;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
 use App\Models\Project;
-use App\Models\Staff;
-use App\Models\ProjectField;
-use App\Models\ProjectPayment;
-use App\Models\EnumerationPayment;
-use App\Models\PaymentTransaction;
-use App\Helpers\PaymentHelper;
+use App\Models\Enumeration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 
 class ProjectController extends Controller
 {
@@ -38,5 +35,90 @@ class ProjectController extends Controller
             'fields' => $fields,
             'payments' => $payments,
         ], 200);
+    }
+
+    public function enumerate(Request $request, $id)
+    {
+        $project = Project::find($id);
+
+        if (!$project) {
+            return response()->json([
+                'status' => 'Request failed',
+                'message' => 'Project not found'
+            ], 403);
+        }
+
+        // Get validation rules from the project
+        $rules = $project->getValidationRules();
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            $errorString = implode("\n", $validator->errors()->all());
+
+            return response()->json([
+                'message' => $errorString
+            ], 403);
+        }
+
+        DB::transaction(function () use ($request, $project) {
+            $user = Auth::user();
+
+            $ref = $this->generateReferenceNumber();
+            $appUrl = config('app.url');
+
+            $url = "{$appUrl}/verify/{$ref}";
+
+            $qrCode = new QrCode(
+                data: $url,
+                size: 200,
+                margin: 10,
+            );
+
+            $writer = new PngWriter();
+            $qrCodeImage = $writer->write($qrCode);
+
+            $qrCodeBase64 = base64_encode($qrCodeImage->getString());
+
+            // Create the enumeration record
+            $enumeration = Enumeration::create([
+                'project_id' => $project->id,
+                'staff_id'   => $user->id,
+                'notes'      => $request->notes,
+                'reference'  => $ref,
+                'qrcode'     => $qrCodeBase64,
+            ]);
+
+            if ($project->requires_verification) {
+                $enumeration->update(['is_verified' => false]);
+            } else {
+                $enumeration->update(['is_verified' => true]);
+            }
+
+            // Set field values
+            if ($request->has('data') && is_array($request->data)) {
+                $enumeration->setFieldValues($request->data);
+            }
+
+            return response()->json([
+                'status' => 'Request successful',
+                'project' => $project,
+                'enumeration' => $enumeration,
+            ], 200);
+        });
+
+        return response()->json([
+            'message' => 'Something went wrong, contact admin',
+        ], 403);
+    }
+
+    /**
+     * Generate a unique reference number for the enumeration.
+     */
+    private function generateReferenceNumber()
+    {
+        $timestamp = now()->format('YmdHisv');
+        $uniqueId = strtoupper(Str::random(3));
+        return $timestamp . $uniqueId;
     }
 }
