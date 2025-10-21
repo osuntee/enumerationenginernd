@@ -175,16 +175,6 @@ class AuthController extends Controller
 
         $user = Staff::where('email', $request->email)->first();
 
-        $user->email_verified_at = Carbon::now();
-        $user->save();
-
-        $user->tokens()->delete();
-
-        return response()->json([
-            'message' => 'Verification successful',
-            'token' => $user->createToken('User token', ['user'])->plainTextToken,
-        ], 200);
-
         if (Carbon::now() > Carbon::parse($user->email_time)->addMinutes(20)) {
             return response()->json([
                 'message' => 'OTP has expired, please resend OTP and try again'
