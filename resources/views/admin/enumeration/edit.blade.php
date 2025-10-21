@@ -9,7 +9,7 @@
             </div>
 
             <div class="flex flex-wrap gap-2">
-                <a href="{{ route('admin.projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                <a href="{{ route('projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                     Back to Project
                 </a>
             </div>
@@ -28,7 +28,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('admin.projects.enumeration.update', [$project, $enumeration]) }}">
+            <form method="POST" action="{{ route('projects.enumeration.update', [$project, $enumeration]) }}">
                 @csrf
                 @method('PUT')
                 
@@ -240,7 +240,7 @@
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Update Enumeration Data
                             </button>
-                            <a href="{{ route('admin.projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                            <a href="{{ route('projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                                 Cancel
                             </a>
                         </div>
