@@ -671,6 +671,7 @@ class ProjectController extends Controller
 
             // Update the enumeration payment amount_paid
             $enumerationPayment->increment('amount_paid', $request->amount);
+            $enumerationPayment->updatePaymentStatus();
 
             DB::commit();
 
