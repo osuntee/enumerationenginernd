@@ -168,6 +168,8 @@ class ProjectController extends Controller
 
         return response()->json([
             'status' => 'Request successful',
+            'enumeration' => $enumeration,
+            'payments' => $payments,
         ], 200);
     }
 }
