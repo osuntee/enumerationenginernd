@@ -103,23 +103,8 @@ class ProjectController extends Controller
                 $enumeration->setFieldValues($request->data);
             }
 
-            // Create EnumerationPayments for all active one_off ProjectPayments
-            $oneOffPayments = ProjectPayment::where('project_id', $project->id)
-                ->where('frequency', 'one_off')
-                ->active()
-                ->validForDate()
-                ->get();
-
-            foreach ($oneOffPayments as $projectPayment) {
-                EnumerationPayment::create([
-                    'enumeration_id' => $enumeration->id,
-                    'project_payment_id' => $projectPayment->id,
-                    'amount_due' => $projectPayment->amount,
-                    'amount_paid' => 0,
-                    'status' => 'pending',
-                    'due_date' => $projectPayment->start_date ?? now(),
-                ]);
-            }
+            /// Create one-off payments
+            $enumeration->createOneOffPayments();
 
             Activity::create([
                 'staff_id' => $user->id,
