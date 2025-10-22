@@ -58,6 +58,14 @@ class ProjectPayment extends Model
     }
 
     /**
+     * Scope a query to only include active project payments.
+     */
+    public function scopeAllowsPartialPayments($query)
+    {
+        return $query->where('allow_partial_payments', true);
+    }
+
+    /**
      * Scope a query to include payments valid for a specific date.
      */
     public function scopeValidForDate($query, $date = null)
