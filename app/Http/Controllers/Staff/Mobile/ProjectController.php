@@ -8,6 +8,7 @@ use App\Models\ProjectPayment;
 use App\Models\Enumeration;
 use App\Models\EnumerationPayment;
 use App\Models\Activity;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -165,9 +166,13 @@ class ProjectController extends Controller
         }
 
         $payments = EnumerationPayment::where('enumeration_id', $enumeration->id)->get();
+        $project = Project::find($enumeration->project_id);
+        $staff = Staff::find($enumeration->staff_id);
 
         return response()->json([
             'status' => 'Request successful',
+            'project' => $project,
+            'staff' => $staff,
             'enumeration' => $enumeration,
             'payments' => $payments,
         ], 200);
