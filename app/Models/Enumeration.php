@@ -137,6 +137,28 @@ class Enumeration extends Model
         return "Enumeration #{$this->id}";
     }
 
+    /**
+     * Create enumeration payments for all active one_off project payments.
+     */
+    public function createOneOffPayments(): void
+    {
+        $oneOffPayments = ProjectPayment::where('project_id', $this->project_id)
+            ->where('frequency', 'one_off')
+            ->active()
+            ->validForDate()
+            ->get();
+
+        foreach ($oneOffPayments as $projectPayment) {
+            $this->enumerationPayments()->create([
+                'project_payment_id' => $projectPayment->id,
+                'amount_due' => $projectPayment->amount,
+                'amount_paid' => 0,
+                'status' => 'pending',
+                'due_date' => $projectPayment->start_date ?? now(),
+            ]);
+        }
+    }
+
     public function enumerationPayments(): HasMany
     {
         return $this->hasMany(EnumerationPayment::class);
