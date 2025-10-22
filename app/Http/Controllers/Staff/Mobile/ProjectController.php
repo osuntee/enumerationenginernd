@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Staff\Mobile;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\ProjectPayment;
 use App\Models\Enumeration;
+use App\Models\EnumerationPayment;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -143,6 +145,26 @@ class ProjectController extends Controller
         return response()->json([
             'status' => 'Request successful',
             'records' => $records,
+        ], 200);
+    }
+
+    public function verify($ref)
+    {
+        $enumeration = Enumeration::where('reference', $ref)
+            ->with('enumerationData.projectField')
+            ->first();
+
+        if (!$enumeration) {
+            return response()->json([
+                'status' => 'Request failed',
+                'message' => 'Enumeration record not found'
+            ], 403);
+        }
+
+        $payments = EnumerationPayment::where('enumeration_id', $enumeration->id)->get();
+
+        return response()->json([
+            'status' => 'Request successful',
         ], 200);
     }
 }
