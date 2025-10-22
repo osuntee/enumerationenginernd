@@ -99,6 +99,9 @@ class EnumerationController extends Controller
                 $enumeration->setFieldValues($request->data);
             }
 
+            // Create one-off payments
+            $enumeration->createOneOffPayments();
+
             Activity::create([
                 'staff_id' => $staff->id,
                 'activity_type' => 'Enumeration',
