@@ -65,6 +65,20 @@ class FrontController extends Controller
             'payment_gateway' => 'required|exists:gateways,id',
         ]);
 
+        $projectPayment = $enumerationPayment->projectPayment;
+
+        $amount = (float) $request->amount;
+        $amountDue = (float) $enumerationPayment->amount_due;
+
+        if ($projectPayment && !$projectPayment->allowsPartialPayments()) {
+            if (bccomp($amount, $amountDue, 2) !== 0) {
+                return redirect()->back()->with(
+                    'error',
+                    'Partial payments are not allowed. Please pay the full amount of ₦' . number_format($amountDue, 2) . '.'
+                );
+            }
+        }
+
         $gateway = Gateway::find($request->input('payment_gateway'));
 
         if (!$gateway || !$gateway->is_active) {
@@ -188,6 +202,8 @@ class FrontController extends Controller
             $enumerationPayment->update([
                 'amount_paid' => $enumerationPayment->amount_paid + ($data['data']['amount'] / 100),
             ]);
+
+            $enumerationPayment->updatePaymentStatus();
         } else {
             $transaction->update([
                 'status' => 'failed',
@@ -239,6 +255,8 @@ class FrontController extends Controller
             $enumerationPayment->update([
                 'amount_paid' => $enumerationPayment->amount_paid + $amountPaid,
             ]);
+
+            $enumerationPayment->updatePaymentStatus();
 
             return redirect()
                 ->route('front.payments.show', $enumerationPayment)
