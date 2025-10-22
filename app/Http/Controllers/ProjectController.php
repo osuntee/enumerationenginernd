@@ -641,6 +641,20 @@ class ProjectController extends Controller
         try {
             DB::beginTransaction();
 
+            $projectPayment = $enumerationPayment->projectPayment();
+
+            $amount = (float) $request->amount;
+            $amountDue = (float) $enumerationPayment->amount_due;
+
+            if ($projectPayment && !$projectPayment->allow_partial_payments) {
+                if (bccomp($amount, $amountDue, 2) !== 0) {
+                    return redirect()->back()->with(
+                        'error',
+                        'Partial payments are not allowed. Please pay the full amount of ₦' . number_format($amountDue, 2) . '.'
+                    );
+                }
+            }
+
             // Create the payment transaction
             PaymentTransaction::create([
                 'enumeration_payment_id' => $enumerationPayment->id,
