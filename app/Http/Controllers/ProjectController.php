@@ -646,7 +646,7 @@ class ProjectController extends Controller
             $amount = (float) $request->amount;
             $amountDue = (float) $enumerationPayment->amount_due;
 
-            if ($projectPayment && !$projectPayment->allowsPartialPayments) {
+            if ($projectPayment && !$projectPayment->allowsPartialPayments()) {
                 if (bccomp($amount, $amountDue, 2) !== 0) {
                     return redirect()->back()->with(
                         'error',
