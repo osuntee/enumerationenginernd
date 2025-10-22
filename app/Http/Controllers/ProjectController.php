@@ -641,7 +641,7 @@ class ProjectController extends Controller
         try {
             DB::beginTransaction();
 
-            $projectPayment = $enumerationPayment->projectPayment();
+            $projectPayment = $enumerationPayment->projectPayment;
 
             $amount = (float) $request->amount;
             $amountDue = (float) $enumerationPayment->amount_due;
