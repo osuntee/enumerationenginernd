@@ -170,6 +170,7 @@ class ProjectController extends Controller
         $staff = Staff::find($enumeration->staff_id);
 
         $user = Auth::user();
+
         Activity::create([
             'staff_id' => $user->id,
             'activity_type' => 'Verification',
