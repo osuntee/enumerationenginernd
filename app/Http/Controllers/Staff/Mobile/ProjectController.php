@@ -174,7 +174,7 @@ class ProjectController extends Controller
         Activity::create([
             'staff_id' => $user->id,
             'activity_type' => 'Verification',
-            'description' => 'QR code verification successful. ' . $project->name . ' - ' . $enumeration->reference,
+            'description' => 'QR code verification successful for enumeration in: ' . $project->name . ' - ' . $enumeration->reference,
         ]);
 
         return response()->json([
