@@ -173,7 +173,7 @@ class ProjectController extends Controller
         Activity::create([
             'staff_id' => $user->id,
             'activity_type' => 'Verification',
-            'description' => 'New data captured for project ' . $project->name . ' - ' . $enumeration->reference,
+            'description' => 'QR code verification successful. ' . $project->name . ' - ' . $enumeration->reference,
         ]);
 
         return response()->json([
