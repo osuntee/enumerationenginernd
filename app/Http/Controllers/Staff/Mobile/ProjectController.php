@@ -169,6 +169,13 @@ class ProjectController extends Controller
         $project = Project::find($enumeration->project_id);
         $staff = Staff::find($enumeration->staff_id);
 
+        $user = Auth::user();
+        Activity::create([
+            'staff_id' => $user->id,
+            'activity_type' => 'Verification',
+            'description' => 'New data captured for project ' . $project->name . ' - ' . $enumeration->reference,
+        ]);
+
         return response()->json([
             'status' => 'Request successful',
             'project' => $project,
