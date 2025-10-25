@@ -154,8 +154,6 @@ class ProjectController extends Controller
 
     public function verify($ref)
     {
-        Activity::where('activity_type', 'Verification')->delete();
-
         $enumeration = Enumeration::where('reference', $ref)
             ->with('enumerationData.projectField')
             ->first();
