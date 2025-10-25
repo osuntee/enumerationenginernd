@@ -14,7 +14,7 @@ class HomeController extends Controller
 
         $projects = $user->projects()->get();
         $notifications = $user->notifications()->get();
-        $activities = $user->activities()->get();
+        $activities = $user->activities()->limit(30)->get();
 
         return response()->json([
             'status' => 'Request successful',
