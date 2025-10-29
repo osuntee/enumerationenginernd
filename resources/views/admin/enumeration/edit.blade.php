@@ -256,11 +256,11 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
                                 <label for="longitude" class="block text-sm font-medium text-gray-700 mb-2">Longitude</label>
-                                <input type="text" name="longitude" id="longitude" value="{{ old('longitude') }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                                <input type="text" name="longitude" id="longitude" value="{{ old('longitude', $enumeration->longitude) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
                             <div class="md:col-span-2">
                                 <label for="latitude" class="block text-sm font-medium text-gray-700 mb-2">Latitude</label>
-                                <input type="text" name="latitude" id="latitude" value="{{ old('latitude') }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                                <input type="text" name="latitude" id="latitude" value="{{ old('latitude', $enumeration->latitude) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
                         </div>
 
