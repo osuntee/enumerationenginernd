@@ -17,6 +17,8 @@ class Enumeration extends Model
         'qrcode',
         'reference',
         'notes',
+        'latitude',
+        'longitude',
         'is_verified'
     ];
 
