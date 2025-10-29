@@ -85,14 +85,14 @@
                         <div>
                             <dt class="text-sm font-medium text-gray-500">Longitude</dt>
                             <dd class="mt-1 text-sm text-gray-900">
-                                {{  $enumeration->longitude }}
+                                {{  $enumeration->longitude ?? 'N/A' }}
                             </dd>
                         </div>
                         
                         <div>
                             <dt class="text-sm font-medium text-gray-500">Latitude</dt>
                             <dd class="mt-1 text-sm text-gray-900">
-                                {{  $enumeration->latitude }}
+                                {{  $enumeration->latitude ?? 'N/A' }}
                             </dd>
                         </div>
                         
