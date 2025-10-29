@@ -27,24 +27,6 @@
                     </ul>
                 </div>
             @endif
-
-            <form method="POST" action="{{ route('projects.enumeration.update', [$project, $enumeration]) }}">
-                @csrf
-                @method('PUT')
-                
-                <!-- Enumeration Metadata -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
-                    <div class="p-6 text-gray-900">
-                        <h3 class="text-lg font-medium text-gray-900 mb-4">Enumeration Details</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="md:col-span-2">
-                                <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">Notes</label>
-                                <textarea name="notes" id="notes" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('notes', $enumeration->notes) }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
             
             <form method="POST" action="{{ route('projects.enumeration.update', [$project, $enumeration]) }}">
                 @csrf
@@ -261,6 +243,27 @@
                             <a href="{{ route('projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                                 Cancel
                             </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form method="POST" action="{{ route('projects.enumeration.update', [$project, $enumeration]) }}">
+                @csrf
+                @method('PUT')
+                
+                <!-- Enumeration Metadata -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <div class="p-6 text-gray-900">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Enumeration Location Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="md:col-span-2">
+                                <label for="longitude" class="block text-sm font-medium text-gray-700 mb-2">Longitude</label>
+                                <input type="text" name="longitude" id="longitude" value="{{ old('longitude') }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="latitude" class="block text-sm font-medium text-gray-700 mb-2">Latitude</label>
+                                <input type="text" name="latitude" id="latitude" value="{{ old('latitude') }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            </div>
                         </div>
                     </div>
                 </div>
