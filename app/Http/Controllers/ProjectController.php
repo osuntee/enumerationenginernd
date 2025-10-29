@@ -365,7 +365,6 @@ class ProjectController extends Controller
 
         $allStaff = $project->customer->staff()
             ->where('customer_id', $project->customer_id)
-            ->where('staff_type', 'user')
             ->whereNotIn('id', $project->staff->pluck('id')) // exclude already assigned staff
             ->orderBy('is_active', 'desc')
             ->orderBy('name')
