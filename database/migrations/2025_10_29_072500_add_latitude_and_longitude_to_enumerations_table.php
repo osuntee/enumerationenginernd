@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('enumerations', function (Blueprint $table) {
-            //
+            $table->string('latitude')->nullable()->after('notes');
+            $table->string('longitude')->nullable()->after('latitude');
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('enumerations', function (Blueprint $table) {
-            //
+            $table->dropColumn(['latitude', 'longitude']);
         });
     }
 };
