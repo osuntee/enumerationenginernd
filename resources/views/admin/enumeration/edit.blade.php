@@ -31,9 +31,9 @@
             <form method="POST" action="{{ route('projects.enumeration.update', [$project, $enumeration]) }}">
                 @csrf
                 @method('PUT')
-                
-                <!-- Enumeration Metadata -->
+
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <!-- Enumeration Metadata -->
                     <div class="p-6 text-gray-900">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Enumeration Details</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -43,10 +43,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Project Fields Data -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <div class="border-b border-gray-200 pb-4 last:border-b-0"></div>
+                        
+                    <!-- Project Fields Data -->
                     <div class="p-6 text-gray-900">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Field Data</h3>
                         
@@ -266,7 +266,7 @@
 
                         <div class="mt-6 flex space-x-2">
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Update Enumeration Data
+                                Update Location Data
                             </button>
                         </div>
                     </div>
