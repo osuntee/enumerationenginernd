@@ -28,6 +28,7 @@ Route::middleware('staff')->name('staff.')->group(function () {
     Route::prefix('projects')->name('projects.')->group(function () {
         // Staff management routes
         Route::get('/{project}/staff', [ProjectController::class, 'staff'])->name('staff.index');
+        Route::get('/{project}/enumerations', [ProjectController::class, 'enumerations'])->name('enumerations.index');
         Route::post('/{project}/assign', [ProjectController::class, 'assign'])->name('staff.assign');
         Route::delete('/{project}/staff/{staff}/remove', [ProjectController::class, 'remove'])->name('staff.remove');
 
