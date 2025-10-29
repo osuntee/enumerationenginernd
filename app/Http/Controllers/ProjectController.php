@@ -375,6 +375,19 @@ class ProjectController extends Controller
     }
 
     /*
+    * Display enumerations associated with a project
+    */
+    public function enumerations(Project $project)
+    {
+        $enumerations = $project->enumerations()
+            ->with(['enumerationData.projectField'])
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
+
+        return view('admin.projects.enumerations', compact('project', 'enumerations'));
+    }
+
+    /*
     * Assign staff to a project
     */
     public function assign(Request $request, Project $project)
