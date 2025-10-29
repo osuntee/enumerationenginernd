@@ -117,7 +117,7 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach($enumerations as $enumeration)
-                                        <tr class="{{ $enumeration->is_verified ? '' : 'bg-yellow-50' }}">
+                                        <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm font-medium text-gray-900">
                                                     {{ $enumeration->enumerated_at->format('M d, Y') }}
