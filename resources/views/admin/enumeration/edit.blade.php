@@ -46,7 +46,7 @@
                 </div>
 
                 <!-- Project Fields Data -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                     <div class="p-6 text-gray-900">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Field Data</h3>
                         
@@ -240,19 +240,17 @@
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Update Enumeration Data
                             </button>
-                            <a href="{{ route('projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                                Cancel
-                            </a>
                         </div>
                     </div>
                 </div>
             </form>
-            <form method="POST" action="{{ route('projects.enumeration.location.update', [$project, $enumeration]) }}">
+
+            <form class="mt" method="POST" action="{{ route('projects.enumeration.location.update', [$project, $enumeration]) }}">
                 @csrf
                 @method('PUT')
                 
                 <!-- Enumeration Metadata -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Enumeration Location Details</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -264,6 +262,12 @@
                                 <label for="latitude" class="block text-sm font-medium text-gray-700 mb-2">Latitude</label>
                                 <input type="text" name="latitude" id="latitude" value="{{ old('latitude') }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
                             </div>
+                        </div>
+
+                        <div class="mt-6 flex space-x-2">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Update Enumeration Data
+                            </button>
                         </div>
                     </div>
                 </div>
