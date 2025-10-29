@@ -219,7 +219,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-lg font-medium text-gray-900">Enumeration Data</h3>
-                        <a href="#" class="text-blue-600 hover:text-blue-900 text-sm">View All</a>
+                        <a href="{{ route('projects.enumerations.index', $project) }}" class="text-blue-600 hover:text-blue-900 text-sm">View All</a>
                     </div>
                     
                     @if($enumerations->count() > 0)
