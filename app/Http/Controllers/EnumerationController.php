@@ -194,7 +194,7 @@ class EnumerationController extends Controller
             }
         });
 
-        return redirect()->route('projects.enumeration.show', $enumeration)
+        return redirect()->route('projects.enumeration.edit', $enumeration)
             ->with('success', 'Enumeration data updated successfully!');
     }
 
@@ -203,7 +203,6 @@ class EnumerationController extends Controller
      */
     public function location(Request $request, Enumeration $enumeration)
     {
-        dd($enumeration);
         $validated = $request->validate([
             'longitude' => ['required', 'string', 'max:255'],
             'latitude' => ['required', 'string', 'max:255'],
@@ -214,7 +213,7 @@ class EnumerationController extends Controller
             'latitude' => $validated['latitude'],
         ]);
 
-        return redirect()->route('projects.enumeration.show', $enumeration)
+        return redirect()->route('projects.enumeration.edit', $enumeration)
             ->with('success', 'Enumeration data updated successfully!');
     }
 
