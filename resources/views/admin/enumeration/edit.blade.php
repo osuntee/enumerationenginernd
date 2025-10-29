@@ -247,7 +247,7 @@
                     </div>
                 </div>
             </form>
-            <form method="POST" action="{{ route('projects.enumeration.update', [$project, $enumeration]) }}">
+            <form method="POST" action="{{ route('projects.enumeration.location.update', [$project, $enumeration]) }}">
                 @csrf
                 @method('PUT')
                 

@@ -194,7 +194,26 @@ class EnumerationController extends Controller
             }
         });
 
-        return redirect()->route('projects.show', $project)
+        return redirect()->route('projects.enumeration.show', $enumeration)
+            ->with('success', 'Enumeration data updated successfully!');
+    }
+
+    /**
+     * Update the location data of specified enumeration entry in storage.
+     */
+    public function location(Request $request, Enumeration $enumeration)
+    {
+        $validated = $request->validate([
+            'longitude' => ['required', 'string', 'max:255'],
+            'latitude' => ['required', 'string', 'max:255'],
+        ]);
+
+        $enumeration->update([
+            'longitude' => $validated['longitude'],
+            'latitude' => $validated['latitude'],
+        ]);
+
+        return redirect()->route('projects.enumeration.show', $enumeration)
             ->with('success', 'Enumeration data updated successfully!');
     }
 

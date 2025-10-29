@@ -92,7 +92,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::prefix('enumerations/{enumeration}')->group(function () {
             Route::get('/', [EnumerationController::class, 'show'])->name('enumeration.show');
             Route::get('edit', [EnumerationController::class, 'edit'])->name('enumeration.edit');
-            Route::get('location', [EnumerationController::class, 'location'])->name('enumeration.location.edit');
+            Route::put('location', [EnumerationController::class, 'location'])->name('enumeration.location.update');
             Route::put('/', [EnumerationController::class, 'update'])->name('enumeration.update');
             Route::delete('/', [EnumerationController::class, 'destroy'])->name('enumeration.destroy');
         });
