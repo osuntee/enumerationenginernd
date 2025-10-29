@@ -424,6 +424,22 @@ class ProjectController extends Controller
     }
 
     /*
+    * Display enumerations associated with a project
+    */
+    public function enumerations(Project $project)
+    {
+        // Ensure the staff belongs to the same customer as the project
+        $this->checkProjectAccess($project);
+
+        $enumerations = $project->enumerations()
+            ->with(['enumerationData.projectField'])
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
+
+        return view('staff.projects.enumerations', compact('project', 'enumerations'));
+    }
+
+    /*
     * Assign staff to a project
     */
     public function assign(Request $request, Project $project)
