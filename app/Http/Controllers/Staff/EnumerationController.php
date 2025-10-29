@@ -197,6 +197,28 @@ class EnumerationController extends Controller
     }
 
     /**
+     * Update the location data of specified enumeration entry in storage.
+     */
+    public function location(Request $request, Enumeration $enumeration)
+    {
+        // Ensure the staff belongs to the same customer as the project
+        $this->checkProjectAccess($enumeration->project);
+
+        $validated = $request->validate([
+            'longitude' => ['required', 'string', 'max:255'],
+            'latitude' => ['required', 'string', 'max:255'],
+        ]);
+
+        $enumeration->update([
+            'longitude' => $validated['longitude'],
+            'latitude' => $validated['latitude'],
+        ]);
+
+        return redirect()->route('projects.enumeration.edit', $enumeration)
+            ->with('success', 'Enumeration data updated successfully!');
+    }
+
+    /**
      * Remove the specified enumeration entry from storage.
      */
     public function destroy(Enumeration $enumeration)
