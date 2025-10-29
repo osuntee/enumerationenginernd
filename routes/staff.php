@@ -60,6 +60,7 @@ Route::middleware('staff')->name('staff.')->group(function () {
             Route::get('/', [EnumerationController::class, 'show'])->name('enumeration.show');
             Route::get('edit', [EnumerationController::class, 'edit'])->name('enumeration.edit');
             Route::put('/', [EnumerationController::class, 'update'])->name('enumeration.update');
+            Route::put('location', [EnumerationController::class, 'location'])->name('enumeration.location.update');
             Route::delete('/', [EnumerationController::class, 'destroy'])->name('enumeration.destroy');
         });
 
