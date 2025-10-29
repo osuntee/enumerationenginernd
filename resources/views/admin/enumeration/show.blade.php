@@ -83,6 +83,20 @@
                         </div>
                         
                         <div>
+                            <dt class="text-sm font-medium text-gray-500">Longitude</dt>
+                            <dd class="mt-1 text-sm text-gray-900">
+                                {{  $enumeration->longitude }}
+                            </dd>
+                        </div>
+                        
+                        <div>
+                            <dt class="text-sm font-medium text-gray-500">Latitude</dt>
+                            <dd class="mt-1 text-sm text-gray-900">
+                                {{  $enumeration->latitude }}
+                            </dd>
+                        </div>
+                        
+                        <div>
                             <dt class="text-sm font-medium text-gray-500">Enumeration Date</dt>
                             <dd class="mt-1 text-sm text-gray-900">
                                 {{ $enumeration->enumerated_at ? $enumeration->enumerated_at->format('M d, Y g:i A') : 'Not specified' }}
