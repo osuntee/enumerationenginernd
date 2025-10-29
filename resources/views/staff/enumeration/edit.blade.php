@@ -28,12 +28,24 @@
                 </div>
             @endif
 
+            @if(session('success'))
+                <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    {{ session('error') }}
+                </div>
+            @endif
+            
             <form method="POST" action="{{ route('staff.projects.enumeration.update', [$project, $enumeration]) }}">
                 @csrf
                 @method('PUT')
-                
-                <!-- Enumeration Metadata -->
+
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <!-- Enumeration Metadata -->
                     <div class="p-6 text-gray-900">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Enumeration Details</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -43,10 +55,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Project Fields Data -->
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="border-b border-gray-200 pb-4 last:border-b-0"></div>
+                        
+                    <!-- Project Fields Data -->
                     <div class="p-6 text-gray-900">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Field Data</h3>
                         
@@ -240,9 +252,34 @@
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Update Enumeration Data
                             </button>
-                            <a href="{{ route('staff.projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                                Cancel
-                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form class="mt" method="POST" action="{{ route('staff.projects.enumeration.location.update', [$project, $enumeration]) }}">
+                @csrf
+                @method('PUT')
+                
+                <!-- Enumeration Metadata -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Enumeration Location Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="md:col-span-2">
+                                <label for="longitude" class="block text-sm font-medium text-gray-700 mb-2">Longitude</label>
+                                <input type="text" name="longitude" id="longitude" value="{{ old('longitude', $enumeration->longitude) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="latitude" class="block text-sm font-medium text-gray-700 mb-2">Latitude</label>
+                                <input type="text" name="latitude" id="latitude" value="{{ old('latitude', $enumeration->latitude) }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex space-x-2">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Update Location Data
+                            </button>
                         </div>
                     </div>
                 </div>
