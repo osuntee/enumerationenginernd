@@ -10,9 +10,22 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
-    protected function schedule(Schedule $schedule): void
+    protected function schedule(Schedule $schedule)
     {
-        // Run jobs
+        // Run on January 1st at 00:01
+        $schedule->command('payments:create-yearly')
+            ->yearlyOn(1, 1, '00:01')
+            ->withoutOverlapping();
+
+        // Run on the 1st of every month at 00:01
+        $schedule->command('payments:create-monthly')
+            ->monthlyOn(1, '00:01')
+            ->withoutOverlapping();
+
+        // Run every Monday at 00:01
+        $schedule->command('payments:create-weekly')
+            ->weeklyOn(1, '00:01')
+            ->withoutOverlapping();
     }
 
     /**
