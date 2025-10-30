@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('app:test-cron-jobs-running')
-            ->dailyAt('00:30')
+            ->everyMinute()
             ->withoutOverlapping();
 
         // Run daily at 00:30 to mark overdue payments
