@@ -26,11 +26,6 @@ use Illuminate\Support\Facades\Schedule;
 |
 */
 
-// Run every minute (for testing)
-Schedule::command('app:test-cron-jobs-running')
-    ->everyMinute()
-    ->withoutOverlapping();
-
 // Run daily at 00:30 to mark overdue payments
 Schedule::command('payments:mark-overdue')
     ->dailyAt('00:30')
