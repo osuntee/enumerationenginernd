@@ -56,6 +56,8 @@ class EnumerationController extends Controller
         $rules = array_merge($rules, [
             'enumerated_by' => 'nullable|string|max:255',
             'notes' => 'nullable|string',
+            'longitude' => 'nullable|string',
+            'latitude' => 'nullable|string',
         ]);
 
         $request->validate($rules);
