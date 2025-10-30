@@ -31,6 +31,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('payments:create-weekly')
             ->weeklyOn(1, '00:01')
             ->withoutOverlapping();
+
+        $schedule->call(function () {
+            \Log::info('Job executed successfully every minute.');
+        })->everyMinute();
     }
 
     /**
