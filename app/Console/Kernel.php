@@ -12,10 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            \Log::info('⚡ Scheduler test executed successfully at ' . now());
-        })->everyMinute();
-
+        $schedule->command('app:test-cron-jobs-running')
+            ->dailyAt('00:30')
+            ->withoutOverlapping();
 
         // Run daily at 00:30 to mark overdue payments
         $schedule->command('payments:mark-overdue')
