@@ -12,6 +12,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->call(function () {
+            \Log::info('⚡ Scheduler test executed successfully at ' . now());
+        })->everyMinute();
+
+
         // Run daily at 00:30 to mark overdue payments
         $schedule->command('payments:mark-overdue')
             ->dailyAt('00:30')
@@ -31,10 +36,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('payments:create-weekly')
             ->weeklyOn(1, '00:01')
             ->withoutOverlapping();
-
-        $schedule->call(function () {
-            \Log::info('Job executed successfully every minute.');
-        })->everyMinute();
     }
 
     /**
