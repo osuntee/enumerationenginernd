@@ -37,6 +37,8 @@ class EnumerationController extends Controller
         $rules = array_merge($rules, [
             'enumerated_by' => 'nullable|string|max:255',
             'notes' => 'nullable|string',
+            'longitude' => 'nullable|string',
+            'latitude' => 'nullable|string',
         ]);
 
         $request->validate($rules);
@@ -63,7 +65,10 @@ class EnumerationController extends Controller
                 'project_id' => $project->id,
                 'staff_id'   => $request->staff_id,
                 'notes'      => $request->notes,
+                'longitude'  => $request->longitude,
+                'latitude'   => $request->latitude,
                 'reference'  => $ref,
+                'qrcode'     => $qrCodeBase64,
                 'qrcode'     => $qrCodeBase64,
             ]);
 
