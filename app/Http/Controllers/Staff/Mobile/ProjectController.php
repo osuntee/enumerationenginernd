@@ -55,6 +55,12 @@ class ProjectController extends Controller
         // Get validation rules from the project
         $rules = $project->getValidationRules();
 
+        // Add additional enumeration-specific rules
+        $rules = array_merge($rules, [
+            'longitude' => 'required|string',
+            'latitude' => 'required|string',
+        ]);
+
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
