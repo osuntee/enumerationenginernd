@@ -54,7 +54,6 @@ class EnumerationController extends Controller
 
         // Add additional enumeration-specific rules
         $rules = array_merge($rules, [
-            'enumerated_by' => 'nullable|string|max:255',
             'notes' => 'nullable|string',
             'longitude' => 'nullable|string',
             'latitude' => 'nullable|string',
@@ -88,6 +87,9 @@ class EnumerationController extends Controller
                 'staff_id'   => $staff->id,
                 'reference'  => $ref,
                 'qrcode'     => $qrCodeBase64,
+                'notes'      => $request->notes,
+                'longitude'  => $request->longitude,
+                'latitude'   => $request->latitude,
             ]);
 
             if ($project->requires_verification) {
