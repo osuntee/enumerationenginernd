@@ -89,6 +89,8 @@ class ProjectController extends Controller
                 'project_id' => $project->id,
                 'staff_id'   => $user->id,
                 'notes'      => $request->notes,
+                'longitude'  => $request->longitude,
+                'latitude'   => $request->latitude,
                 'reference'  => $ref,
                 'qrcode'     => $qrCodeBase64,
             ]);
