@@ -21,7 +21,7 @@ class Project extends Model
         'is_active',
         'code',
         'is_published',
-        'allow_api'
+        'allow_api',
     ];
 
     protected $casts = [
