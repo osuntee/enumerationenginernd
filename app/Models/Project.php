@@ -20,7 +20,8 @@ class Project extends Model
         'requires_verification',
         'is_active',
         'code',
-        'is_published'
+        'is_published',
+        'allow_api'
     ];
 
     protected $casts = [
