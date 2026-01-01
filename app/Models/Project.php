@@ -28,6 +28,7 @@ class Project extends Model
         'is_active' => 'boolean',
         'is_published' => 'boolean',
         'requires_verification' => 'boolean',
+        'requires_verification' => 'allow_api',
     ];
 
     /**
