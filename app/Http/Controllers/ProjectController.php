@@ -88,6 +88,18 @@ class ProjectController extends Controller
                 'requires_verification' => $request->has('requires_verification') ? (bool)$request->requires_verification : false,
             ]);
 
+            if ($project->is_published && !$project->code) {
+                do {
+                    $letters = 'abcdefghijklmnopqrstuvwxyz';
+                    $code = collect(range(1, 15))
+                        ->map(fn() => $letters[random_int(0, strlen($letters) - 1)])
+                        ->implode('');
+                } while (Project::where('code', $code)->exists());
+
+                $project->code = $code;
+                $project->save();
+            }
+
             // Create project fields
             foreach ($request->fields as $index => $fieldData) {
                 $this->createProjectField($project, $fieldData, $index);
