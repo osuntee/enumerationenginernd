@@ -170,11 +170,11 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-medium text-gray-900 mb-3">Project Utility Links</h3>
 
-                    <div class="flex flex-row items-centre gap-1">
+                    <div class="flex flex-row items-center justify-start gap-1">
                         <p class="text-xs">
                             Self Enumeration URL: 
                         </p>
-                        <div class="flex flex-row items-centre gap-3">
+                        <div class="flex flex-row items-center gap-3">
                             <p class="text-sm font-medium">
                                 {{ config('app.url') }}/enumerate/{{ $project->code }}
                             </p>
