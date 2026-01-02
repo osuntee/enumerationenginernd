@@ -198,7 +198,7 @@
                             </div>
                         @else
                             <p class="text-sm font-medium">
-                                N/A
+                                Self enumuration is currently turned off.
                             </p>
                         @endif
                     </div>
