@@ -55,6 +55,12 @@
                         </div>
 
                         <div class="mb-4">
+                            <label for="allow_api" class="block text-sm font-medium text-gray-700 mb-2">Allow API Integration</label>
+                            <input type="checkbox" name="allow_api" id="allow_api" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('allow_api') ? 'checked' : '' }}>
+                            <span class="ml-2 text-sm text-gray-700">Check this box if you want enumeration to be open to all.</span>
+                        </div>
+                        
+                        <div class="mb-4">
                             <label for="is_published" class="block text-sm font-medium text-gray-700 mb-2">Self Enumeration</label>
                             <input type="checkbox" name="is_published" id="is_published" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('is_published') ? 'checked' : '' }}>
                             <span class="ml-2 text-sm text-gray-700">Check this box if you want enumeration to be open to all.</span>
