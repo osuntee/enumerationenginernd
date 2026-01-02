@@ -47,7 +47,7 @@
             <!-- Project Statistics -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900">
-                    <h3 class="text-lg font-medium text-gray-900">Project Overview</h3>
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Project Overview</h3>
                     @if ($project->is_published)
                         <div class="flex flex-row items-centre gap-3">
                             <p class="text-xs">
