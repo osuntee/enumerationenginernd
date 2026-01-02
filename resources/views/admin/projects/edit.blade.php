@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="allow_api" class="block text-sm font-medium text-gray-700 mb-2">Allow API Enumeration</label>
+                            <label for="allow_api" class="block text-sm font-medium text-gray-700 mb-2">Allow API Integration</label>
                             <input type="checkbox" name="allow_api" id="allow_api" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('allow_api', $project->allow_api) ? 'checked' : '' }}>
                             <span class="ml-2 text-sm text-gray-700">Check this box if you want allow API integration for this project.</span>
                         </div>
