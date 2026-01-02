@@ -291,4 +291,31 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function copyText(button) {
+            const targetId = button.getAttribute('data-copy-target');
+            const text = document.getElementById(targetId).innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                button.classList.remove('text-gray-500');
+                button.classList.add('text-green-600');
+
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 13l4 4L19 7"/>
+                    </svg>
+                `;
+
+                setTimeout(() => location.reload(), 1200);
+            });
+        }
+    </script>
 </x-app-layout>
