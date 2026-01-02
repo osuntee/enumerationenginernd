@@ -50,27 +50,25 @@
                     <h3 class="text-lg font-medium text-gray-900">Project Overview</h3>
                     @if ($project->is_published)
                         <p class="text-xs">
-                            {{ config('app.url') }}/enumerate/{{ $project->code }}
+                            {{ config('app.url') }}/enumerate/{{ $project->code }} 
+                            <button
+                                type="button"
+                                onclick="copyRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
+                                class="inline-flex items-center gap-1
+                                    text-sm text-gray-500 hover:text-blue-600 transition"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+                                </svg>
+                            </button>
                         </p>
-                        <button
-                            type="button"
-                            onclick="copyRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
-                            class="inline-flex items-center gap-1
-                                text-sm text-gray-500 hover:text-blue-600 transition"
-                        >
-                            <span>Copy</span>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-4 h-4"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2v-2"/>
-                            </svg>
-                        </button>
-
                     @endif
                     <p class="mb-4"></p>
                     <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
