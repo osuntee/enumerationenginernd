@@ -49,8 +49,10 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-medium text-gray-900">Project Overview</h3>
                     @if ($project->is_published)
-                        <p class="text-xs">
-                            {{ config('app.url') }}/enumerate/{{ $project->code }} 
+                        <div class="flex flex-row items-centre">
+                            <p class="text-xs">
+                                {{ config('app.url') }}/enumerate/{{ $project->code }}
+                            </p>
                             <button
                                 type="button"
                                 onclick="copyRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
@@ -68,7 +70,7 @@
                                         d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2v-2"/>
                                 </svg>
                             </button>
-                        </p>
+                        </div>
                     @endif
                     <p class="mb-4"></p>
                     <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
