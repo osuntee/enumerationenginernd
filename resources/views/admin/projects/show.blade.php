@@ -164,6 +164,13 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Project URL -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                <div class="p-6 text-gray-900">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Project Utility Links</h3>
+                </div>
+            </div>
 
             <!-- Project Fields -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
