@@ -169,25 +169,31 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-medium text-gray-900 mb-3">Project Utility Links</h3>
-                    <div class="flex flex-row items-centre gap-3">
-                        <p class="text-xs">
-                            {{ config('app.url') }}/enumerate/{{ $project->code }}
+
+                    <div class="flex flex-row items-centre justify-start">
+                        <p class="text-xs font-medium">
+                            Self Enumeration URL: 
                         </p>
-                        <button
-                            type="button"
-                            onclick="copyRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
-                            class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 transition"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-4 h-4"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                        <div class="flex flex-row items-centre gap-3">
+                            <p class="text-xs font-medium">
+                                {{ config('app.url') }}/enumerate/{{ $project->code }}
+                            </p>
+                            <button
+                                type="button"
+                                onclick="copyRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
+                                class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 transition"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
