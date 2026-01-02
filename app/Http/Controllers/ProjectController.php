@@ -88,7 +88,7 @@ class ProjectController extends Controller
                 'requires_verification' => $request->has('requires_verification') ? (bool)$request->requires_verification : false,
             ]);
 
-            if ($project->is_published && !$project->code) {
+            if ($project->is_published) {
                 do {
                     $letters = 'abcdefghijklmnopqrstuvwxyz';
                     $code = collect(range(1, 15))
