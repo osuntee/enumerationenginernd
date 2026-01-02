@@ -208,7 +208,7 @@
                         @if ($project->allow_api)
                             <div class="flex flex-row items-center gap-3">
                                 <p class="text-sm font-medium">
-                                    {{ config('app.url') }}/enumerate/{{ $project->code }}
+                                    {{ config('app.url') }}/api/enumerate/{{ $project->code }}
                                 </p>
                                 <button
                                     type="button"
