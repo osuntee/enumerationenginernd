@@ -310,9 +310,8 @@
     </div>
 
     <script>
-        function copyText(button) {
+        function copyRaw(text, button) {
             const targetId = button.getAttribute('data-copy-target');
-            const text = document.getElementById(targetId).innerText;
 
             navigator.clipboard.writeText(text).then(() => {
                 button.classList.remove('text-gray-500');
@@ -330,8 +329,6 @@
                             d="M5 13l4 4L19 7"/>
                     </svg>
                 `;
-
-                setTimeout(() => location.reload(), 1200);
             });
         }
     </script>
