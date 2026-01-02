@@ -54,7 +54,7 @@
                         </p>
                         <button
                             type="button"
-                            onclick="copyRaw('{{ $value }}', this)"
+                            onclick="copyRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
                             class="inline-flex items-center gap-1
                                 text-sm text-gray-500 hover:text-blue-600 transition"
                         >
