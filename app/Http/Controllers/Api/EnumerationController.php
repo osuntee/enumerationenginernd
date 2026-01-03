@@ -59,7 +59,7 @@ class EnumerationController extends Controller
     {
         $project = Project::where('code', $code)->firstOrFail();
 
-        if (!$project || !$project->is_published) {
+        if (!$project || !$project->allow_api) {
             abort(404, 'Project not available.');
         }
 
