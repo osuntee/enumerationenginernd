@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Staff\Mobile\AuthController;
 use App\Http\Controllers\Staff\Mobile\HomeController;
 use App\Http\Controllers\Staff\Mobile\ProjectController;
-use App\Http\Controllers\Api\ProjectController as ApiProjectController;
+use App\Http\Controllers\Api\EnumerationController;
 
 // Staff Mobile Auth routes
 Route::post('/login', [AuthController::class, 'login']);
@@ -31,4 +31,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 
-Route::post('/enumerate/{code}', [ApiProjectController::class, 'enumerate']);
+Route::post('/enumerate/{code}', [EnumerationController::class, 'enumerate']);
