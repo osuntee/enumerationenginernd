@@ -233,15 +233,25 @@
                         @endif
                     </div>
                     @if ($project->allow_api)
-                        <p class="text-xs mt-3">
+                        <p class="text-xs mt-3 font-medium">
                             API Usage Notes:
                         </p>
-                        <ul>
-                            <li>The reference field is always required when submitting data via the API</li>
-                            <li>Form field validation follows the same rules as defined in the Project Fields.</li>
-                            <li>Ensure every project field is preceeded with "data."</li>
+                        <ul class="list-disc pl-4 text-xs space-y-1">
+                            <li>
+                                The <code>reference</code> field is <strong>required</strong> and must be provided at the top level of the request payload.
+                            </li>
+                            <li>
+                                All project-specific fields must be nested under the <code>data</code> object.
+                            </li>
+                            <li>
+                                Field validation follows the same rules defined in the Project Fields configuration.
+                            </li>
+                            <li>
+                                Each key inside <code>data</code> must match the project field's API name.
+                            </li>
                         </ul>
                     @endif
+
                 </div>
             </div>
 
