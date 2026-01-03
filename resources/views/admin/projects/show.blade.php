@@ -234,7 +234,7 @@
                     </div>
                     @if ($project->allow_api)
                         <p class="text-sm font-medium">
-                            {{ config('app.url') }}/api/enumerate/{{ $project->code }}
+                            Usage Notes: The reference field is always required when submitting data via the API. Form field validation follows the same rules as defined in the Project Fields.
                         </p>
                     @endif
                 </div>
