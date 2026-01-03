@@ -243,11 +243,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->longitude ?? 'N/A' }}</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->latitude ?? 'N/A' }}</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                @if($enumeration->staff)
-                                                    {{ $enumeration->staff->name }}
-                                                @else
-                                                    Self Enumerated
-                                                @endif
+                                                {{ $enumeration->enumerator_source }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <form method="POST" action="{{ route('staff.projects.enumeration.toggleVerification', $enumeration) }}" style="display: inline;">
