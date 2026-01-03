@@ -88,6 +88,26 @@ class Enumeration extends Model
     }
 
     /**
+     * Get who performed this enumeration.
+     */
+    public function getEnumeratorSourceAttribute(): string
+    {
+        if ($this->staff) {
+            return $this->staff->name ?? 'Staff Enumeration';
+        }
+
+        if ($this->api_enumeration) {
+            return 'API Enumeration';
+        }
+
+        if ($this->self_enumerated) {
+            return 'Self Enumeration';
+        }
+
+        return 'Unknown';
+    }
+
+    /**
      * Get field values for this enumeration.
      */
     public function getFieldValues()
