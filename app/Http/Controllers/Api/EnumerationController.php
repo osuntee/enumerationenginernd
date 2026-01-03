@@ -110,7 +110,7 @@ class EnumerationController extends Controller
                 'project_id' => $project->id,
                 'reference'  => $ref,
                 'qrcode' => $qrCodeBase64,
-                'self_enumerated' => 1,
+                'self_enumerated' => 0,
             ]);
 
             // Set field values
