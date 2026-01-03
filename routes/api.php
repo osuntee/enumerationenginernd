@@ -6,12 +6,13 @@ use App\Http\Controllers\Staff\Mobile\AuthController;
 use App\Http\Controllers\Staff\Mobile\HomeController;
 use App\Http\Controllers\Staff\Mobile\ProjectController;
 
+// Staff Mobile Auth routes
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/reset', [AuthController::class, 'resetPass']);
 Route::post('/verify/otp', [AuthController::class, 'verifyOTP']);
 Route::post('/resend/otp', [AuthController::class, 'resendOTP']);
 
-//Protected routes
+// Staff Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/set/password', [AuthController::class, 'setPassword']);
     Route::post('/update/password', [AuthController::class, 'updatePassword']);
