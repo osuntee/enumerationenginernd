@@ -234,8 +234,13 @@
                     </div>
                     @if ($project->allow_api)
                         <p class="text-xs mt-3">
-                            API Usage Notes: The reference field is always required when submitting data via the API. Form field validation follows the same rules as defined in the Project Fields.
+                            API Usage Notes:
                         </p>
+                        <ul>
+                            <li>The reference field is always required when submitting data via the API</li>
+                            <li>Form field validation follows the same rules as defined in the Project Fields.</li>
+                            <li>Ensure every project field is preceeded with "data."</li>
+                        </ul>
                     @endif
                 </div>
             </div>
