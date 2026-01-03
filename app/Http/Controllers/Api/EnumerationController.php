@@ -61,7 +61,10 @@ class EnumerationController extends Controller
         $project = Project::where('code', $code)->firstOrFail();
 
         if (!$project || !$project->allow_api) {
-            abort(404, 'Project not available.');
+            return response()->json([
+                'status' => 'Request failed',
+                'message' => 'Project not found or API enumeration not enabled.'
+            ], 403);
         }
 
         // Get validation rules from the project
@@ -69,15 +72,25 @@ class EnumerationController extends Controller
 
         // Add additional enumeration-specific rules
         $rules = array_merge($rules, [
+            'reference' => 'required|string|max:255',
             'enumerated_by' => 'nullable|string|max:255',
             'notes' => 'nullable|string',
         ]);
 
-        $request->validate($rules);
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            $errorString = implode("\n", $validator->errors()->all());
+
+
+            return response()->json([
+                'message' => $errorString
+            ], 403);
+        }
 
         DB::transaction(function () use ($request, $project) {
             $appUrl = config('app.url');
-            $ref = "1234567";
+            $ref = $request->reference;
 
             $url = "{$appUrl}/verify/{$ref}";
 
@@ -106,6 +119,9 @@ class EnumerationController extends Controller
             }
         });
 
-        return redirect()->back()->with('success', 'Enumeration data added successfully!');
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'Enumeration recorded successfully.'
+        ], 200);
     }
 }
