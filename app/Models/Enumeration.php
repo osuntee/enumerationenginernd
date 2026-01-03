@@ -19,12 +19,16 @@ class Enumeration extends Model
         'notes',
         'latitude',
         'longitude',
-        'is_verified'
+        'is_verified',
+        'self_enumerated',
+        'api_enumeration',
     ];
 
     protected $casts = [
         'enumerated_at' => 'datetime',
         'is_verified' => 'boolean',
+        'self_enumerated' => 'boolean',
+        'api_enumeration' => 'boolean',
     ];
 
     /**
