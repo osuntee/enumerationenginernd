@@ -74,11 +74,7 @@
                         <div>
                             <dt class="text-sm font-medium text-gray-500">Enumerated By</dt>
                             <dd class="mt-1 text-sm text-gray-900">
-                                @if($enumeration->staff)
-                                    {{ $enumeration->staff->name }}
-                                @else
-                                    Self Enumerated
-                                @endif
+                                {{ $enumeration->enumerator_source }}
                             </dd>
                         </div>
                         
