@@ -67,7 +67,7 @@
                                         <span class="text-gray-500">({{ $enumeration->staff->position }})</span>
                                     @endif
                                 @else
-                                    <span class="text-gray-500 italic">Not assigned</span>
+                                    <span class="text-gray-500 italic">{{ $enumeration->enumerator_source }}</span>
                                 @endif
                             </dd>
                         </div>
