@@ -67,6 +67,11 @@ class EnumerationController extends Controller
             ], 403);
         }
 
+        return response()->json([
+            'status' => 'Request failed',
+            'message' => $request->all()
+        ], 403);
+
         // Get validation rules from the project
         $rules = $project->getValidationRules();
 
