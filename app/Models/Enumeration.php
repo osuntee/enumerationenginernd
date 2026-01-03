@@ -104,7 +104,7 @@ class Enumeration extends Model
             return 'Self Enumeration';
         }
 
-        return 'Unknown';
+        return 'Not Assigned';
     }
 
     /**
