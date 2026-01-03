@@ -149,7 +149,7 @@
                                                         </div>
                                                     @else
                                                         <div class="text-sm text-gray-500 italic">
-                                                            Self Enumerated
+                                                            {{ $enumeration->enumerator_source }}
                                                         </div>
                                                     @endif
                                                 </div>
