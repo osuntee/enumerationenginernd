@@ -232,6 +232,32 @@
                             </p>
                         @endif
                     </div>
+                    @if ($project->allow_api)
+                            <div class="flex flex-row items-center gap-3">
+                                <p class="text-sm font-medium">
+                                    {{ config('app.url') }}/api/enumerate/{{ $project->code }}
+                                </p>
+                                <button
+                                    type="button"
+                                    onclick="copyRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
+                                    class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        @else
+                            <p class="text-sm font-medium">
+                                API integration is currently turned off.
+                            </p>
+                        @endif
                 </div>
             </div>
 
