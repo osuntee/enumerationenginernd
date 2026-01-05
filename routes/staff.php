@@ -64,8 +64,8 @@ Route::middleware('staff')->name('staff.')->group(function () {
             Route::delete('/', [EnumerationController::class, 'destroy'])->name('enumeration.destroy');
         });
 
-        Route::patch('enumerations/{enumeration}/verify', [EnumerationController::class, 'toggleVerification'])->name('enumeration.toggleVerification');
-        Route::get('{project}/export', [EnumerationController::class, 'export'])->name('enumeration.export');
+        Route::patch('projects/enumerations/{enumeration}/verify', [EnumerationController::class, 'toggleVerification'])->name('enumeration.toggleVerification');
+        Route::get('projects/{project}/export', [EnumerationController::class, 'export'])->name('enumeration.export');
     });
 
     // Staff management routes
