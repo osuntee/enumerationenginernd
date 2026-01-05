@@ -13,13 +13,15 @@ class FirstUserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'role' => 'admin',
-            'status' => 'active',
-            'password' => 'password', // Laravel 12 auto-hashes with 'hashed' cast
-            'email_verified_at' => now(),
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin User',
+                'role' => 'admin',
+                'status' => 'active',
+                'password' => 'Password',
+                'email_verified_at' => now(),
+            ]
+        );
     }
 }
