@@ -260,7 +260,7 @@ class EnumerationController extends Controller
      */
     public function export(Project $project, Request $request)
     {
-        // Ensure the staff belongs to the same customer as the project.
+        // Ensure the staff belongs to the same customer as the project
         $this->checkProjectAccess($project);
 
         $format = $request->get('format', 'csv');
