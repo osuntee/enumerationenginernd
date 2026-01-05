@@ -276,6 +276,7 @@ class EnumerationController extends Controller
             case 'json':
                 return $this->exportJson($project, $enumerations, $fields);
             case 'csv':
+                return $this->exportCsv($project, $enumerations, $fields);
             default:
                 return $this->exportCsv($project, $enumerations, $fields);
         }
