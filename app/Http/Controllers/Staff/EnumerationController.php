@@ -336,7 +336,7 @@ class EnumerationController extends Controller
             fclose($file);
         };
 
-        return "All QR Codes have been updated successfully.";
+        return response()->stream($callback, 200, $headers);
     }
 
     /**
