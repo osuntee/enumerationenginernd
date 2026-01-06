@@ -22,6 +22,7 @@ class Project extends Model
         'code',
         'is_published',
         'allow_api',
+        'pre_generate',
     ];
 
     protected $casts = [
@@ -29,6 +30,7 @@ class Project extends Model
         'is_published' => 'boolean',
         'requires_verification' => 'boolean',
         'allow_api' => 'boolean',
+        'pre_generate' => 'boolean',
     ];
 
     /**
