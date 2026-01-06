@@ -97,6 +97,7 @@ class ProjectController extends Controller
                 'customer_id' => $request->customer_id,
                 'name' => $request->name,
                 'description' => $request->description,
+                'pre_generate' => $request->has('pre_generate') ? (bool)$request->pre_generate : false,
                 'allow_api' => $request->has('allow_api') ? (bool)$request->allow_api : false,
                 'is_published' => $request->has('is_published') ? (bool)$request->is_published : false,
                 'requires_verification' => $request->has('requires_verification') ? (bool)$request->requires_verification : false,
