@@ -52,6 +52,7 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'allow_api' => 'nullable|boolean',
             'is_published' => 'nullable|boolean',
             'requires_verification' => 'nullable|boolean',
             'fields' => 'required|array|min:1',
@@ -92,12 +93,25 @@ class ProjectController extends Controller
 
             // Create the project
             $project = Project::create([
-                'customer_id' => Auth::guard('staff')->user()->customer_id,
+                'customer_id' => $request->customer_id,
                 'name' => $request->name,
                 'description' => $request->description,
-                'is_published' => $request->has('is_published') ? (bool)$request->requires_verification : false,
+                'allow_api' => $request->has('allow_api') ? (bool)$request->allow_api : false,
+                'is_published' => $request->has('is_published') ? (bool)$request->is_published : false,
                 'requires_verification' => $request->has('requires_verification') ? (bool)$request->requires_verification : false,
             ]);
+
+            if ($project->is_published) {
+                do {
+                    $letters = 'abcdefghijklmnopqrstuvwxyz';
+                    $code = collect(range(1, 15))
+                        ->map(fn() => $letters[random_int(0, strlen($letters) - 1)])
+                        ->implode('');
+                } while (Project::where('code', $code)->exists());
+
+                $project->code = $code;
+                $project->save();
+            }
 
             // Create project fields
             foreach ($request->fields as $index => $fieldData) {
