@@ -52,6 +52,7 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'pre_generate' => 'nullable|boolean',
             'allow_api' => 'nullable|boolean',
             'is_published' => 'nullable|boolean',
             'requires_verification' => 'nullable|boolean',
