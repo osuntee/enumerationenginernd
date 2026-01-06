@@ -42,7 +42,7 @@
                                     </div>
                                     
                                     @if($project->description)
-                                        <p class="text-gray-600 text-sm mb-4">{{ Str::limit($project->description, 100) }}</p>
+                                        <p class="text-gray-600 text-sm mb-4">{{ Str::limit($project->description, 50) }}</p>
                                     @endif
                                     
                                     <!-- Project Statistics -->
