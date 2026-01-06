@@ -183,6 +183,7 @@ class ProjectController extends Controller
         $project->update([
             'name' => $request->name,
             'description' => $request->description,
+            'allow_api' => $request->boolean('allow_api'),
             'requires_verification' => $request->boolean('requires_verification'),
             'is_published' => $request->boolean('is_published'),
         ]);
