@@ -55,6 +55,12 @@
                         </div>
 
                         <div class="mb-4">
+                            <label for="pre_generate" class="block text-sm font-medium text-gray-700 mb-2">Pre Generate QR Codes</label>
+                            <input type="checkbox" name="pre_generate" id="pre_generate" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('pre_generate') ? 'checked' : '' }}>
+                            <span class="ml-2 text-sm text-gray-700">Check this box if you want to make use of pre generated QR codes for this project</span>
+                        </div>
+
+                        <div class="mb-4">
                             <label for="allow_api" class="block text-sm font-medium text-gray-700 mb-2">Allow API Integration</label>
                             <input type="checkbox" name="allow_api" id="allow_api" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('allow_api') ? 'checked' : '' }}>
                             <span class="ml-2 text-sm text-gray-700">Check this box if you want to allow API integration for this project.</span>
