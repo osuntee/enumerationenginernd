@@ -166,6 +166,96 @@
                 </div>
             </div>
 
+            <!-- Project URLs -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                <div class="p-6 text-gray-900">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Project Utility Links</h3>
+                    <div class="flex flex-row items-center justify-start gap-1 mb-2">
+                        <p class="text-xs">
+                            Self Enumeration URL: 
+                        </p>
+                        @if ($project->is_published)
+                            <div class="flex flex-row items-center gap-3">
+                                <p class="text-sm font-medium">
+                                    {{ config('app.url') }}/enumerate/{{ $project->code }}
+                                </p>
+                                <button
+                                    type="button"
+                                    onclick="copyFrontRaw('{{ config('app.url') }}/enumerate/{{ $project->code }}', this)"
+                                    class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        @else
+                            <p class="text-sm font-medium">
+                                Self enumuration is currently turned off.
+                            </p>
+                        @endif
+                    </div>
+                    
+                    <div class="flex flex-row items-center justify-start gap-1">
+                        <p class="text-xs">
+                            Integration API: 
+                        </p>
+                        @if ($project->allow_api)
+                            <div class="flex flex-row items-center gap-3">
+                                <p class="text-sm font-medium">
+                                    {{ config('app.url') }}/api/enumerate/{{ $project->code }}
+                                </p>
+                                <button
+                                    type="button"
+                                    onclick="copyApiRaw('{{ config('app.url') }}/api/enumerate/{{ $project->code }}', this)"
+                                    class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 transition"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-4 h-4"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        @else
+                            <p class="text-sm font-medium">
+                                API integration is currently turned off.
+                            </p>
+                        @endif
+                    </div>
+                    @if ($project->allow_api)
+                        <p class="text-xs mt-3 font-medium">
+                            API Usage Notes:
+                        </p>
+                        <ul class="list-disc pl-4 text-xs space-y-1">
+                            <li>
+                                The <code>reference</code> field is <strong>required</strong> and must be provided at the top level of the request payload.
+                            </li>
+                            <li>
+                                All project-specific fields must be nested under the <code>data</code> object.
+                            </li>
+                            <li>
+                                Field validation follows the same rules defined in the Project Fields configuration.
+                            </li>
+                            <li>
+                                Each key inside <code>data</code> must match the project field's API name.
+                            </li>
+                        </ul>
+                    @endif
+
+                </div>
+            </div>
+
             <!-- Project Fields -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900">
