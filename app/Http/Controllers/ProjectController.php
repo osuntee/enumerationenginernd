@@ -39,6 +39,7 @@ class ProjectController extends Controller
             'customer_id' => 'required|exists:customers,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'pre_generate' => 'nullable|boolean',
             'allow_api' => 'nullable|boolean',
             'is_published' => 'nullable|boolean',
             'requires_verification' => 'nullable|boolean',
