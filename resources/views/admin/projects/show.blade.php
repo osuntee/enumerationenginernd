@@ -10,7 +10,7 @@
 
             <div class="flex flex-wrap gap-2">
                 @if ($project->pre_generate)
-                    <a href="{{ route('projects.payments.index', $project) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded text-sm">
+                    <a href="{{ route('projects.codes.index', $project) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded text-sm">
                         Manage QR Codes
                     </a>
                 @endif
