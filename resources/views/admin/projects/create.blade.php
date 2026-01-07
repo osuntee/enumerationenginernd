@@ -118,7 +118,6 @@
             if (this.checked) {
                 allowApi.checked = false;
                 isPublished.checked = false;
-                requiresVerification.checked = false;
             }
         });
         
