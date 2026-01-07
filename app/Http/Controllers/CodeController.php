@@ -21,7 +21,10 @@ class CodeController extends Controller
         // Find the project by ID and get its batches
     }
 
-
+    public function create($id)
+    {
+        // Breate a new batch
+    }
 
     /**
      * Store a newly created enumeration entry in storage.
