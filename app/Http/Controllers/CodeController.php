@@ -16,7 +16,7 @@ class CodeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index(Project $project)
     {
         // Find the project by ID and get its batches
     }
@@ -24,7 +24,7 @@ class CodeController extends Controller
     /**
      * Show the form for creating a new batch of codes.
      */
-    public function create($id)
+    public function create(Project $project)
     {
         // Breate a new batch
     }
@@ -114,7 +114,7 @@ class CodeController extends Controller
     /**
      * Display the specified enumeration entry.
      */
-    public function show($id)
+    public function show(Project $project)
     {
         // Display all the QR codes for a specific batch
     }
