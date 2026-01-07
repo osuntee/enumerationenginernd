@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\CodeController;
 use App\Http\Controllers\EnumerationController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AdminController;
