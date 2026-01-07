@@ -21,6 +21,9 @@ class CodeController extends Controller
         // Find the project by ID and get its batches
     }
 
+    /**
+     * Show the form for creating a new batch of codes.
+     */
     public function create($id)
     {
         // Breate a new batch
