@@ -14,18 +14,6 @@ use Illuminate\Support\Facades\DB;
 class CodeController extends Controller
 {
     /**
-     * Show the form for creating a new enumeration entry.
-     */
-    public function create(Project $project)
-    {
-        $project->load(['projectFields' => function ($query) {
-            $query->active()->ordered();
-        }]);
-
-        return view('admin.enumeration.create', compact('project'));
-    }
-
-    /**
      * Store a newly created enumeration entry in storage.
      */
     public function store(Request $request, Project $project)
