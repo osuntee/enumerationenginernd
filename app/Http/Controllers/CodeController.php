@@ -110,7 +110,7 @@ class CodeController extends Controller
      */
     public function show($id)
     {
-        // 
+        // Display all the QR codes for a specific batch
     }
 }
 
