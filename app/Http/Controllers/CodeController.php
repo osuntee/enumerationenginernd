@@ -18,7 +18,7 @@ class CodeController extends Controller
      */
     public function index(Project $project)
     {
-        // Find the project by ID and get its batches
+        return view('admin.projects.codes.index', compact('project'));
     }
 
     /**
