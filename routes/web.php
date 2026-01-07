@@ -100,7 +100,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::patch('projects/enumerations/{enumeration}/verify', [EnumerationController::class, 'toggleVerification'])->name('enumeration.toggleVerification');
         Route::get('projects/{project}/export', [EnumerationController::class, 'export'])->name('enumeration.export');
 
-        Route::get('codes/{project}', [EnumerationController::class, 'export'])->name('codes.index');
+        Route::get('codes/{project}', [CodeController::class, 'index'])->name('codes.index');
     });
 
     Route::prefix('admins')->name('admins.')->group(function () {
