@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\DB;
 class CodeController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     */
+    public function index($id)
+    {
+        // Find the project by ID and get its batches
+    }
+
+
+
+    /**
      * Store a newly created enumeration entry in storage.
      */
     public function store(Request $request, Project $project)
@@ -98,15 +108,9 @@ class CodeController extends Controller
     /**
      * Display the specified enumeration entry.
      */
-    public function show(Enumeration $enumeration)
+    public function show($id)
     {
-        $project = $enumeration->project;
-        $enumeration->load(['enumerationData.projectField']);
-        $project->load(['projectFields' => function ($query) {
-            $query->active()->ordered();
-        }]);
-
-        return view('admin.enumeration.show', compact('project', 'enumeration'));
+        // 
     }
 }
 
