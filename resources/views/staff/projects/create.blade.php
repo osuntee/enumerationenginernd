@@ -94,8 +94,21 @@
     </div>
 
     <script>
+        const preGenerate = document.getElementById('pre_generate');
+        const allowApi = document.getElementById('allow_api');
         const isPublished = document.getElementById('is_published');
         const requiresVerification = document.getElementById('requires_verification');
+        
+        // When pre_generate is checked, turn off allow_api, requires_verification and is_published
+        preGenerate.addEventListener('change', function() {
+            console.log('Checked');
+            
+            if (this.checked) {
+                allowApi.checked = false;
+                isPublished.checked = false;
+                requiresVerification.checked = false;
+            }
+        });
         
         // When is_published is checked, turn on requires_verification
         isPublished.addEventListener('change', function() {
