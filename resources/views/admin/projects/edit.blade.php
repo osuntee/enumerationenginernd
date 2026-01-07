@@ -58,17 +58,19 @@
                             <textarea name="description" id="description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description', $project->description) }}</textarea>
                         </div>
 
-                        <div class="mb-4">
-                            <label for="allow_api" class="block text-sm font-medium text-gray-700 mb-2">Allow API Integration</label>
-                            <input type="checkbox" name="allow_api" id="allow_api" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('allow_api', $project->allow_api) ? 'checked' : '' }}>
-                            <span class="ml-2 text-sm text-gray-700">Check this box if you want to allow API integration for this project.</span>
-                        </div>
+                        @if (!$project->pre_generate)
+                            <div class="mb-4">
+                                <label for="allow_api" class="block text-sm font-medium text-gray-700 mb-2">Allow API Integration</label>
+                                <input type="checkbox" name="allow_api" id="allow_api" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('allow_api', $project->allow_api) ? 'checked' : '' }}>
+                                <span class="ml-2 text-sm text-gray-700">Check this box if you want to allow API integration for this project.</span>
+                            </div>
 
-                        <div class="mb-4">
-                            <label for="is_published" class="block text-sm font-medium text-gray-700 mb-2">Self Enumeration</label>
-                            <input type="checkbox" name="is_published" id="is_published" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('is_published', $project->is_published) ? 'checked' : '' }}>
-                            <span class="ml-2 text-sm text-gray-700">Check this box if you want enumeration to be open to all.</span>
-                        </div>
+                            <div class="mb-4">
+                                <label for="is_published" class="block text-sm font-medium text-gray-700 mb-2">Self Enumeration</label>
+                                <input type="checkbox" name="is_published" id="is_published" value="1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" {{ old('is_published', $project->is_published) ? 'checked' : '' }}>
+                                <span class="ml-2 text-sm text-gray-700">Check this box if you want enumeration to be open to all.</span>
+                            </div>
+                        @endif
                         
                         <div class="mb-4">
                             <label for="requires_verification" class="block text-sm font-medium text-gray-700 mb-2">Enumeration Verification Required</label>
