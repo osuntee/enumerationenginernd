@@ -34,4 +34,12 @@ class Batch extends Model
     {
         return $this->hasMany(Code::class);
     }
+
+    /**
+     * Get the count of unused codes in the batch.
+     */
+    public function unusedCodesCount()
+    {
+        return $this->codes()->where('is_used', false)->count();
+    }
 }
