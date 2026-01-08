@@ -190,6 +190,11 @@ class Project extends Model
         return $rules;
     }
 
+    public function batches(): HasMany
+    {
+        return $this->hasMany(Batch::class);
+    }
+
     public function projectPayments(): HasMany
     {
         return $this->hasMany(ProjectPayment::class);
