@@ -18,7 +18,9 @@ class CodeController extends Controller
      */
     public function index(Project $project)
     {
-        return view('admin.projects.codes.index', compact('project'));
+        $batches = $project->batches()->withCount('codes')->get();
+
+        return view('admin.projects.codes.index', compact('batches'));
     }
 
     /**
