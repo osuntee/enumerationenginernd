@@ -307,11 +307,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-medium text-gray-900">Enumeration Data</h3>
+                        <h3 class="text-lg font-medium text-gray-900">Recnt Enumeration Data</h3>
                         <a href="{{ route('projects.enumerations.index', $project) }}" class="text-blue-600 hover:text-blue-900 text-sm">View All</a>
                     </div>
                     
-                    @if($enumerations->count() > 0)
+                    @if($recentEnumerations->count() > 0)
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
@@ -325,7 +325,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    @foreach($enumerations as $enumeration)
+                                    @foreach($recentEnumerations as $enumeration)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->enumerated_at->format('M d, Y') }}</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enumeration->longitude ?? 'N/A' }}</td>
@@ -357,10 +357,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                        
-                        <div class="mt-6">
-                            {{ $enumerations->links() }}
                         </div>
                     @else
                         <div class="text-center py-8">
