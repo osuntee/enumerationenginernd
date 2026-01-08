@@ -135,7 +135,13 @@ class ProjectController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(20);
 
-        return view('admin.projects.show', compact('project', 'enumerations'));
+        $recentEnumerations = $project->enumerations()
+            ->with(['enumerationData.projectField'])
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+
+        return view('admin.projects.show', compact('project', 'enumerations', 'recentEnumerations'));
     }
 
     public function edit(Project $project)
