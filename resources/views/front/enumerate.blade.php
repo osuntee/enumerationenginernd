@@ -58,7 +58,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('front.enumerate.store', $project->code) }}" class="bg-white rounded-lg shadow-md overflow-hidden">
+                <form method="POST" action="{{ route('front.enumerate.store', $project->code) }}" class="bg-white rounded-lg shadow-md overflow-hidden" enctype="multipart/form-data">
                     @csrf
 
                     <!-- Project Fields Data -->
