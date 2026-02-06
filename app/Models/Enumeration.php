@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class Enumeration extends Model
 {
@@ -60,29 +62,60 @@ class Enumeration extends Model
      */
     public function setFieldValues(array $data)
     {
-        // Delete existing data
-        $this->enumerationData()->delete();
+        $fields = $this->project->projectFields;
 
-        // Create new data
-        foreach ($data as $fieldName => $value) {
-            $field = $this->project->projectFields()->where('name', $fieldName)->first();
+        foreach ($fields as $field) {
+            $fieldName = $field->name;
+            $value = $data[$fieldName] ?? null;
+            $existsInPayload = array_key_exists($fieldName, $data);
 
-            if ($field && $value !== null && $value !== '') {
-                // Handle array values (checkboxes, etc.)
-                if (is_array($value)) {
-                    $value = array_filter($value); // Remove empty values
-                    if (!empty($value)) {
-                        $value = json_encode($value);
+            // Find existing data for this field
+            $existing = $this->enumerationData()->where('project_field_id', $field->id)->first();
+
+            // Handle File Uploads
+            if ($field->type === 'file') {
+                if ($value instanceof UploadedFile) {
+                    // Upload new file
+                    $path = $value->store('uploads', 'public');
+                    $storedValue = '/storage/' . $path;
+
+                    if ($existing) {
+                        // Optionally delete old file from storage here if needed
+                        $existing->update(['value' => $storedValue]);
                     } else {
-                        continue; // Skip empty arrays
+                        EnumerationData::create([
+                            'enumeration_id' => $this->id,
+                            'project_field_id' => $field->id,
+                            'value' => $storedValue,
+                        ]);
                     }
                 }
+                // If not an UploadedFile (e.g. null/empty), preserve existing.
+                continue;
+            }
 
-                EnumerationData::create([
-                    'enumeration_id' => $this->id,
-                    'project_field_id' => $field->id,
-                    'value' => $value,
-                ]);
+            // Handle non-file fields
+            if (is_array($value)) {
+                $value = array_filter($value); // Remove empty values
+                $value = !empty($value) ? json_encode($value) : null;
+            }
+
+            if ($existsInPayload && $value !== null && $value !== '') {
+                // Update or Create
+                if ($existing) {
+                    $existing->update(['value' => $value]);
+                } else {
+                    EnumerationData::create([
+                        'enumeration_id' => $this->id,
+                        'project_field_id' => $field->id,
+                        'value' => $value,
+                    ]);
+                }
+            } else {
+                // Value is empty/null or missing from payload -> Delete existing
+                if ($existing) {
+                    $existing->delete();
+                }
             }
         }
     }
