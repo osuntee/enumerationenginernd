@@ -98,7 +98,7 @@ class Enumeration extends Model
             if ($field->type === 'file') {
                 if ($value instanceof UploadedFile) {
                     // Upload new file
-                    $directory = 'uploads/enumerations/' . $this->project->code;
+                    $directory = 'uploads/enumerations/' . $this->project->id;
                     $path = $value->store($directory, 'public');
                     $storedValue = '/storage/' . $path;
 
