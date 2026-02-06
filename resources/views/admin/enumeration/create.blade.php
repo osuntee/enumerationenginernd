@@ -28,7 +28,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('projects.enumeration.store', $project) }}">
+            <form method="POST" action="{{ route('projects.enumeration.store', $project) }}" enctype="multipart/form-data">
                 @csrf
                 
                 <!-- Enumeration Metadata -->
