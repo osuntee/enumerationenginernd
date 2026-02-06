@@ -158,6 +158,11 @@ class Project extends Model
                     if (isset($field->attributes['max_size'])) {
                         $fieldRules[] = 'max:' . $field->attributes['max_size'];
                     }
+                    if (isset($field->attributes['accept'])) {
+                        $mimes = str_replace('.', '', $field->attributes['accept']);
+                        $mimes = str_replace(',', '|', $mimes);
+                        $fieldRules[] = 'mimes:' . $mimes;
+                    }
                     break;
                 case 'checkbox':
                     $fieldRules[] = 'boolean';
