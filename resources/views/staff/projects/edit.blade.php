@@ -138,7 +138,7 @@
                                 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Field Type</label>
-                                    <select name="type" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="toggleNewFieldOptions(this.value)" required>
+                                    <select name="type" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="handleNewFieldTypeChange(this.value)" required>
                                         <option value="text">Text</option>
                                         <option value="textarea">Textarea</option>
                                         <option value="number">Number</option>
@@ -172,6 +172,18 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Placeholder Text</label>
                                     <input type="text" name="placeholder" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                </div>
+
+                                <div class="new-file-accept-field" id="new-accept" style="display: none;">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Accepted File Types</label>
+                                    <input type="text" name="accept" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder=".pdf,.jpg,.png">
+                                    <small class="text-gray-500">Comma-separated file extensions (e.g., .pdf,.jpg,.png,.doc,.docx)</small>
+                                </div>
+                                
+                                <div class="new-file-max-size-field" id="new-max-size" style="display: none;">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Max File Size (KB)</label>
+                                    <input type="number" name="max_size" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="2048">
+                                    <small class="text-gray-500">Maximum file size in kilobytes (e.g., 2048 for 2MB)</small>
                                 </div>
                                 
                                 <div class="md:col-span-2">
@@ -268,6 +280,12 @@
             const form = document.getElementById('add-field-form');
             form.classList.toggle('hidden');
         }
+
+        function handleNewFieldTypeChange(type) {
+            toggleNewFieldOptions(type);
+            toggleNewMaxSizeField(type);
+            toggleNewAcceptField(type);
+        }
         
         function toggleNewFieldOptions(type) {
             const optionsField = document.getElementById('new-options');
@@ -275,6 +293,24 @@
                 optionsField.style.display = 'block';
             } else {
                 optionsField.style.display = 'none';
+            }
+        }
+        
+        function toggleNewMaxSizeField(type) {
+            const maxSizeField = document.getElementById('new-max-size');
+            if (type === 'file') {
+                maxSizeField.style.display = 'block';
+            } else {
+                maxSizeField.style.display = 'none';
+            }
+        }
+        
+        function toggleNewAcceptField(type) {
+            const acceptField = document.getElementById('new-accept');
+            if (type === 'file') {
+                acceptField.style.display = 'block';
+            } else {
+                acceptField.style.display = 'none';
             }
         }
     </script>
