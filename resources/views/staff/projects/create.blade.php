@@ -154,7 +154,7 @@
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Field Type</label>
-                            <select name="fields[${fieldIndex}][type]" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="toggleFieldOptions(${fieldIndex}, this.value)" required>
+                            <select name="fields[${fieldIndex}][type]" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="handleFieldTypeChange(${fieldIndex}, this.value)" required>
                                 <option value="text">Text</option>
                                 <option value="textarea">Textarea</option>
                                 <option value="number">Number</option>
@@ -169,7 +169,6 @@
                                 <option value="checkbox">Single Checkbox</option>
                                 <option value="checkboxes">Multiple Checkboxes</option>
                                 <option value="file">File Upload</option>
-                                
                             </select>
                         </div>
                         
@@ -180,9 +179,21 @@
                             </label>
                         </div>
                         
-                        <div class="options-field" id="options-${fieldIndex}" style="display: none;">
+                        <div class="options-field md:col-span-2" id="options-${fieldIndex}" style="display: none;">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Options (comma-separated)</label>
                             <input type="text" name="fields[${fieldIndex}][options]" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Option 1, Option 2, Option 3">
+                        </div>
+                        
+                        <div class="file-accept-field" id="accept-${fieldIndex}" style="display: none;">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Accepted File Types</label>
+                            <input type="text" name="fields[${fieldIndex}][accept]" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder=".pdf,.jpg,.png">
+                            <small class="text-gray-500">Comma-separated file extensions (e.g., .pdf,.jpg,.png,.doc,.docx)</small>
+                        </div>
+                        
+                        <div class="file-max-size-field" id="max-size-${fieldIndex}" style="display: none;">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Max File Size (KB)</label>
+                            <input type="number" name="fields[${fieldIndex}][max_size]" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="2048">
+                            <small class="text-gray-500">Maximum file size in kilobytes (e.g., 2048 for 2MB)</small>
                         </div>
                         
                         <div>
@@ -207,6 +218,12 @@
             if (fieldRow) {
                 fieldRow.remove();
             }
+        }
+        
+        function handleFieldTypeChange(index, type) {
+            toggleFieldOptions(index, type);
+            toggleMaxSizeField(index, type);
+            toggleAcceptField(index, type);
         }
         
         function toggleFieldOptions(index, type) {
