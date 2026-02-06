@@ -158,7 +158,7 @@ class ProjectController extends Controller
             ->limit(5)
             ->get();
 
-        return view('staff.projects.show', compact('project', 'enumerations'));
+        return view('staff.projects.show', compact('project', 'enumerations', 'recentEnumerations'));
     }
 
     public function edit(Project $project)
