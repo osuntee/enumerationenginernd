@@ -138,7 +138,7 @@
                                 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Field Type</label>
-                                    <select name="type" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="toggleNewFieldOptions(this.value)" required>
+                                    <select name="type" id="new-field-type" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="handleNewFieldTypeChange(this.value)" required>
                                         <option value="text">Text</option>
                                         <option value="textarea">Textarea</option>
                                         <option value="number">Number</option>
@@ -163,7 +163,7 @@
                                     </label>
                                 </div>
                                 
-                                <div class="new-options-field" id="new-options" style="display: none;">
+                                <div class="new-options-field md:col-span-2" id="new-options" style="display: none;">
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Options (comma-separated)</label>
                                     <input type="text" name="options" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Option 1, Option 2, Option 3">
                                 </div>
@@ -171,6 +171,18 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Placeholder Text</label>
                                     <input type="text" name="placeholder" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                </div>
+                                
+                                <div class="new-file-accept-field" id="new-accept" style="display: none;">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Accepted File Types</label>
+                                    <input type="text" name="accept" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder=".pdf,.jpg,.png">
+                                    <small class="text-gray-500">Comma-separated file extensions (e.g., .pdf,.jpg,.png,.doc,.docx)</small>
+                                </div>
+                                
+                                <div class="new-file-max-size-field" id="new-max-size" style="display: none;">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Max File Size (KB)</label>
+                                    <input type="number" name="max_size" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="2048">
+                                    <small class="text-gray-500">Maximum file size in kilobytes (e.g., 2048 for 2MB)</small>
                                 </div>
                                 
                                 <div class="md:col-span-2">
@@ -214,6 +226,14 @@
                                             @if($field->options)
                                                 <p class="text-sm text-gray-500 mt-1">Options: {{ implode(', ', $field->options) }}</p>
                                             @endif
+                                            @if($field->type === 'file' && $field->attributes)
+                                                @if(isset($field->attributes['accept']))
+                                                    <p class="text-sm text-gray-500 mt-1">Accepted types: {{ $field->attributes['accept'] }}</p>
+                                                @endif
+                                                @if(isset($field->attributes['max_size']))
+                                                    <p class="text-sm text-gray-500 mt-1">Max size: {{ $field->attributes['max_size'] }} KB</p>
+                                                @endif
+                                            @endif
                                         </div>
                                         <div class="flex space-x-2">
                                             <form method="POST" action="{{ route('fields.toggle', $field) }}" class="inline">
@@ -248,24 +268,34 @@
         const requiresVerification = document.getElementById('requires_verification');
         
         // When is_published is checked, turn on requires_verification
-        isPublished.addEventListener('change', function() {
-            console.log('Checked');
-            
-            if (this.checked) {
-                requiresVerification.checked = true;
-            }
-        });
+        if (isPublished) {
+            isPublished.addEventListener('change', function() {
+                console.log('Checked');
+                
+                if (this.checked) {
+                    requiresVerification.checked = true;
+                }
+            });
+        }
         
         // When requires_verification is unchecked, turn off is_published
-        requiresVerification.addEventListener('change', function() {
-            if (!this.checked) {
-                isPublished.checked = false;
-            }
-        });
+        if (requiresVerification) {
+            requiresVerification.addEventListener('change', function() {
+                if (!this.checked && isPublished) {
+                    isPublished.checked = false;
+                }
+            });
+        }
         
         function toggleAddFieldForm() {
             const form = document.getElementById('add-field-form');
             form.classList.toggle('hidden');
+        }
+        
+        function handleNewFieldTypeChange(type) {
+            toggleNewFieldOptions(type);
+            toggleNewMaxSizeField(type);
+            toggleNewAcceptField(type);
         }
         
         function toggleNewFieldOptions(type) {
@@ -274,6 +304,24 @@
                 optionsField.style.display = 'block';
             } else {
                 optionsField.style.display = 'none';
+            }
+        }
+        
+        function toggleNewMaxSizeField(type) {
+            const maxSizeField = document.getElementById('new-max-size');
+            if (type === 'file') {
+                maxSizeField.style.display = 'block';
+            } else {
+                maxSizeField.style.display = 'none';
+            }
+        }
+        
+        function toggleNewAcceptField(type) {
+            const acceptField = document.getElementById('new-accept');
+            if (type === 'file') {
+                acceptField.style.display = 'block';
+            } else {
+                acceptField.style.display = 'none';
             }
         }
     </script>
