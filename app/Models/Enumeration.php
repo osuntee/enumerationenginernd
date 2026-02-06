@@ -58,6 +58,28 @@ class Enumeration extends Model
     }
 
     /**
+     * The "booted" method of the model.
+     */
+    protected static function booted()
+    {
+        static::deleting(function ($enumeration) {
+            $enumeration->load(['enumerationData.projectField']);
+
+            foreach ($enumeration->enumerationData as $data) {
+                if ($data->projectField && $data->projectField->type === 'file') {
+                    // value is stored as /storage/path/to/file
+                    // we need to remove /storage/ to get the disk path (assuming 'public' disk root is linked to public/storage)
+                    $relativePath = str_replace('/storage/', '', $data->value);
+
+                    if (Storage::disk('public')->exists($relativePath)) {
+                        Storage::disk('public')->delete($relativePath);
+                    }
+                }
+            }
+        });
+    }
+
+    /**
      * Set field values for this enumeration.
      */
     public function setFieldValues(array $data)
@@ -76,11 +98,17 @@ class Enumeration extends Model
             if ($field->type === 'file') {
                 if ($value instanceof UploadedFile) {
                     // Upload new file
-                    $path = $value->store('uploads', 'public');
+                    $directory = 'uploads/enumerations/' . $this->project->code;
+                    $path = $value->store($directory, 'public');
                     $storedValue = '/storage/' . $path;
 
                     if ($existing) {
-                        // Optionally delete old file from storage here if needed
+                        // Delete old file from storage
+                        $oldPath = str_replace('/storage/', '', $existing->value);
+                        if (Storage::disk('public')->exists($oldPath)) {
+                            Storage::disk('public')->delete($oldPath);
+                        }
+
                         $existing->update(['value' => $storedValue]);
                     } else {
                         EnumerationData::create([
