@@ -166,7 +166,7 @@
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Field Type</label>
-                            <select name="fields[${fieldIndex}][type]" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="toggleFieldOptions(${fieldIndex}, this.value)" required>
+                            <select name="fields[${fieldIndex}][type]" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" onchange="handleFieldTypeChange(${fieldIndex}, this.value)" required>
                                 <option value="text">Text</option>
                                 <option value="textarea">Textarea</option>
                                 <option value="number">Number</option>
@@ -220,6 +220,12 @@
                 fieldRow.remove();
             }
         }
+
+        function handleFieldTypeChange(index, type) {
+            toggleFieldOptions(index, type);
+            toggleMaxSizeField(index, type);
+            toggleAcceptField(index, type);
+        }
         
         function toggleFieldOptions(index, type) {
             const optionsField = document.getElementById(`options-${index}`);
@@ -227,6 +233,24 @@
                 optionsField.style.display = 'block';
             } else {
                 optionsField.style.display = 'none';
+            }
+        }
+
+        function toggleMaxSizeField(index, type) {
+            const maxSizeField = document.getElementById(`max-size-${index}`);
+            if (type === 'file') {
+                maxSizeField.style.display = 'block';
+            } else {
+                maxSizeField.style.display = 'none';
+            }
+        }
+
+        function toggleAcceptField(index, type) {
+            const acceptField = document.getElementById(`accept-${index}`);
+            if (type === 'file') {
+                acceptField.style.display = 'block';
+            } else {
+                acceptField.style.display = 'none';
             }
         }
         
