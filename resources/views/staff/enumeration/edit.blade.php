@@ -40,7 +40,7 @@
                 </div>
             @endif
             
-            <form method="POST" action="{{ route('staff.projects.enumeration.update', [$project, $enumeration]) }}">
+            <form method="POST" action="{{ route('staff.projects.enumeration.update', [$project, $enumeration]) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
