@@ -217,6 +217,24 @@
                 optionsField.style.display = 'none';
             }
         }
+
+        function toggleMaxSizeField(index, type) {
+            const maxSizeField = document.getElementById(`max-size-${index}`);
+            if (type === 'file') {
+                maxSizeField.style.display = 'block';
+            } else {
+                maxSizeField.style.display = 'none';
+            }
+        }
+
+        function toggleAcceptField(index, type) {
+            const acceptField = document.getElementById(`accept-${index}`);
+            if (type === 'file') {
+                acceptField.style.display = 'block';
+            } else {
+                acceptField.style.display = 'none';
+            }
+        }
         
         // Add initial field
         document.addEventListener('DOMContentLoaded', function() {
