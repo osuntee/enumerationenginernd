@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SampleMail;
 use App\Models\Staff;
 
 class AuthController extends Controller
@@ -91,7 +93,7 @@ class AuthController extends Controller
             'message' => "Your Verification Code Is: " . $user->verification_code,
         ];
 
-        // Mail::to($user->email)->send(new SampleMail($data));
+        Mail::to($user->email)->send(new SampleMail($data));
 
         return response()->json([
             'message' => 'success',
@@ -144,7 +146,7 @@ class AuthController extends Controller
                 'message' => "Your Verification Code Is: " . $user->verification_code,
             ];
 
-            // Mail::to($user->email)->send(new SampleMail($data));
+            Mail::to($user->email)->send(new SampleMail($data));
 
             return response()->json([
                 'message' => 'Verification code has been sent to your email successfully',
