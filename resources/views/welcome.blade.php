@@ -19,8 +19,8 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex flex-col min-h-screen">
-        <header class="w-full border-b border-[#19140010] dark:border-[#ffffff10] bg-white/50 dark:bg-black/50 backdrop-blur-md sticky top-0 z-50">
+    <body class="bg-white dark:bg-[#0a0a0a] text-[#1b1b18] flex flex-col min-h-screen">
+        <header class="w-full border-b border-[#19140010] dark:border-[#ffffff10] bg-white dark:bg-black backdrop-blur-md sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-8 h-8 object-contain">
@@ -44,10 +44,10 @@
 
         <main class="flex-grow">
             <!-- Hero Section -->
-            <section class="py-20 lg:py-32 px-6 overflow-hidden">
+            <section class="py-20 lg:py-32 px-6 overflow-hidden bg-white dark:bg-[#0a0a0a]">
                 <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
                     <div class="relative z-10">
-                        <span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-xs font-semibold mb-6 uppercase tracking-wider">Next-Gen Enumeration Platform</span>
+                        <span class="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-xs font-semibold mb-6 uppercase tracking-wider">Next-Gen Enumeration Platform</span>
                         <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight">
                             Collect Data <span class="text-blue-600">Smarter</span>, Not Harder.
                         </h1>
@@ -65,21 +65,18 @@
                         </div>
                     </div>
                     <div class="relative lg:ml-12">
-                        <div class="bg-gradient-to-tr from-blue-100 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-8 shadow-2xl border border-white/50 dark:border-white/10">
+                        <div class="bg-gray-50 dark:bg-[#161615] rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-white/5">
                             <svg class="w-full h-auto text-blue-600/80 dark:text-blue-400/80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <!-- Decorative elements -->
-                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl"></div>
-                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-400/10 rounded-full blur-3xl"></div>
                     </div>
                 </div>
             </section>
 
             <!-- Stats/Info Section -->
-            <section id="features" class="py-24 bg-gray-50 dark:bg-[#0c0c0c] border-y border-[#19140008] dark:border-[#ffffff08]">
+            <section id="features" class="py-24 bg-white dark:bg-[#0c0c0c] border-y border-gray-100 dark:border-[#ffffff08]">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="text-center max-w-3xl mx-auto mb-20">
                         <h2 class="text-3xl font-bold mb-4">The Complete Enumeration Lifecycle</h2>
@@ -88,7 +85,7 @@
 
                     <div class="grid md:grid-cols-3 gap-8">
                         <!-- Feature 1 -->
-                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-[#19140010] dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
+                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-gray-100 dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center text-blue-600 mb-6">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                             </div>
@@ -97,7 +94,7 @@
                         </div>
 
                         <!-- Feature 2 -->
-                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-[#19140010] dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
+                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-gray-100 dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-xl flex items-center justify-center text-green-600 mb-6">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                             </div>
@@ -106,7 +103,7 @@
                         </div>
 
                         <!-- Feature 3 -->
-                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-[#19140010] dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
+                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-gray-100 dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
                             <div class="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-xl flex items-center justify-center text-purple-600 mb-6">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                             </div>
@@ -118,24 +115,21 @@
             </section>
 
             <!-- CTA Section -->
-            <section class="py-24 px-6">
-                <div class="max-w-4xl mx-auto bg-blue-600 rounded-[2.5rem] p-12 lg:p-20 text-center text-white relative overflow-hidden">
+            <section class="py-24 px-6 bg-white dark:bg-[#0a0a0a]">
+                <div class="max-w-4xl mx-auto bg-blue-600 rounded-[2.5rem] p-12 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-500/20">
                     <div class="relative z-10">
                         <h2 class="text-4xl lg:text-5xl font-bold mb-8">Ready to revolutionize your data collection?</h2>
                         <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Join the teams using Enumerate to make field surveys more efficient and accurate than ever before.</p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <a href="{{ route('staff.register') }}" class="px-8 py-4 bg-white text-blue-600 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all">Create Account</a>
-                            <a href="{{ route('staff.login') }}" class="px-8 py-4 bg-blue-700 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all">Sign In</a>
+                            <a href="{{ route('staff.login') }}" class="px-8 py-4 bg-blue-700 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all border border-blue-500">Sign In</a>
                         </div>
                     </div>
-                    <!-- Abstract background shapes -->
-                    <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500 rounded-full opacity-50"></div>
-                    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-700 rounded-full opacity-50"></div>
                 </div>
             </section>
         </main>
 
-        <footer class="py-12 px-6 border-t border-[#19140010] dark:border-[#ffffff10]">
+        <footer class="py-12 px-6 border-t border-gray-100 dark:border-[#ffffff10] bg-white dark:bg-[#0a0a0a]">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                 <div class="flex items-center gap-2">
                     <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-6 h-6 object-contain opacity-70">
