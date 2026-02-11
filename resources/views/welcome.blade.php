@@ -19,98 +19,134 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('staff.login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
-
-                        @if (Route::has('staff.register'))
-                            <a
-                                href="{{ route('staff.register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
-        </header>
-        
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-2 font-medium text-2xl">Enumerate by Cyber1</h1>
-                    <p class="mb-4 text-[#706f6c] dark:text-[#A1A09A]">A powerful data collection platform designed to streamline field surveys and community enumerations.</p>
-                    
-                    <h2 class="mb-2 font-medium">Key Features</h2>
-                    <ul class="flex flex-col mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>Efficient data collection through mobile and web interfaces</span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>Streamlined management and analysis tools</span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>Enhanced accuracy and speed in every stage</span>
-                        </li>
-                    </ul>
-                    
-                    <ul class="flex gap-3 text-sm leading-normal flex-wrap">
-                        <li>
-                            <a href="{{ route('staff.login') }}" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Get Started
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/dashboard') }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                View Dashboard
-                            </a>
-                        </li>
-                    </ul>
+    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex flex-col min-h-screen">
+        <header class="w-full border-b border-[#19140010] dark:border-[#ffffff10] bg-white/50 dark:bg-black/50 backdrop-blur-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">E</div>
+                    <span class="font-bold text-lg tracking-tight">Enumerate</span>
                 </div>
                 
-                <div class="bg-[#e8f4f8] dark:bg-[#0a1520] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden flex items-center justify-center">
-                    <!-- Data Collection Icon -->
-                    <svg class="w-48 h-48 text-[#3b82f6] dark:text-[#60a5fa] opacity-80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <div class="absolute inset-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
-                </div>
-            </main>
-        </div>
+                @if (Route::has('login'))
+                    <nav class="flex items-center gap-4">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="text-sm font-medium hover:text-blue-600 transition-colors">Dashboard</a>
+                        @else
+                            <a href="{{ route('staff.login') }}" class="text-sm font-medium hover:text-blue-600 transition-colors">Log in</a>
+                            @if (Route::has('staff.register'))
+                                <a href="{{ route('staff.register') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-all shadow-sm">Get Started</a>
+                            @endif
+                        @endauth
+                    </nav>
+                @endif
+            </div>
+        </header>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
+        <main class="flex-grow">
+            <!-- Hero Section -->
+            <section class="py-20 lg:py-32 px-6 overflow-hidden">
+                <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative z-10">
+                        <span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-xs font-semibold mb-6 uppercase tracking-wider">Next-Gen Enumeration Platform</span>
+                        <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight">
+                            Collect Data <span class="text-blue-600">Smarter</span>, Not Harder.
+                        </h1>
+                        <p class="text-xl text-[#706f6c] dark:text-[#A1A09A] mb-10 leading-relaxed max-w-xl">
+                            Enumerate by Cyber1 is a comprehensive platform designed for modern field surveys. From custom project creation to real-time mobile data collection, we've got you covered.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="{{ route('staff.login') }}" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 group">
+                                Start Collecting
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                            </a>
+                            <a href="#features" class="px-8 py-4 bg-white dark:bg-[#161615] border border-[#19140015] dark:border-[#ffffff15] rounded-xl font-bold text-lg hover:bg-gray-50 dark:hover:bg-[#1c1c1a] transition-all flex items-center justify-center">
+                                How it works
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative lg:ml-12">
+                        <div class="bg-gradient-to-tr from-blue-100 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-8 shadow-2xl border border-white/50 dark:border-white/10">
+                            <svg class="w-full h-auto text-blue-600/80 dark:text-blue-400/80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-400/10 rounded-full blur-3xl"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats/Info Section -->
+            <section id="features" class="py-24 bg-gray-50 dark:bg-[#0c0c0c] border-y border-[#19140008] dark:border-[#ffffff08]">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <h2 class="text-3xl font-bold mb-4">The Complete Enumeration Lifecycle</h2>
+                        <p class="text-[#706f6c] dark:text-[#A1A09A]">From initial project design to field deployment and final analysis, we provide a unified experience for your entire team.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Feature 1 -->
+                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-[#19140010] dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Project Design</h3>
+                            <p class="text-[#706f6c] dark:text-[#A1A09A] leading-relaxed">Create custom enumeration projects with dynamic fields. Choose from text, numbers, dates, and secure file uploads to match your exact needs.</p>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-[#19140010] dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-xl flex items-center justify-center text-green-600 mb-6">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Mobile Deployment</h3>
+                            <p class="text-[#706f6c] dark:text-[#A1A09A] leading-relaxed">Equip your staff with mobile-ready interfaces. Collect data in the field with ease, including automatic photo organization and secure authentication.</p>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="p-8 bg-white dark:bg-[#161615] rounded-2xl border border-[#19140010] dark:border-[#ffffff10] shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Real-time Analytics</h3>
+                            <p class="text-[#706f6c] dark:text-[#A1A09A] leading-relaxed">Monitor progress from your dashboard. View submissions as they happen and manage your project staff efficiently from one central hub.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-24 px-6">
+                <div class="max-w-4xl mx-auto bg-blue-600 rounded-[2.5rem] p-12 lg:p-20 text-center text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h2 class="text-4xl lg:text-5xl font-bold mb-8">Ready to revolutionize your data collection?</h2>
+                        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Join the teams using Enumerate to make field surveys more efficient and accurate than ever before.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="{{ route('staff.register') }}" class="px-8 py-4 bg-white text-blue-600 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all">Create Account</a>
+                            <a href="{{ route('staff.login') }}" class="px-8 py-4 bg-blue-700 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all">Sign In</a>
+                        </div>
+                    </div>
+                    <!-- Abstract background shapes -->
+                    <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500 rounded-full opacity-50"></div>
+                    <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-700 rounded-full opacity-50"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="py-12 px-6 border-t border-[#19140010] dark:border-[#ffffff10]">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white text-[10px] font-bold">E</div>
+                    <span class="font-bold text-sm tracking-tight opacity-70">Enumerate by Cyber1</span>
+                </div>
+                <p class="text-sm text-[#706f6c] dark:text-[#A1A09A]">&copy; {{ date('Y') }} Cyber1 Systems Network. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-sm text-[#706f6c] hover:text-blue-600 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-sm text-[#706f6c] hover:text-blue-600 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
