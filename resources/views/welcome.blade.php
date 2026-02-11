@@ -23,7 +23,7 @@
         <header class="w-full border-b border-[#19140010] dark:border-[#ffffff10] bg-white/50 dark:bg-black/50 backdrop-blur-md sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">E</div>
+                    <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-8 h-8 object-contain">
                     <span class="font-bold text-lg tracking-tight">Enumerate</span>
                 </div>
                 
@@ -138,7 +138,7 @@
         <footer class="py-12 px-6 border-t border-[#19140010] dark:border-[#ffffff10]">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                 <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white text-[10px] font-bold">E</div>
+                    <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-6 h-6 object-contain opacity-70">
                     <span class="font-bold text-sm tracking-tight opacity-70">Enumerate by Cyber1</span>
                 </div>
                 <p class="text-sm text-[#706f6c] dark:text-[#A1A09A]">&copy; {{ date('Y') }} Cyber1 Systems Network. All rights reserved.</p>
