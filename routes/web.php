@@ -10,13 +10,14 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GatewaysController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminDashboardController;
+
 Route::get('/admin', function () {
     return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'verified']);
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 
 
