@@ -26,14 +26,23 @@ class AdminDashboardController extends Controller
 
         // Enumerations over the last 7 days
         $enumerationsLast7Days = Enumeration::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
-            ->where('created_at', '>=', now()->subDays(7))
+            ->where('created_at', '>=', now()->subDays(6)->startOfDay())
             ->groupBy('date')
-            ->orderBy('date')
-            ->get();
+            ->get()
+            ->pluck('count', 'date');
+
+        $dates = [];
+        $counts = [];
+
+        for ($i = 6; $i >= 0; $i--) {
+            $date = now()->subDays($i)->format('Y-m-d');
+            $dates[] = now()->subDays($i)->format('M d');
+            $counts[] = $enumerationsLast7Days->get($date, 0);
+        }
 
         $chartData = [
-            'dates' => $enumerationsLast7Days->pluck('date'),
-            'counts' => $enumerationsLast7Days->pluck('count'),
+            'dates' => $dates,
+            'counts' => $counts,
         ];
 
         return view('admin.dashboard', compact(
