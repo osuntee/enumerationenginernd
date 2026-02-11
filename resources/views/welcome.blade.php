@@ -114,6 +114,90 @@
                 </div>
             </section>
 
+            <!-- How It Works Section -->
+            <section class="py-24 bg-gray-50 dark:bg-[#0a0a0a]">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h2 class="text-3xl lg:text-4xl font-bold mb-8">Streamlined Workflow for Maximum Efficiency</h2>
+                            <div class="space-y-8">
+                                <div class="flex gap-4">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1">Define Your Scope</h4>
+                                        <p class="text-[#706f6c] dark:text-[#A1A09A]">Set up your project with custom fields tailored to your survey requirements. Define validations and mandatory data points.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1">Onboard Your Team</h4>
+                                        <p class="text-[#706f6c] dark:text-[#A1A09A]">Quickly register and assign staff to projects. Secure authentication ensures only authorized personnel can collect data.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                                    <div>
+                                        <h4 class="text-lg font-bold mb-1">Execute & Monitor</h4>
+                                        <p class="text-[#706f6c] dark:text-[#A1A09A]">Field staff submit data via the mobile interface. Admin monitors real-time progress and manages project integrity.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-[#161615] p-2 rounded-[2rem] shadow-2xl border border-gray-200 dark:border-white/5">
+                            <div class="bg-gray-50 dark:bg-[#1c1c1a] rounded-[1.8rem] p-12 aspect-video flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21a9.003 9.003 0 008.367-5.618m-1.634-3.044A8.962 8.962 0 0012 12c-1.928 0-3.692.607-5.133 1.644M12 21c-4.474 0-8.064-3.59-8.064-8.064a8.06 8.06 0 011.644-4.867"/></svg>
+                                    <p class="font-bold text-xl">Secure Data Flow</p>
+                                    <p class="text-sm text-[#706f6c]">End-to-end encryption for every submission</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us Section -->
+            <section class="py-24 bg-white dark:bg-[#0a0a0a]">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-4">Why Industry Leaders Trust Enumerate</h2>
+                        <p class="text-[#706f6c] dark:text-[#A1A09A]">We combine powerful features with an intuitive experience to deliver results that matter.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mx-auto mb-6">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21a9.003 9.003 0 008.367-5.618m-1.634-3.044A8.962 8.962 0 0012 12c-1.928 0-3.692.607-5.133 1.644M12 21c-4.474 0-8.064-3.59-8.064-8.064a8.06 8.06 0 011.644-4.867"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-2">Verified Data</h4>
+                            <p class="text-sm text-[#706f6c]">Ensure accuracy with built-in validation rules and field requirements.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mx-auto mb-6">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-2">Instant Sync</h4>
+                            <p class="text-sm text-[#706f6c]">Field submissions are synced immediately to the central dashboard for review.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mx-auto mb-6">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-2">Team Collaboration</h4>
+                            <p class="text-sm text-[#706f6c]">Manage multiple field agents and project coordinators with role-based access.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mx-auto mb-6">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            </div>
+                            <h4 class="font-bold mb-2">Media Support</h4>
+                            <p class="text-sm text-[#706f6c]">Collect photos and documents as part of your enumeration workflow.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- CTA Section -->
             <section class="py-24 px-6 bg-white dark:bg-[#0a0a0a]">
                 <div class="max-w-4xl mx-auto bg-blue-600 rounded-[2.5rem] p-12 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-500/20">
