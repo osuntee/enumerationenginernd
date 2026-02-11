@@ -207,28 +207,28 @@
                     </div>
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-                        <div class="group">
+                        <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500">
                             <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-blue-600 mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 border border-slate-100">
                                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21a9.003 9.003 0 008.367-5.618m-1.634-3.044A8.962 8.962 0 0012 12c-1.928 0-3.692.607-5.133 1.644M12 21c-4.474 0-8.064-3.59-8.064-8.064a8.06 8.06 0 011.644-4.867"/></svg>
                             </div>
                             <h4 class="text-xl font-black mb-4 text-slate-900">Verified Data</h4>
                             <p class="text-slate-600 font-medium leading-relaxed">Built-in validation rules ensure data integrity from the moment of entry.</p>
                         </div>
-                        <div class="group">
+                        <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-green-500/10 hover:-translate-y-2 transition-all duration-500">
                             <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-green-600 mb-8 group-hover:bg-green-500 group-hover:text-white transition-all duration-500 border border-slate-100">
                                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                             </div>
                             <h4 class="text-xl font-black mb-4 text-slate-900">Instant Sync</h4>
                             <p class="text-slate-600 font-medium leading-relaxed">Real-time data synchronization between field staff and central servers.</p>
                         </div>
-                        <div class="group">
+                        <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2 transition-all duration-500">
                             <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-purple-600 mb-8 group-hover:bg-purple-500 group-hover:text-white transition-all duration-500 border border-slate-100">
                                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                             </div>
                             <h4 class="text-xl font-black mb-4 text-slate-900">Collaboration</h4>
                             <p class="text-slate-600 font-medium leading-relaxed">Manage large teams with granular role-based access control.</p>
                         </div>
-                        <div class="group">
+                        <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-2 transition-all duration-500">
                             <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-orange-600 mb-8 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 border border-slate-100">
                                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             </div>
