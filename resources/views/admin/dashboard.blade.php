@@ -179,7 +179,8 @@
                                 color: '#f3f4f6'
                             },
                             ticks: {
-                                stepSize: 1
+                                maxTicksLimit: 6,
+                                precision: 0
                             }
                         },
                         x: {
