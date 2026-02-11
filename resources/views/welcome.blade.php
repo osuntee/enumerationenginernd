@@ -44,112 +44,153 @@
 
         <main class="flex-grow">
             <!-- Hero Section -->
-            <section class="py-20 lg:py-32 px-6 overflow-hidden bg-white">
-                <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="relative z-10">
-                        <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold mb-6 uppercase tracking-wider">Next-Gen Enumeration Platform</span>
-                        <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight">
-                            Collect Data <span class="text-blue-600">Smarter</span>, Not Harder.
+            <section class="relative py-24 lg:py-36 px-6 overflow-hidden bg-slate-50">
+                <!-- Decorative Background Elements -->
+                <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+                    <div class="absolute top-1/2 -right-24 w-72 h-72 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+                </div>
+
+                <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <div class="text-left">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/10 text-blue-700 rounded-full text-xs font-bold mb-8 uppercase tracking-widest border border-blue-200/50">
+                            <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+                            Next-Gen Enumeration Platform
+                        </span>
+                        <h1 class="text-5xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight text-slate-900">
+                            Collect Data <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Smarter</span>.
                         </h1>
-                        <p class="text-xl text-[#706f6c] mb-10 leading-relaxed max-w-xl">
-                            Enumerate by Cyber1 is a comprehensive platform designed for modern field surveys. From custom project creation to real-time mobile data collection, we've got you covered.
+                        <p class="text-xl text-slate-600 mb-12 leading-relaxed max-w-xl font-medium">
+                            Enumerate by Cyber1 is a high-performance platform for modern field surveys. Transform complex data collection into a seamless digital experience.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="{{ route('staff.login') }}" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 group">
-                                Start Collecting
-                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        <div class="flex flex-col sm:flex-row gap-5">
+                            <a href="{{ route('staff.login') }}" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-blue-600 transition-all shadow-2xl shadow-slate-900/20 flex items-center justify-center gap-3 group">
+                                Get Started Now
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                             </a>
-                            <a href="#features" class="px-8 py-4 bg-white border border-[#19140015] rounded-xl font-bold text-lg hover:bg-gray-50 transition-all flex items-center justify-center">
-                                How it works
+                            <a href="#features" class="px-10 py-5 bg-white border-2 border-slate-200 rounded-2xl font-bold text-lg hover:border-blue-600 hover:text-blue-600 transition-all flex items-center justify-center">
+                                Explore Features
                             </a>
                         </div>
                     </div>
-                    <div class="relative lg:ml-12">
-                        <div class="bg-gray-50 rounded-3xl p-8 shadow-xl border border-gray-100">
-                            <svg class="w-full h-auto text-blue-600/80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                    <div class="relative">
+                        <div class="relative bg-white rounded-[3rem] p-4 shadow-2xl border border-slate-200 transform lg:rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div class="bg-slate-900 rounded-[2.5rem] p-12 aspect-square flex items-center justify-center overflow-hidden relative group">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <svg class="w-32 h-32 text-blue-500 transform group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9 12h6m-6 4h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <!-- Floating Badge -->
+                            <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block animate-bounce">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">System Status</p>
+                                        <p class="text-sm font-black text-slate-900">All Systems Online</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Stats/Info Section -->
-            <section id="features" class="py-24 bg-white border-y border-gray-100">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="text-center max-w-3xl mx-auto mb-20">
-                        <h2 class="text-3xl font-bold mb-4">The Complete Enumeration Lifecycle</h2>
-                        <p class="text-[#706f6c]">From initial project design to field deployment and final analysis, we provide a unified experience for your entire team.</p>
+            <section id="features" class="py-32 bg-white relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-6 relative z-10">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                        <div class="max-w-2xl">
+                            <h2 class="text-4xl lg:text-5xl font-black mb-6 text-slate-900 tracking-tight">The Complete <span class="text-blue-600">Lifecycle</span>.</h2>
+                            <p class="text-lg text-slate-600 font-medium">From initial project design to field deployment and final analysis, we provide a unified experience for your entire team.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="text-center px-8 py-4 bg-slate-50 rounded-2xl border border-slate-100">
+                                <p class="text-3xl font-black text-slate-900">100%</p>
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Uptime</p>
+                            </div>
+                            <div class="text-center px-8 py-4 bg-slate-50 rounded-2xl border border-slate-100">
+                                <p class="text-3xl font-black text-slate-900">24/7</p>
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Support</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="grid md:grid-cols-3 gap-8">
+                    <div class="grid md:grid-cols-3 gap-10">
                         <!-- Feature 1 -->
-                        <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500">
+                            <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-600/30 group-hover:rotate-6 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Project Design</h3>
-                            <p class="text-[#706f6c] leading-relaxed">Create custom enumeration projects with dynamic fields. Choose from text, numbers, dates, and secure file uploads to match your exact needs.</p>
+                            <h3 class="text-2xl font-black mb-4 text-slate-900">Project Design</h3>
+                            <p class="text-slate-600 leading-relaxed font-medium">Create custom enumeration projects with dynamic fields. Choose from text, numbers, dates, and secure file uploads.</p>
                         </div>
 
                         <!-- Feature 2 -->
-                        <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-600 mb-6">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-green-500/10 hover:-translate-y-2 transition-all duration-500">
+                            <div class="w-16 h-16 bg-green-500 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-green-500/30 group-hover:rotate-6 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Mobile Deployment</h3>
-                            <p class="text-[#706f6c] leading-relaxed">Equip your staff with mobile-ready interfaces. Collect data in the field with ease, including automatic photo organization and secure authentication.</p>
+                            <h3 class="text-2xl font-black mb-4 text-slate-900">Mobile Ready</h3>
+                            <p class="text-slate-600 leading-relaxed font-medium">Equip your staff with mobile-ready interfaces. Collect data in the field with ease and automatic organization.</p>
                         </div>
 
                         <!-- Feature 3 -->
-                        <div class="p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-6">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2 transition-all duration-500">
+                            <div class="w-16 h-16 bg-purple-500 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-purple-500/30 group-hover:rotate-6 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                             </div>
-                            <h3 class="text-xl font-bold mb-3">Real-time Analytics</h3>
-                            <p class="text-[#706f6c] leading-relaxed">Monitor progress from your dashboard. View submissions as they happen and manage your project staff efficiently from one central hub.</p>
+                            <h3 class="text-2xl font-black mb-4 text-slate-900">Live Analytics</h3>
+                            <p class="text-slate-600 leading-relaxed font-medium">Monitor progress from your dashboard. View submissions as they happen and manage staff efficiently.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- How It Works Section -->
-            <section class="py-24 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-[120px]"></div>
+                <div class="max-w-7xl mx-auto px-6 relative z-10">
+                    <div class="grid lg:grid-cols-2 gap-24 items-center">
                         <div>
-                            <h2 class="text-3xl lg:text-4xl font-bold mb-8">Streamlined Workflow for Maximum Efficiency</h2>
-                            <div class="space-y-8">
-                                <div class="flex gap-4">
-                                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                            <h2 class="text-4xl lg:text-6xl font-black mb-12 tracking-tight leading-tight">Streamlined for <br/><span class="text-blue-500">Peak Performance</span></h2>
+                            <div class="space-y-12">
+                                <div class="flex gap-8 group">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center font-black text-xl border border-white/10 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all">01</div>
                                     <div>
-                                        <h4 class="text-lg font-bold mb-1">Define Your Scope</h4>
-                                        <p class="text-[#706f6c]">Set up your project with custom fields tailored to your survey requirements. Define validations and mandatory data points.</p>
+                                        <h4 class="text-2xl font-bold mb-3">Define Your Scope</h4>
+                                        <p class="text-slate-400 text-lg leading-relaxed">Set up your project with custom fields tailored to your survey requirements. Define validations and mandatory data points.</p>
                                     </div>
                                 </div>
-                                <div class="flex gap-4">
-                                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                                <div class="flex gap-8 group">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center font-black text-xl border border-white/10 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all">02</div>
                                     <div>
-                                        <h4 class="text-lg font-bold mb-1">Onboard Your Team</h4>
-                                        <p class="text-[#706f6c]">Quickly register and assign staff to projects. Secure authentication ensures only authorized personnel can collect data.</p>
+                                        <h4 class="text-2xl font-bold mb-3">Onboard Your Team</h4>
+                                        <p class="text-slate-400 text-lg leading-relaxed">Quickly register and assign staff to projects. Secure authentication ensures only authorized personnel can collect data.</p>
                                     </div>
                                 </div>
-                                <div class="flex gap-4">
-                                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                                <div class="flex gap-8 group">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center font-black text-xl border border-white/10 group-hover:bg-blue-600 group-hover:border-blue-600 transition-all">03</div>
                                     <div>
-                                        <h4 class="text-lg font-bold mb-1">Execute & Monitor</h4>
-                                        <p class="text-[#706f6c]">Field staff submit data via the mobile interface. Admin monitors real-time progress and manages project integrity.</p>
+                                        <h4 class="text-2xl font-bold mb-3">Execute & Monitor</h4>
+                                        <p class="text-slate-400 text-lg leading-relaxed">Field staff submit data via the mobile interface. Admin monitors real-time progress and manages project integrity.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white p-2 rounded-[2rem] shadow-2xl border border-gray-200">
-                            <div class="bg-gray-50 rounded-[1.8rem] p-12 aspect-video flex items-center justify-center">
-                                <div class="text-center">
-                                    <svg class="w-16 h-16 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21a9.003 9.003 0 008.367-5.618m-1.634-3.044A8.962 8.962 0 0012 12c-1.928 0-3.692.607-5.133 1.644M12 21c-4.474 0-8.064-3.59-8.064-8.064a8.06 8.06 0 011.644-4.867"/></svg>
-                                    <p class="font-bold text-xl">Secure Data Flow</p>
-                                    <p class="text-sm text-[#706f6c]">End-to-end encryption for every submission</p>
+                        <div class="relative">
+                            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-1 rounded-[3rem] shadow-2xl">
+                                <div class="bg-slate-900 rounded-[2.8rem] p-16 aspect-square flex items-center justify-center text-center">
+                                    <div>
+                                        <div class="w-24 h-24 bg-blue-600/20 text-blue-500 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-blue-500/30">
+                                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21a9.003 9.003 0 008.367-5.618m-1.634-3.044A8.962 8.962 0 0012 12c-1.928 0-3.692.607-5.133 1.644M12 21c-4.474 0-8.064-3.59-8.064-8.064a8.06 8.06 0 011.644-4.867"/></svg>
+                                        </div>
+                                        <h3 class="text-3xl font-black mb-4">Secure Infrastructure</h3>
+                                        <p class="text-slate-400 text-lg">Enterprise-grade encryption for every data point collected in the field.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -158,55 +199,56 @@
             </section>
 
             <!-- Why Choose Us Section -->
-            <section class="py-24 bg-white">
+            <section class="py-32 bg-white">
                 <div class="max-w-7xl mx-auto px-6">
-                    <div class="text-center max-w-3xl mx-auto mb-20">
-                        <h2 class="text-3xl lg:text-4xl font-bold mb-4">Why Industry Leaders Trust Enumerate</h2>
-                        <p class="text-[#706f6c]">We combine powerful features with an intuitive experience to deliver results that matter.</p>
+                    <div class="text-center max-w-3xl mx-auto mb-24">
+                        <h2 class="text-4xl lg:text-5xl font-black mb-6 text-slate-900 tracking-tight">Built for <span class="text-blue-600">Scale</span>.</h2>
+                        <p class="text-lg text-slate-600 font-medium">Powerful features that grow with your project requirements.</p>
                     </div>
 
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mx-auto mb-6">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21a9.003 9.003 0 008.367-5.618m-1.634-3.044A8.962 8.962 0 0012 12c-1.928 0-3.692.607-5.133 1.644M12 21c-4.474 0-8.064-3.59-8.064-8.064a8.06 8.06 0 011.644-4.867"/></svg>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                        <div class="group">
+                            <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-blue-600 mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 border border-slate-100">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21a9.003 9.003 0 008.367-5.618m-1.634-3.044A8.962 8.962 0 0012 12c-1.928 0-3.692.607-5.133 1.644M12 21c-4.474 0-8.064-3.59-8.064-8.064a8.06 8.06 0 011.644-4.867"/></svg>
                             </div>
-                            <h4 class="font-bold mb-2">Verified Data</h4>
-                            <p class="text-sm text-[#706f6c]">Ensure accuracy with built-in validation rules and field requirements.</p>
+                            <h4 class="text-xl font-black mb-4 text-slate-900">Verified Data</h4>
+                            <p class="text-slate-600 font-medium leading-relaxed">Built-in validation rules ensure data integrity from the moment of entry.</p>
                         </div>
-                        <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mx-auto mb-6">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <div class="group">
+                            <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-green-600 mb-8 group-hover:bg-green-500 group-hover:text-white transition-all duration-500 border border-slate-100">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                             </div>
-                            <h4 class="font-bold mb-2">Instant Sync</h4>
-                            <p class="text-sm text-[#706f6c]">Field submissions are synced immediately to the central dashboard for review.</p>
+                            <h4 class="text-xl font-black mb-4 text-slate-900">Instant Sync</h4>
+                            <p class="text-slate-600 font-medium leading-relaxed">Real-time data synchronization between field staff and central servers.</p>
                         </div>
-                        <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mx-auto mb-6">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        <div class="group">
+                            <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-purple-600 mb-8 group-hover:bg-purple-500 group-hover:text-white transition-all duration-500 border border-slate-100">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                             </div>
-                            <h4 class="font-bold mb-2">Team Collaboration</h4>
-                            <p class="text-sm text-[#706f6c]">Manage multiple field agents and project coordinators with role-based access.</p>
+                            <h4 class="text-xl font-black mb-4 text-slate-900">Collaboration</h4>
+                            <p class="text-slate-600 font-medium leading-relaxed">Manage large teams with granular role-based access control.</p>
                         </div>
-                        <div class="text-center p-6">
-                            <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mx-auto mb-6">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <div class="group">
+                            <div class="w-20 h-20 bg-slate-50 rounded-[2rem] flex items-center justify-center text-orange-600 mb-8 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 border border-slate-100">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             </div>
-                            <h4 class="font-bold mb-2">Media Support</h4>
-                            <p class="text-sm text-[#706f6c]">Collect photos and documents as part of your enumeration workflow.</p>
+                            <h4 class="text-xl font-black mb-4 text-slate-900">Rich Media</h4>
+                            <p class="text-slate-600 font-medium leading-relaxed">Capture high-resolution photos and documents directly within forms.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- CTA Section -->
-            <section class="py-24 px-6 bg-white">
-                <div class="max-w-4xl mx-auto bg-blue-600 rounded-[2.5rem] p-12 lg:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-500/20">
+            <section class="py-32 px-6 bg-slate-50">
+                <div class="max-w-6xl mx-auto bg-slate-900 rounded-[4rem] p-16 lg:p-24 text-center text-white relative overflow-hidden shadow-3xl">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/20 to-transparent"></div>
                     <div class="relative z-10">
-                        <h2 class="text-4xl lg:text-5xl font-bold mb-8">Ready to revolutionize your data collection?</h2>
-                        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Join the teams using Enumerate to make field surveys more efficient and accurate than ever before.</p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="{{ route('staff.register') }}" class="px-8 py-4 bg-white text-blue-600 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all">Create Account</a>
-                            <a href="{{ route('staff.login') }}" class="px-8 py-4 bg-blue-700 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all border border-blue-500">Sign In</a>
+                        <h2 class="text-4xl lg:text-7xl font-black mb-10 tracking-tight">Ready to <span class="text-blue-500">Transform?</span></h2>
+                        <p class="text-xl text-slate-300 mb-14 max-w-2xl mx-auto font-medium">Join leading organizations using Enumerate to modernize their field operations.</p>
+                        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                            <a href="{{ route('staff.register') }}" class="px-12 py-5 bg-blue-600 text-white rounded-2xl font-black text-lg hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/30">Create Account</a>
+                            <a href="{{ route('staff.login') }}" class="px-12 py-5 bg-white/10 text-white rounded-2xl font-black text-lg hover:bg-white/20 transition-all border border-white/10">Staff Login</a>
                         </div>
                     </div>
                 </div>
