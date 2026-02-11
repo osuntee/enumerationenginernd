@@ -6,13 +6,14 @@ use App\Http\Controllers\Staff\ProjectController;
 use App\Http\Controllers\Staff\EnumerationController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Staff\StaffDashboardController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('staff.dashboard');
-})->middleware(['staff'])->name('staff.dashboard');
+Route::get('/dashboard', [StaffDashboardController::class, 'index'])
+    ->middleware(['staff'])->name('staff.dashboard');
 
 Route::middleware('staff')->name('staff.')->group(function () {
     // Project routes
