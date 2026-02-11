@@ -176,12 +176,16 @@
                     },
                     scales: {
                         y: {
-                            beginAtZero: true,
-                            grid: {
-                                display: true,
-                                color: '#f3f4f6'
-                            }
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: '#f3f4f6'
                         },
+                        ticks: {
+                            maxTicksLimit: 6,
+                            precision: 0
+                        }
+                    },
                         x: {
                             grid: {
                                 display: false
