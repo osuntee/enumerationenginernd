@@ -20,19 +20,19 @@
         @endif
     </head>
     <body class="bg-white text-[#1b1b18] flex flex-col min-h-screen">
-        <header class="w-full border-b border-[#19140010] bg-white backdrop-blur-md sticky top-0 z-50">
+        <header class="w-full bg-slate-900 backdrop-blur-md sticky top-0 z-50 text-white">
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-8 h-8 object-contain">
+                    <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-8 h-8 object-contain brightness-0 invert">
                     <span class="font-bold text-lg tracking-tight">Enumerate</span>
                 </div>
                 
                 @if (Route::has('login'))
                     <nav class="flex items-center gap-4">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm font-medium hover:text-blue-600 transition-colors">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="text-sm font-medium hover:text-blue-400 transition-colors">Dashboard</a>
                         @else
-                            <a href="{{ route('staff.login') }}" class="text-sm font-medium hover:text-blue-600 transition-colors">Log in</a>
+                            <a href="{{ route('staff.login') }}" class="text-sm font-medium hover:text-blue-400 transition-colors">Log in</a>
                             @if (Route::has('staff.register'))
                                 <a href="{{ route('staff.register') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-all shadow-sm">Get Started</a>
                             @endif
@@ -44,38 +44,36 @@
 
         <main class="flex-grow">
             <!-- Hero Section -->
-            <section class="relative py-24 lg:py-36 px-6 overflow-hidden bg-slate-50">
+            <section class="relative py-24 lg:py-36 px-6 overflow-hidden bg-slate-900 text-white">
                 <!-- Decorative Background Elements -->
-                <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
-                    <div class="absolute top-1/2 -right-24 w-72 h-72 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
-                </div>
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-[120px] pointer-events-none"></div>
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
                 <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
                     <div class="text-left">
-                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/10 text-blue-700 rounded-full text-xs font-bold mb-8 uppercase tracking-widest border border-blue-200/50">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 text-blue-400 rounded-full text-xs font-bold mb-8 uppercase tracking-widest border border-white/10">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
                             Next-Gen Enumeration Platform
                         </span>
-                        <h1 class="text-5xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight text-slate-900">
-                            Collect Data <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Smarter</span>.
+                        <h1 class="text-5xl lg:text-8xl font-black mb-8 leading-[1.05] tracking-tight">
+                            Collect Data <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Smarter</span>.
                         </h1>
-                        <p class="text-xl text-slate-600 mb-12 leading-relaxed max-w-xl font-medium">
+                        <p class="text-xl text-slate-400 mb-12 leading-relaxed max-w-xl font-medium">
                             Enumerate by Cyber1 is a high-performance platform for modern field surveys. Transform complex data collection into a seamless digital experience.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-5">
-                            <a href="{{ route('staff.login') }}" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-blue-600 transition-all shadow-2xl shadow-slate-900/20 flex items-center justify-center gap-3 group">
+                            <a href="{{ route('staff.login') }}" class="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-2xl shadow-blue-600/20 flex items-center justify-center gap-3 group">
                                 Get Started Now
                                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                             </a>
-                            <a href="#features" class="px-10 py-5 bg-white border-2 border-slate-200 rounded-2xl font-bold text-lg hover:border-blue-600 hover:text-blue-600 transition-all flex items-center justify-center">
+                            <a href="#features" class="px-10 py-5 bg-white/5 border-2 border-white/10 rounded-2xl font-bold text-lg hover:bg-white/10 hover:border-blue-500 transition-all flex items-center justify-center">
                                 Explore Features
                             </a>
                         </div>
                     </div>
                     <div class="relative">
-                        <div class="relative bg-white rounded-[3rem] p-4 shadow-2xl border border-slate-200 transform lg:rotate-3 hover:rotate-0 transition-transform duration-500">
-                            <div class="bg-slate-900 rounded-[2.5rem] p-12 aspect-square flex items-center justify-center overflow-hidden relative group">
+                        <div class="relative bg-white/5 rounded-[3rem] p-4 shadow-2xl border border-white/10 transform lg:rotate-3 hover:rotate-0 transition-transform duration-500 backdrop-blur-sm">
+                            <div class="bg-slate-900 rounded-[2.5rem] p-12 aspect-square flex items-center justify-center overflow-hidden relative group border border-white/5">
                                 <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 <svg class="w-32 h-32 text-blue-500 transform group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -83,14 +81,14 @@
                                 </svg>
                             </div>
                             <!-- Floating Badge -->
-                            <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block animate-bounce">
+                            <div class="absolute -bottom-6 -left-6 bg-slate-800 p-6 rounded-2xl shadow-xl border border-white/10 hidden md:block animate-bounce">
                                 <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                                    <div class="w-10 h-10 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                                     </div>
                                     <div>
-                                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">System Status</p>
-                                        <p class="text-sm font-black text-slate-900">All Systems Online</p>
+                                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">System Status</p>
+                                        <p class="text-sm font-black text-white">All Systems Online</p>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +238,7 @@
             </section>
 
             <!-- CTA Section -->
-            <section class="py-32 px-6 bg-slate-50">
+            <section class="py-32 px-6">
                 <div class="max-w-6xl mx-auto bg-slate-900 rounded-[4rem] p-16 lg:p-24 text-center text-white relative overflow-hidden shadow-3xl">
                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/20 to-transparent"></div>
                     <div class="relative z-10">
@@ -255,16 +253,16 @@
             </section>
         </main>
 
-        <footer class="py-12 px-6 border-t border-gray-100 bg-white">
+        <footer class="py-12 px-6 border-t border-white/10 bg-slate-900 text-white">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                 <div class="flex items-center gap-2">
-                    <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-6 h-6 object-contain opacity-70">
-                    <span class="font-bold text-sm tracking-tight opacity-70">Enumerate by Cyber1</span>
+                    <img src="{{ asset('images/logo.png') }}" alt="Enumerate Logo" class="w-6 h-6 object-contain brightness-0 invert opacity-80">
+                    <span class="font-bold text-sm tracking-tight text-slate-200">Enumerate by Cyber1</span>
                 </div>
-                <p class="text-sm text-[#706f6c]">&copy; {{ date('Y') }} Cyber1 Systems Network. All rights reserved.</p>
+                <p class="text-sm text-slate-400">&copy; {{ date('Y') }} Cyber1 Systems Network. All rights reserved.</p>
                 <div class="flex gap-6">
-                    <a href="#" class="text-sm text-[#706f6c] hover:text-blue-600 transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-sm text-[#706f6c] hover:text-blue-600 transition-colors">Terms of Service</a>
+                    <a href="#" class="text-sm text-slate-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-sm text-slate-400 hover:text-blue-400 transition-colors">Terms of Service</a>
                 </div>
             </div>
         </footer>
