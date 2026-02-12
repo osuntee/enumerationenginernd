@@ -9,6 +9,7 @@ use App\Models\Batch;
 use Illuminate\Support\Str;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
+use App\Jobs\GenerateBatchCodes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,47 +44,24 @@ class AdminCodeController extends Controller
     public function storeBatch(Request $request, Project $project)
     {
         $request->validate([
-            'count' => 'required|integer|min:1|max:2000',
+            'count' => 'required|integer|min:1|max:5000',
         ]);
 
-        DB::transaction(function () use ($request, $project) {
+        $batch = DB::transaction(function () use ($request, $project) {
             $batch = $project->batches()->create([
                 'number' => $project->batches()->count() + 1,
                 'code' => strtoupper(Str::random(8)),
+                'status' => 'pending',
+                'total_codes' => $request->count,
             ]);
 
-            $appUrl = config('app.url');
-
-            for ($i = 0; $i < $request->count; $i++) {
-                $ref = $this->generateReferenceNumber();
-                $url = "{$appUrl}/verify/{$ref}";
-
-                $qrCode = new QrCode(
-                    data: $url,
-                    size: 200,
-                    margin: 10,
-                );
-
-                $writer = new PngWriter();
-                $qrCodeImage = $writer->write($qrCode);
-                $qrCodeBase64 = base64_encode($qrCodeImage->getString());
-
-                $batch->codes()->create([
-                    'project_id' => $project->id,
-                    'reference' => $ref,
-                    'qrcode' => $qrCodeBase64,
-                    'is_used' => false,
-                ]);
-            }
-
-            Activity::create([
-                'activity_type' => 'Batch Creation',
-                'description' => "Created a new batch of {$request->count} codes for project {$project->name}",
-            ]);
+            return $batch;
         });
 
+        GenerateBatchCodes::dispatch($project, $batch, $request->count);
+
         return redirect()->route('projects.codes.index', $project)
-            ->with('success', 'Batch created successfully!');
+            ->with('success', 'Batch generation has started in the background!');
     }
 
     /**
