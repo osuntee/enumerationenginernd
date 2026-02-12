@@ -19,10 +19,13 @@ class AdminCodeController extends Controller
     public function index(Project $project)
     {
         $batches = $project->batches()
+            ->withCount(['codes', 'codes as used_codes_count' => function ($query) {
+                $query->where('is_used', true);
+            }])
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('admin.projects.codes.index', compact('batches'));
+        return view('admin.projects.codes.index', compact('project', 'batches'));
     }
 
     /**
@@ -30,79 +33,56 @@ class AdminCodeController extends Controller
      */
     public function create(Project $project)
     {
-        // Breate a new batch
+        return view('admin.projects.codes.create', compact('project'));
     }
 
     /**
-     * Store a newly created enumeration entry in storage.
+     * Store a newly created batch of codes.
      */
-    public function store(Request $request, Project $project)
+    public function storeBatch(Request $request, Project $project)
     {
-        // Get validation rules from the project
-        $rules = $project->getValidationRules();
-
-        // Add additional enumeration-specific rules
-        $rules = array_merge($rules, [
-            'enumerated_by' => 'nullable|string|max:255',
-            'notes' => 'nullable|string',
-            'longitude' => 'nullable|string',
-            'latitude' => 'nullable|string',
+        $request->validate([
+            'count' => 'required|integer|min:1|max:1000',
         ]);
 
-        $request->validate($rules);
-
         DB::transaction(function () use ($request, $project) {
-            $ref = $this->generateReferenceNumber();
-            $appUrl = config('app.url');
-
-            $url = "{$appUrl}/verify/{$ref}";
-
-            $qrCode = new QrCode(
-                data: $url,
-                size: 200,
-                margin: 10,
-            );
-
-            $writer = new PngWriter();
-            $qrCodeImage = $writer->write($qrCode);
-
-            $qrCodeBase64 = base64_encode($qrCodeImage->getString());
-
-            // Create the enumeration record
-            $enumeration = Enumeration::create([
-                'project_id' => $project->id,
-                'staff_id'   => $request->staff_id,
-                'notes'      => $request->notes,
-                'longitude'  => $request->longitude,
-                'latitude'   => $request->latitude,
-                'reference'  => $ref,
-                'qrcode'     => $qrCodeBase64,
-                'qrcode'     => $qrCodeBase64,
+            $batch = $project->batches()->create([
+                'number' => $project->batches()->count() + 1,
+                'code' => strtoupper(Str::random(8)),
             ]);
 
-            if ($project->requires_verification) {
-                $enumeration->update(['is_verified' => false]);
-            } else {
-                $enumeration->update(['is_verified' => true]);
-            }
+            $appUrl = config('app.url');
 
-            // Set field values
-            if ($request->has('data') && is_array($request->data)) {
-                $enumeration->setFieldValues($request->data);
-            }
+            for ($i = 0; $i < $request->count; $i++) {
+                $ref = $this->generateReferenceNumber();
+                $url = "{$appUrl}/verify/{$ref}";
 
-            // Create one-off payments
-            $enumeration->createOneOffPayments();
+                $qrCode = new QrCode(
+                    data: $url,
+                    size: 200,
+                    margin: 10,
+                );
+
+                $writer = new PngWriter();
+                $qrCodeImage = $writer->write($qrCode);
+                $qrCodeBase64 = base64_encode($qrCodeImage->getString());
+
+                $batch->codes()->create([
+                    'project_id' => $project->id,
+                    'reference' => $ref,
+                    'qrcode' => $qrCodeBase64,
+                    'is_used' => false,
+                ]);
+            }
 
             Activity::create([
-                'staff_id' => $request->staff_id,
-                'activity_type' => 'Enumeration',
-                'description' => 'New data captured for project ' . $project->name . $enumeration->reference,
+                'activity_type' => 'Batch Creation',
+                'description' => "Created a new batch of {$request->count} codes for project {$project->name}",
             ]);
         });
 
-        return redirect()->route('projects.show', $project)
-            ->with('success', 'Enumeration data added successfully!');
+        return redirect()->route('projects.codes.index', $project)
+            ->with('success', 'Batch created successfully!');
     }
 
     /**
@@ -116,11 +96,17 @@ class AdminCodeController extends Controller
     }
 
     /**
-     * Display the specified enumeration entry.
+     * Display the specified batch of codes.
      */
-    public function show(Project $project)
+    public function showBatch(Project $project, Batch $batch)
     {
-        // Display all the QR codes for a specific batch
+        $batch->load(['codes' => function ($query) {
+            $query->orderBy('is_used', 'asc')->orderBy('created_at', 'asc');
+        }]);
+
+        $codes = $batch->codes()->paginate(50);
+
+        return view('admin.projects.codes.show', compact('project', 'batch', 'codes'));
     }
 }
 
