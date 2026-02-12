@@ -43,7 +43,7 @@ class AdminCodeController extends Controller
     public function storeBatch(Request $request, Project $project)
     {
         $request->validate([
-            'count' => 'required|integer|min:1|max:1000',
+            'count' => 'required|integer|min:1|max:2000',
         ]);
 
         DB::transaction(function () use ($request, $project) {
