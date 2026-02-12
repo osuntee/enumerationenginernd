@@ -29,7 +29,7 @@
                                 <div>
                                     <label for="count" class="block text-sm font-bold text-gray-700 mb-2">Number of Codes to Generate</label>
                                     <div class="relative">
-                                        <input type="number" name="count" id="count" min="1" max="1000" value="100" required
+                                        <input type="number" name="count" id="count" min="1" max="2000" value="100" required
                                             class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all font-medium text-gray-900"
                                             placeholder="Enter amount (e.g. 100)">
                                         <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
@@ -39,7 +39,7 @@
                                     @error('count')
                                         <p class="mt-2 text-sm text-red-600 font-medium">{{ $message }}</p>
                                     @enderror
-                                    <p class="mt-2 text-xs text-gray-400 font-medium italic">* Maximum 1,000 codes per batch for optimal performance.</p>
+                                    <p class="mt-2 text-xs text-gray-400 font-medium italic">* Maximum 2,000 codes per batch for optimal performance.</p>
                                 </div>
                             </div>
                         </div>
