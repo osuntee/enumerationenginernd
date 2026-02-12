@@ -12,6 +12,8 @@ class Batch extends Model
         'project_id',
         'number',
         'code',
+        'status',
+        'total_codes',
     ];
 
     protected $casts = [
