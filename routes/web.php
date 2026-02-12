@@ -103,6 +103,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('projects/{project}/export', [EnumerationController::class, 'export'])->name('enumeration.export');
 
         Route::get('codes/{project}', [AdminCodeController::class, 'index'])->name('codes.index');
+        Route::get('codes/{project}/create', [AdminCodeController::class, 'create'])->name('codes.create');
+        Route::post('codes/{project}/store', [AdminCodeController::class, 'storeBatch'])->name('codes.store');
+        Route::get('codes/{project}/batches/{batch}', [AdminCodeController::class, 'showBatch'])->name('codes.show');
     });
 
     Route::prefix('admins')->name('admins.')->group(function () {
