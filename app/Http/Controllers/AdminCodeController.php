@@ -87,6 +87,19 @@ class AdminCodeController extends Controller
 
         return view('admin.projects.codes.show', compact('project', 'batch', 'codes'));
     }
+
+    /**
+     * Check the status of a batch (AJAX).
+     */
+    public function checkStatus(Project $project, Batch $batch)
+    {
+        return response()->json([
+            'status' => $batch->status,
+            'codes_count' => $batch->codes()->count(),
+            'total_codes' => $batch->total_codes,
+            'is_completed' => $batch->status === 'completed'
+        ]);
+    }
 }
 
 function slug($text)
