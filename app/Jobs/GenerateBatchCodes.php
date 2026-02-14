@@ -12,6 +12,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\DB;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
+use Illuminate\Support\Str;
 
 class GenerateBatchCodes implements ShouldQueue
 {
@@ -70,10 +71,18 @@ class GenerateBatchCodes implements ShouldQueue
     }
 
     /**
-     * Generate a unique reference number.
+     * Generate a unique reference number for the enumeration.
      */
-    private function generateReferenceNumber(): string
+    private function generateReferenceNumber()
     {
-        return strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 12));
+        $reference = null;
+
+        do {
+            $timestamp = now()->format('YmdHisv');
+            $uniqueId = strtoupper(Str::random(3));
+            $reference = $timestamp . $uniqueId;
+        } while ($this->batch->codes()->where('reference', $reference)->exists());
+
+        return $reference;
     }
 }
