@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('{id}/records', [ProjectController::class, 'records']);
         Route::get('{ref}/verify', [ProjectController::class, 'verify']);
 
-        Route::get('{ref}/code', [ProjectController::class, 'code']);
+        Route::get('{ref}/check', [ProjectController::class, 'check']);
     });
 });
 
