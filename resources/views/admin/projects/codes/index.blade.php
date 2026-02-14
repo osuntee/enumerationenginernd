@@ -11,6 +11,9 @@
                 <a href="{{ route('projects.codes.create', $project) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm transition-colors">
                     Generate New Batch
                 </a>
+                <a href="{{ route('projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                    Back to Project
+                </a>
             </div>
         </div>
     </x-slot>
