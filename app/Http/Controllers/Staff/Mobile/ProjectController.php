@@ -74,21 +74,47 @@ class ProjectController extends Controller
         DB::transaction(function () use ($request, $project) {
             $user = Auth::user();
 
-            $ref = $this->generateReferenceNumber();
-            $appUrl = config('app.url');
+            $ref = $request->input('reference');
+            $qrCodeBase64 = null;
 
-            $url = "{$appUrl}/verify/{$ref}";
 
-            $qrCode = new QrCode(
-                data: $url,
-                size: 200,
-                margin: 10,
-            );
+            if ($ref) {
+                $code = Code::where('reference', $ref)->first();
 
-            $writer = new PngWriter();
-            $qrCodeImage = $writer->write($qrCode);
+                if (!$code) {
+                    return response()->json([
+                        'status' => 'Request failed',
+                        'message' => 'Invalid QR code'
+                    ], 403);
+                }
 
-            $qrCodeBase64 = base64_encode($qrCodeImage->getString());
+                if ($code->is_used) {
+                    return response()->json([
+                        'status' => 'Request failed',
+                        'message' => 'QR code has already been used'
+                    ], 403);
+                }
+
+                $code->markAsUsed();
+
+                $qrCodeBase64 = $code->qrcode;
+            } else {
+                $ref = $this->generateReferenceNumber();
+                $appUrl = config('app.url');
+
+                $url = "{$appUrl}/verify/{$ref}";
+
+                $qrCode = new QrCode(
+                    data: $url,
+                    size: 200,
+                    margin: 10,
+                );
+
+                $writer = new PngWriter();
+                $qrCodeImage = $writer->write($qrCode);
+
+                $qrCodeBase64 = base64_encode($qrCodeImage->getString());
+            }
 
             // Create the enumeration record
             $enumeration = Enumeration::create([
