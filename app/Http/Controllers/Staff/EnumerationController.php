@@ -34,6 +34,10 @@ class EnumerationController extends Controller
         // Ensure the staff belongs to the same customer as the project
         $this->checkProjectAccess($project);
 
+        if ($project->pre_generate) {
+            return redirect()->back()->with('error', 'This project is set to pre-generate QR Codes. A pre-generated QR code must be scanned for data capture. Please use the mobile app to capture data for this project.');
+        }
+
         $project->load(['projectFields' => function ($query) {
             $query->active()->ordered();
         }]);
