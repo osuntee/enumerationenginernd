@@ -19,7 +19,7 @@ class EnumerationController extends Controller
     public function create(Project $project)
     {
         if ($project->pre_generate) {
-            return redirect()->back()->with('error', 'This project is set to pre-generate enumeration entries. Please generate entries from the project page.');
+            return redirect()->back()->with('error', 'This project is set to pre-generate QR Codes. A pre-generated QR code must be scanned for data capture. Please use the mobile app to capture data for this project.');
         }
 
         $project->load(['projectFields' => function ($query) {
