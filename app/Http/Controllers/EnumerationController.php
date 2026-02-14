@@ -18,6 +18,10 @@ class EnumerationController extends Controller
      */
     public function create(Project $project)
     {
+        if ($project->pre_generate) {
+            return redirect()->back()->with('error', 'This project is set to pre-generate enumeration entries. Please generate entries from the project page.');
+        }
+
         $project->load(['projectFields' => function ($query) {
             $query->active()->ordered();
         }]);
