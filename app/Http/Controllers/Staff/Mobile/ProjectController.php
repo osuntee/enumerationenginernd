@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Staff\Mobile;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use App\Models\ProjectPayment;
+use App\Models\Code;
 use App\Models\Enumeration;
 use App\Models\EnumerationPayment;
 use App\Models\Activity;
@@ -191,6 +191,31 @@ class ProjectController extends Controller
             'staff' => $staff,
             'enumeration' => $enumeration,
             'payments' => $payments,
+        ], 200);
+    }
+
+    public function check($ref)
+    {
+        $code = Code::where('reference', $ref)
+            ->first();
+
+        if (!$code) {
+            return response()->json([
+                'status' => 'Request failed',
+                'message' => 'Invalid QR code'
+            ], 403);
+        }
+
+        if ($code->is_used) {
+            return response()->json([
+                'status' => 'Request failed',
+                'message' => 'QR code has already been used'
+            ], 403);
+        }
+
+        return response()->json([
+            'status' => 'Request successful',
+            'code' => $code,
         ], 200);
     }
 }
