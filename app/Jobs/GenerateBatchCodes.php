@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\Batch;
 use App\Models\Project;
-use App\Models\Activity;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
