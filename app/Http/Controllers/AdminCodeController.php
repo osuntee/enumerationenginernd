@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
-use App\Models\Enumeration;
-use App\Models\Activity;
 use App\Models\Batch;
 use Illuminate\Support\Str;
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\Writer\PngWriter;
 use App\Jobs\GenerateBatchCodes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
