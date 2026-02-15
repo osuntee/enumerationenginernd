@@ -23,7 +23,7 @@
                 <a href="{{ route('projects.edit', $project) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
                     Edit Project
                 </a>
-                @if($project->is_active)
+                @if($project->is_active && !$project->pre_generate)
                     <a href="{{ route('projects.enumeration.create', $project) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
                         Add Data
                     </a>
