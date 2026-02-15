@@ -9,6 +9,11 @@
             </div>
 
             <div class="flex flex-wrap gap-2">
+                @if ($project->pre_generate)
+                    <a href="{{ route('projects.codes.index', $project) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded text-sm">
+                        Manage QR Codes
+                    </a>
+                @endif
                 <a href="{{ route('staff.projects.payments.index', $project) }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-sm">
                     Manage Payments
                 </a>
@@ -18,7 +23,7 @@
                 <a href="{{ route('staff.projects.edit', $project) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm">
                     Edit Project
                 </a>
-                @if($project->is_active)
+                @if($project->is_active && !$project->pre_generate)
                     <a href="{{ route('staff.projects.enumeration.create', $project) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">
                         Add Data
                     </a>
