@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Staff\ProfileController;
+use App\Http\Controllers\Staff\StaffProfileController;
 use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Staff\StaffProjectController;
 use App\Http\Controllers\Staff\StaffEnumerationController;
@@ -83,7 +83,7 @@ Route::middleware('staff')->name('staff.')->group(function () {
 
 
     // Profile routes
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [StaffProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [StaffProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [StaffProfileController::class, 'destroy'])->name('profile.destroy');
 });
