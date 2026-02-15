@@ -13,7 +13,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl border border-gray-100">
                 <div class="p-8">
-                    <form method="POST" action="{{ route('projects.codes.store', $project) }}">
+                    <form method="POST" action="{{ route('staff.projects.codes.store', $project) }}">
                         @csrf
 
                         <div class="mb-8">
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="flex items-center justify-between pt-6 border-t border-gray-100">
-                            <a href="{{ route('projects.codes.index', $project) }}" class="text-sm font-bold text-gray-500 hover:text-gray-700 transition-colors">
+                            <a href="{{ route('staff.projects.codes.index', $project) }}" class="text-sm font-bold text-gray-500 hover:text-gray-700 transition-colors">
                                 Cancel and Go Back
                             </a>
                             <button type="submit" class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-xl font-bold text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-lg shadow-blue-200">
