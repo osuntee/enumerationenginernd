@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Staff\ProfileController;
 use App\Http\Controllers\Staff\StaffController;
-use App\Http\Controllers\Staff\ProjectController;
-use App\Http\Controllers\Staff\EnumerationController;
+use App\Http\Controllers\Staff\StaffProjectController;
+use App\Http\Controllers\Staff\StaffEnumerationController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Staff\StaffDashboardController;
@@ -17,56 +17,56 @@ Route::get('/dashboard', [StaffDashboardController::class, 'index'])
 
 Route::middleware('staff')->name('staff.')->group(function () {
     // Project routes
-    Route::resource('projects', ProjectController::class);
+    Route::resource('projects', StaffProjectController::class);
 
     // Project field routes
-    Route::patch('fields/{field}/toggle', [ProjectController::class, 'toggleField'])
+    Route::patch('fields/{field}/toggle', [StaffProjectController::class, 'toggleField'])
         ->name('fields.toggle');
-    Route::delete('fields/{field}', [ProjectController::class, 'deleteField'])
+    Route::delete('fields/{field}', [StaffProjectController::class, 'deleteField'])
         ->name('fields.delete');
 
     // Additional project routes
     Route::prefix('projects')->name('projects.')->group(function () {
         // Staff management routes
-        Route::get('/{project}/staff', [ProjectController::class, 'staff'])->name('staff.index');
-        Route::get('/{project}/enumerations', [ProjectController::class, 'enumerations'])->name('enumerations.index');
-        Route::post('/{project}/assign', [ProjectController::class, 'assign'])->name('staff.assign');
-        Route::delete('/{project}/staff/{staff}/remove', [ProjectController::class, 'remove'])->name('staff.remove');
+        Route::get('/{project}/staff', [StaffProjectController::class, 'staff'])->name('staff.index');
+        Route::get('/{project}/enumerations', [StaffProjectController::class, 'enumerations'])->name('enumerations.index');
+        Route::post('/{project}/assign', [StaffProjectController::class, 'assign'])->name('staff.assign');
+        Route::delete('/{project}/staff/{staff}/remove', [StaffProjectController::class, 'remove'])->name('staff.remove');
 
         // Payment management routes
-        Route::get('{project}/payments', [ProjectController::class, 'payments'])->name('payments.index');
-        Route::get('{project}/payments/create', [ProjectController::class, 'createPayment'])->name('payments.create');
-        Route::post('{project}/payments/store', [ProjectController::class, 'storePayment'])->name('payments.store');
-        Route::get('payments/{payment}/show', [ProjectController::class, 'showPayment'])->name('payments.show');
-        Route::get('payments/{payment}/edit', [ProjectController::class, 'editPayment'])->name('payments.edit');
-        Route::put('payments/{payment}', [ProjectController::class, 'updatePayment'])->name('payments.update');
-        Route::patch('payments/{payment}/toggle-status', [ProjectController::class, 'togglePaymentStatus'])->name('payments.toggle');
+        Route::get('{project}/payments', [StaffProjectController::class, 'payments'])->name('payments.index');
+        Route::get('{project}/payments/create', [StaffProjectController::class, 'createPayment'])->name('payments.create');
+        Route::post('{project}/payments/store', [StaffProjectController::class, 'storePayment'])->name('payments.store');
+        Route::get('payments/{payment}/show', [StaffProjectController::class, 'showPayment'])->name('payments.show');
+        Route::get('payments/{payment}/edit', [StaffProjectController::class, 'editPayment'])->name('payments.edit');
+        Route::put('payments/{payment}', [StaffProjectController::class, 'updatePayment'])->name('payments.update');
+        Route::patch('payments/{payment}/toggle-status', [StaffProjectController::class, 'togglePaymentStatus'])->name('payments.toggle');
 
         // Enumeration Payment management routes
-        Route::get('payments/{payment}/enumerations', [ProjectController::class, 'enumerationPayments'])->name('payments.enumerations.index');
-        Route::get('payments/{enumerationPayment}/enumerations/show', [ProjectController::class, 'showEnumerationPayment'])->name('payments.enumerations.show');
-        Route::post('payments/{enumerationPayment}/enumerations/pay', [ProjectController::class, 'recordPayment'])->name('payments.enumerations.record-payment');
+        Route::get('payments/{payment}/enumerations', [StaffProjectController::class, 'enumerationPayments'])->name('payments.enumerations.index');
+        Route::get('payments/{enumerationPayment}/enumerations/show', [StaffProjectController::class, 'showEnumerationPayment'])->name('payments.enumerations.show');
+        Route::post('payments/{enumerationPayment}/enumerations/pay', [StaffProjectController::class, 'recordPayment'])->name('payments.enumerations.record-payment');
 
         // Field management routes
-        Route::post('{project}/fields', [ProjectController::class, 'addField'])->name('addField');
-        Route::patch('{project}/activate', [ProjectController::class, 'activate'])->name('activate');
-        Route::patch('{project}/deactivate', [ProjectController::class, 'deactivate'])->name('deactivate');
-        Route::post('{project}/field-order', [ProjectController::class, 'updateFieldOrder'])->name('updateFieldOrder');
+        Route::post('{project}/fields', [StaffProjectController::class, 'addField'])->name('addField');
+        Route::patch('{project}/activate', [StaffProjectController::class, 'activate'])->name('activate');
+        Route::patch('{project}/deactivate', [StaffProjectController::class, 'deactivate'])->name('deactivate');
+        Route::post('{project}/field-order', [StaffProjectController::class, 'updateFieldOrder'])->name('updateFieldOrder');
 
         // Enumeration routes
-        Route::get('{project}/enumerate', [EnumerationController::class, 'create'])->name('enumeration.create');
-        Route::post('{project}/enumerate', [EnumerationController::class, 'store'])->name('enumeration.store');
+        Route::get('{project}/enumerate', [StaffEnumerationController::class, 'create'])->name('enumeration.create');
+        Route::post('{project}/enumerate', [StaffEnumerationController::class, 'store'])->name('enumeration.store');
 
         Route::prefix('enumerations/{enumeration}')->group(function () {
-            Route::get('/', [EnumerationController::class, 'show'])->name('enumeration.show');
-            Route::get('edit', [EnumerationController::class, 'edit'])->name('enumeration.edit');
-            Route::put('/', [EnumerationController::class, 'update'])->name('enumeration.update');
-            Route::put('location', [EnumerationController::class, 'location'])->name('enumeration.location.update');
-            Route::delete('/', [EnumerationController::class, 'destroy'])->name('enumeration.destroy');
+            Route::get('/', [StaffEnumerationController::class, 'show'])->name('enumeration.show');
+            Route::get('edit', [StaffEnumerationController::class, 'edit'])->name('enumeration.edit');
+            Route::put('/', [StaffEnumerationController::class, 'update'])->name('enumeration.update');
+            Route::put('location', [StaffEnumerationController::class, 'location'])->name('enumeration.location.update');
+            Route::delete('/', [StaffEnumerationController::class, 'destroy'])->name('enumeration.destroy');
         });
 
-        Route::patch('projects/enumerations/{enumeration}/verify', [EnumerationController::class, 'toggleVerification'])->name('enumeration.toggleVerification');
-        Route::get('projects/{project}/export', [EnumerationController::class, 'export'])->name('enumeration.export');
+        Route::patch('projects/enumerations/{enumeration}/verify', [StaffEnumerationController::class, 'toggleVerification'])->name('enumeration.toggleVerification');
+        Route::get('projects/{project}/export', [StaffEnumerationController::class, 'export'])->name('enumeration.export');
     });
 
     // Staff management routes
