@@ -29,6 +29,9 @@ class StaffCodeController extends Controller
      */
     public function index(Project $project)
     {
+        // Ensure the staff belongs to the same customer as the project
+        $this->checkProjectAccess($project);
+
         $batches = $project->batches()
             ->withCount(['codes', 'codes as used_codes_count' => function ($query) {
                 $query->where('is_used', true);
@@ -44,6 +47,9 @@ class StaffCodeController extends Controller
      */
     public function create(Project $project)
     {
+        // Ensure the staff belongs to the same customer as the project
+        $this->checkProjectAccess($project);
+
         return view('admin.projects.codes.create', compact('project'));
     }
 
@@ -52,6 +58,9 @@ class StaffCodeController extends Controller
      */
     public function storeBatch(Request $request, Project $project)
     {
+        // Ensure the staff belongs to the same customer as the project
+        $this->checkProjectAccess($project);
+
         $request->validate([
             'count' => 'required|integer|min:1|max:5000',
         ]);
@@ -88,6 +97,9 @@ class StaffCodeController extends Controller
      */
     public function showBatch(Project $project, Batch $batch)
     {
+        // Ensure the staff belongs to the same customer as the project
+        $this->checkProjectAccess($project);
+
         $batch->load(['codes' => function ($query) {
             $query->orderBy('is_used', 'asc')->orderBy('created_at', 'asc');
         }]);
@@ -102,6 +114,9 @@ class StaffCodeController extends Controller
      */
     public function checkStatus(Project $project, Batch $batch)
     {
+        // Ensure the staff belongs to the same customer as the project
+        $this->checkProjectAccess($project);
+
         return response()->json([
             'status' => $batch->status,
             'codes_count' => $batch->codes()->count(),
