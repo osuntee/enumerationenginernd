@@ -39,7 +39,7 @@ class StaffCodeController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('admin.projects.codes.index', compact('project', 'batches'));
+        return view('staff.projects.codes.index', compact('project', 'batches'));
     }
 
     /**
@@ -50,7 +50,7 @@ class StaffCodeController extends Controller
         // Ensure the staff belongs to the same customer as the project
         $this->checkProjectAccess($project);
 
-        return view('admin.projects.codes.create', compact('project'));
+        return view('staff.projects.codes.create', compact('project'));
     }
 
     /**
@@ -78,7 +78,7 @@ class StaffCodeController extends Controller
 
         GenerateBatchCodes::dispatch($project, $batch, $request->count);
 
-        return redirect()->route('projects.codes.index', $project)
+        return redirect()->route('staff.projects.codes.index', $project)
             ->with('success', 'Batch generation has started in the background!');
     }
 
@@ -106,7 +106,7 @@ class StaffCodeController extends Controller
 
         $codes = $batch->codes()->paginate(50);
 
-        return view('admin.projects.codes.show', compact('project', 'batch', 'codes'));
+        return view('staff.projects.codes.show', compact('project', 'batch', 'codes'));
     }
 
     /**
