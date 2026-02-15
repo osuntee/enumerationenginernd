@@ -8,10 +8,10 @@
             </div>
 
             <div class="flex flex-wrap gap-2">
-                <a href="{{ route('projects.codes.create', $project) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm transition-colors">
+                <a href="{{ route('staff.projects.codes.create', $project) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm transition-colors">
                     Generate New Batch
                 </a>
-                <a href="{{ route('projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                <a href="{{ route('staff.projects.show', $project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                     Back to Project
                 </a>
             </div>
@@ -60,7 +60,7 @@
                                                 used: {{ $batch->used_codes_count }},
                                                 pollStatus() {
                                                     if (this.status === 'pending' || this.status === 'processing') {
-                                                        fetch('{{ route('projects.codes.status', [$project, $batch]) }}')
+                                                        fetch('{{ route('staff.projects.codes.status', [$project, $batch]) }}')
                                                             .then(response => response.json())
                                                             .then(data => {
                                                                 this.status = data.status;
@@ -121,7 +121,7 @@
                                             <td class="px-6 py-4 text-right">
                                                 <div class="flex justify-end gap-2">
                                                     <div x-show="status === 'completed'" class="flex gap-2">
-                                                        <a href="{{ route('projects.codes.show', [$project, $batch]) }}" class="inline-flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">
+                                                        <a href="{{ route('staff.projects.codes.show', [$project, $batch]) }}" class="inline-flex items-center px-3 py-1.5 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">
                                                             View Codes
                                                         </a>
                                                         <a href="#" class="inline-flex items-center px-3 py-1.5 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
@@ -152,7 +152,7 @@
                             </div>
                             <h3 class="text-lg font-bold text-gray-900 mb-1">No batches generated yet</h3>
                             <p class="text-gray-500 mb-6 max-w-sm mx-auto">Generate a new batch of pre-printed codes for field enumeration.</p>
-                            <a href="{{ route('projects.codes.create', $project) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-bold text-sm text-white uppercase tracking-widest hover:bg-blue-700 transition ease-in-out duration-150">
+                            <a href="{{ route('staff.projects.codes.create', $project) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-bold text-sm text-white uppercase tracking-widest hover:bg-blue-700 transition ease-in-out duration-150">
                                 Create Your First Batch
                             </a>
                         </div>
