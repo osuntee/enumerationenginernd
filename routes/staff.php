@@ -4,6 +4,7 @@ use App\Http\Controllers\Staff\StaffProfileController;
 use App\Http\Controllers\Staff\StaffController;
 use App\Http\Controllers\Staff\StaffProjectController;
 use App\Http\Controllers\Staff\StaffEnumerationController;
+use App\Http\Controllers\Staff\StaffCodeController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Staff\StaffDashboardController;
@@ -67,6 +68,12 @@ Route::middleware('staff')->name('staff.')->group(function () {
 
         Route::patch('projects/enumerations/{enumeration}/verify', [StaffEnumerationController::class, 'toggleVerification'])->name('enumeration.toggleVerification');
         Route::get('projects/{project}/export', [StaffEnumerationController::class, 'export'])->name('enumeration.export');
+
+        Route::get('codes/{project}', [StaffCodeController::class, 'index'])->name('codes.index');
+        Route::get('codes/{project}/create', [StaffCodeController::class, 'create'])->name('codes.create');
+        Route::post('codes/{project}/store', [StaffCodeController::class, 'storeBatch'])->name('codes.store');
+        Route::get('codes/{project}/batches/{batch}', [StaffCodeController::class, 'showBatch'])->name('codes.show');
+        Route::get('codes/{project}/batches/{batch}/status', [StaffCodeController::class, 'checkStatus'])->name('codes.status');
     });
 
     // Staff management routes
