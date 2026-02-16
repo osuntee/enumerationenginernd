@@ -73,7 +73,6 @@ Route::middleware('staff')->name('staff.')->group(function () {
         Route::get('codes/{project}/create', [StaffCodeController::class, 'create'])->name('codes.create');
         Route::post('codes/{project}/store', [StaffCodeController::class, 'storeBatch'])->name('codes.store');
         Route::get('codes/{project}/batches/{batch}', [StaffCodeController::class, 'showBatch'])->name('codes.show');
-        Route::get('codes/{project}/batches/{batch}/print', [StaffCodeController::class, 'printBatch'])->name('codes.print');
         Route::get('codes/{project}/batches/{batch}/status', [StaffCodeController::class, 'checkStatus'])->name('codes.status');
     });
 
