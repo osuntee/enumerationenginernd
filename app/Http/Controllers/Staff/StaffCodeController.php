@@ -107,7 +107,6 @@ class StaffCodeController extends Controller
      */
     public function printBatch(Project $project, Batch $batch)
     {
-        // Ensure the staff belongs to the same customer as the project
         $this->checkProjectAccess($project);
 
         $batch->load(['codes' => function ($query) {
@@ -119,9 +118,7 @@ class StaffCodeController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
 
-        $isPrint = true;
-
-        return view('staff.projects.codes.show', compact('project', 'batch', 'codes', 'isPrint'));
+        return view('staff.projects.codes.print', compact('project', 'batch', 'codes'));
     }
 
     /**
