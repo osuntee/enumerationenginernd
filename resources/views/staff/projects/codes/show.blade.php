@@ -70,10 +70,6 @@
                             </div>
                         @endforeach
                     </div>
-
-                    @if($isPaginated)
-                    {{-- No pagination; all codes are shown --}}
-                    @endif
                 </div>
             </div>
         </div>
