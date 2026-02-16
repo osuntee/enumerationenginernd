@@ -77,12 +77,6 @@
                             </div>
                         @endforeach
                     </div>
-
-                    @if($isPaginated)
-                        <div class="mt-8">
-                            {{ $codes->links() }}
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
