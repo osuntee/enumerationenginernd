@@ -8,10 +8,10 @@
             </div>
 
             <div class="flex flex-wrap gap-2">
-                <a href="{{ route('staff.projects.codes.print', [$batch->project, $batch]) }}" target="_blank" class="bg-gray-800 hover:bg-black text-white font-bold py-2 px-4 rounded text-sm transition-colors flex items-center shadow-lg">
+                <button onclick="window.print()" class="bg-gray-800 hover:bg-black text-white font-bold py-2 px-4 rounded text-sm transition-colors flex items-center shadow-lg">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2h10z"/></svg>
                     Print QR Labels
-                </a>
+                </button>
                 <a href="{{ route('staff.projects.codes.index', $batch->project) }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                     Back to Batches
                 </a>
@@ -43,15 +43,8 @@
             <div class="bg-white shadow-sm sm:rounded-xl border border-gray-100 overflow-hidden">
                 <div class="p-6 border-b border-gray-100 bg-gray-50 flex justify-between items-center">
                     <h3 class="font-bold text-gray-900 uppercase tracking-wider text-sm">QR Code Inventory</h3>
-                    @php
-                        $isPaginated = isset($isPrint) ? !$isPrint : $codes instanceof \Illuminate\Pagination\LengthAwarePaginator;
-                    @endphp
                     <div class="text-xs text-gray-400 font-medium">
-                        @if($isPaginated)
-                            Showing page {{ $codes->currentPage() }} of {{ $codes->lastPage() }}
-                        @else
-                            Showing all {{ $codes->count() }} codes
-                        @endif
+                        Showing all {{ $codes->count() }} codes
                     </div>
                 </div>
                 <div class="p-6">
@@ -79,9 +72,7 @@
                     </div>
 
                     @if($isPaginated)
-                        <div class="mt-8">
-                            {{ $codes->links() }}
-                        </div>
+                    {{-- No pagination; all codes are shown --}}
                     @endif
                 </div>
             </div>
@@ -111,16 +102,6 @@
                 border: 1px solid #eee !important;
                 background: white !important;
             }
-            .pagination, .mb-8, .border-b {
-                display: none !important;
-            }
         }
     </style>
-    @if(!empty($isPrint) && $isPrint)
-        <script>
-            window.addEventListener('load', function () {
-                window.print();
-            });
-        </script>
-    @endif
 </x-staff>
