@@ -73,15 +73,19 @@ class AdminCodeController extends Controller
     /**
      * Display the specified batch of codes.
      */
-    public function showBatch(Project $project, Batch $batch)
+    public function showBatch(Request $request, Project $project, Batch $batch)
     {
+        $isPrint = $request->boolean('print');
+
         $batch->load(['codes' => function ($query) {
             $query->orderBy('is_used', 'asc')->orderBy('created_at', 'asc');
         }]);
 
-        $codes = $batch->codes()->paginate(50);
+        $codesQuery = $batch->codes()->orderBy('is_used', 'asc')->orderBy('created_at', 'asc');
 
-        return view('admin.projects.codes.show', compact('project', 'batch', 'codes'));
+        $codes = $isPrint ? $codesQuery->get() : $codesQuery->paginate(50);
+
+        return view('admin.projects.codes.show', compact('project', 'batch', 'codes', 'isPrint'));
     }
 
     /**
