@@ -75,7 +75,7 @@ class AdminCodeController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
 
-        return view('staff.projects.codes.show', compact('project', 'batch', 'codes'));
+        return view('admin.projects.codes.show', compact('project', 'batch', 'codes'));
     }
 
     /**
