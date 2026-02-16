@@ -83,16 +83,6 @@ class StaffCodeController extends Controller
     }
 
     /**
-     * Generate a unique reference number for the enumeration.
-     */
-    private function generateReferenceNumber()
-    {
-        $timestamp = now()->format('YmdHisv');
-        $uniqueId = strtoupper(Str::random(3));
-        return $timestamp . $uniqueId;
-    }
-
-    /**
      * Display the specified batch of codes.
      */
     public function showBatch(Project $project, Batch $batch)
@@ -149,9 +139,4 @@ class StaffCodeController extends Controller
             'is_completed' => $batch->status === 'completed'
         ]);
     }
-}
-
-function slug($text)
-{
-    return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $text)));
 }
