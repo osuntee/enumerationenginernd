@@ -83,29 +83,9 @@ class StaffCodeController extends Controller
     }
 
     /**
-     * Display the specified batch of codes.
+     * Display the specified batch of codes (no pagination).
      */
     public function showBatch(Project $project, Batch $batch)
-    {
-        // Ensure the staff belongs to the same customer as the project
-        $this->checkProjectAccess($project);
-
-        $batch->load(['codes' => function ($query) {
-            $query->orderBy('is_used', 'asc')->orderBy('created_at', 'asc');
-        }]);
-
-        $codes = $batch->codes()
-            ->orderBy('is_used', 'asc')
-            ->orderBy('created_at', 'asc')
-            ->paginate(50);
-
-        return view('staff.projects.codes.show', compact('project', 'batch', 'codes'));
-    }
-
-    /**
-     * Show a print-friendly view of all codes in a batch.
-     */
-    public function printBatch(Project $project, Batch $batch)
     {
         $this->checkProjectAccess($project);
 
@@ -118,7 +98,7 @@ class StaffCodeController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
 
-        return view('staff.projects.codes.print', compact('project', 'batch', 'codes'));
+        return view('staff.projects.codes.show', compact('project', 'batch', 'codes'));
     }
 
     /**
