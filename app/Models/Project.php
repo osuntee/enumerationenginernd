@@ -46,7 +46,8 @@ class Project extends Model
      */
     public function projectFields(): HasMany
     {
-        return $this->hasMany(ProjectField::class);
+        // Order by 'id' column to maintain field order
+        return $this->hasMany(ProjectField::class)->orderBy('id');
     }
 
     /**
