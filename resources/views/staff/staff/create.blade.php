@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('staff.staff.store', $customer) }}" id="projectForm">
+            <form method="POST" action="{{ route('staff.staff.store') }}" id="projectForm">
                 @csrf
                 
                 <!-- Staff Details -->
