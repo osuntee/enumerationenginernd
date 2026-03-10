@@ -89,12 +89,19 @@ class StaffProjectController extends Controller
             return back()->withErrors(['fields' => 'Field names must be unique within a project.'])->withInput();
         }
 
+        $user = Auth::guard('staff')->user();
+        $customer_id = $user->customer_id;
+
+        if (!$customer_id) {
+            return back()->withErrors(['customer_id' => 'Invalid customer selected.'])->withInput();
+        }
+
         try {
             DB::beginTransaction();
 
             // Create the project
             $project = Project::create([
-                'customer_id' => $request->customer_id,
+                'customer_id' => $customer_id,
                 'name' => $request->name,
                 'description' => $request->description,
                 'pre_generate' => $request->has('pre_generate') ? (bool)$request->pre_generate : false,
