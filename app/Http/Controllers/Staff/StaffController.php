@@ -45,16 +45,9 @@ class StaffController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                'max:255',
-                Rule::unique('staff')->where(function ($query) use ($customer) {
-                    return $query->where('customer_id', $customer->id);
-                })
-            ],
+            'email' => 'required|email|max:255|unique:staff',
             'password' => 'required|string|min:8|confirmed',
-            'phone' => 'nullable|string|max:20',
+            'phone' => 'nullable|string|max:20|unique:staff',
             'staff_type' => ['required', 'string', Rule::in(['admin', 'user'])],
         ]);
 
