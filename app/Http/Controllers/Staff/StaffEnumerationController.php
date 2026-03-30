@@ -375,6 +375,8 @@ class StaffEnumerationController extends Controller
                 return [
                     'id' => $enumeration->id,
                     'enumerated_at' => $enumeration->enumerated_at?->toISOString(),
+                    'longitude' => $enumeration->longitude ?? 'N/A',
+                    'latitude' => $enumeration->latitude ?? 'N/A',
                     'staff_member' => $enumeration->staff ? $enumeration->staff->name : null,
                     'is_verified' => $enumeration->is_verified,
                     'notes' => $enumeration->notes,
