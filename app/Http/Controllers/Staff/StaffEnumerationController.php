@@ -305,7 +305,7 @@ class StaffEnumerationController extends Controller
             $file = fopen('php://output', 'w');
 
             // Write header row
-            $headerRow = ['ID', 'Enumerated At', 'Enumerated By', 'Verified', 'Notes'];
+            $headerRow = ['ID', 'Enumerated At', 'Longitude', 'Latitude', 'Enumerated By', 'Verified', 'Notes'];
             foreach ($fields as $field) {
                 $headerRow[] = $field->label;
             }
@@ -318,6 +318,8 @@ class StaffEnumerationController extends Controller
                 $row = [
                     $enumeration->id,
                     $enumeration->enumerated_at ? $enumeration->enumerated_at->format('Y-m-d H:i:s') : '',
+                    $enumeration->longitude ?? 'N/A',
+                    $enumeration->latitude ?? 'N/A',
                     $enumeration->enumerated_by,
                     $enumeration->is_verified ? 'Yes' : 'No',
                     $enumeration->notes,
